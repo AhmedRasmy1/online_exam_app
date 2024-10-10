@@ -12,4 +12,5 @@ class ColorManager {
   static const Color green = Color(0xff11CE19); // for success
   static const Color lightGreen = Color(0xffCAF9CC);
   static const Color colorOfEmailverification = Color(0xffDFE7F7);
+  static const Color white = Color(0xffffffff);
 }
