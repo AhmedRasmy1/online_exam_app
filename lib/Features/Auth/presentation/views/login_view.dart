@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_auth_prompt.dart';
 import 'package:online_exam_app/core/resources/routes_manager.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -96,30 +97,10 @@ class _LoginViewState extends State<LoginView> {
                   title: AppStrings.login,
                   onPressed: _login,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      AppStrings.dontHaveAccount,
-                      style: TextStyle(
-                          fontSize: FontSize.s16, color: ColorManager.black),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, RoutesManager.registerRoute);
-                      },
-                      child: Text(
-                        AppStrings.signUp,
-                        style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            decorationColor: ColorManager.blue,
-                            fontSize: FontSize.s16,
-                            color: ColorManager.blue,
-                            fontWeight: FontWeightManager.semiBold),
-                      ),
-                    ),
-                  ],
+                const AuthPrompt(
+                  message: AppStrings.dontHaveAccount,
+                  userAccess: AppStrings.signUp,
+                  routeName: RoutesManager.registerRoute,
                 ),
               ],
             ),

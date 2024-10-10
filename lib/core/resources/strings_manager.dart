@@ -19,7 +19,7 @@ class AppStrings {
   static const String lastName = "Last Name";
   static const String enterYourLastName = "Enter first name";
   static const String phoneNumber = "phone Number";
-  static const String enterPhoneNumber = "Enter phone number";
+  static const String enterPhoneNumber = "Enter your phone number";
   static const String confirmPassword = "Confirm Password";
   static const String enterYourConfirmPassword = "confirm password";
   static const String titleOfForgetPassword = "Forget password";
@@ -31,4 +31,9 @@ class AppStrings {
       "Password must not be empty and must contain 6 characters with upper case letter and one number at least ";
   static const String resend = "Resend";
   static const String newPassword = "New Password";
+  static const String enterValidUserName = "Enter valid user name";
+  static const String entervalidfirstName = "valid first name";
+  static const String entervalidLastName = "valid last name";
+  static const String passwordNotMatch = "Password not match";
+  static const String enterValidPhoneNumber = "Enter valid phone number";
 }
