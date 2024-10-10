@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/font_manager.dart';
-import 'package:online_exam_app/core/resources/styles_manager.dart';
-import 'package:online_exam_app/core/resources/theme_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/font_manager.dart';
+import '../../../../core/resources/styles_manager.dart';
+import '../../../../core/resources/theme_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({

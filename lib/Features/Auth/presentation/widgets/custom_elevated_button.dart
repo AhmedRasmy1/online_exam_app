@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/font_manager.dart';
-import 'package:online_exam_app/core/resources/strings_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/font_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({

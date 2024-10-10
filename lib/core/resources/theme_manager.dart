@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/font_manager.dart';
-import 'package:online_exam_app/core/resources/styles_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
+import 'color_manager.dart';
+import 'font_manager.dart';
+import 'styles_manager.dart';
+import 'values_manager.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(

@@ -6,7 +6,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text("Test Sign Up View Page"),
+      body: Center(child: Text("Test Sign Up View Page")),
     );
   }
 }
