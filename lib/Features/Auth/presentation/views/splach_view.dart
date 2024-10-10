@@ -1,10 +1,37 @@
 import 'package:flutter/material.dart';
+import '../../../../core/resources/app_constants.dart';
+import '../../../../core/resources/assets_manager.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/routes_manager.dart';
 
-class SplashView extends StatelessWidget {
+class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
   @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    movedToNextPage();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: ColorManager.blue,
+      body: Center(
+        child: Image.asset(ImageAssets.splashLogo),
+      ),
+    );
+  }
+
+  void movedToNextPage() {
+    Future.delayed(const Duration(seconds: AppConstants.splachDelay), () {
+      Navigator.pushNamedAndRemoveUntil(
+          context, RoutesManager.loginRoute, (route) => false);
+    });
   }
 }

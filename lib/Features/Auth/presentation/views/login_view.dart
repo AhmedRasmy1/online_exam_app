@@ -6,7 +6,14 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text("Test login View Page"),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Test login View Page"),
+          ],
+        ),
+      ),
     );
   }
 }

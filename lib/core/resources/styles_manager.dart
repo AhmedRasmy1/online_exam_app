@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:online_exam_app/core/resources/font_manager.dart';
+import 'font_manager.dart';
 
 TextStyle _getTextStyle(double fontSize, FontWeight fontWeight, Color color) {
   return TextStyle(

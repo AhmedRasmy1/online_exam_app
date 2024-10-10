@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/core/resources/routes_manager.dart';
+import 'core/resources/routes_manager.dart';
 
 void main() {
   runApp(const OnlineExam());

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/Features/Auth/presentation/views/splach_view.dart';
+import '../../Features/Auth/presentation/views/forget_password.dart';
+import '../../Features/Auth/presentation/views/login_view.dart';
+import '../../Features/Auth/presentation/views/signup_view.dart';
+import '../../Features/Auth/presentation/views/splach_view.dart';
 
 class RoutesManager {
   static const String splashRoute = '/';
@@ -14,11 +17,11 @@ class RouteGenerator {
       case RoutesManager.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case RoutesManager.loginRoute:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+        return MaterialPageRoute(builder: (_) => const LoginView());
       case RoutesManager.registerRoute:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+        return MaterialPageRoute(builder: (_) => const SignUp());
       case RoutesManager.forgetPasswordRoute:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
       default:
         return unDefinedRoute();
     }
