@@ -2,8 +2,10 @@ class AppStrings {
   static const String login = "Login";
   static const String email = "Email";
   static const String enterYourEmail = "Enter your email";
+  static const String enterValidEmail = "Enter valid email";
   static const String password = "Password";
   static const String enterYourPassword = "Enter your password";
+  static const String enterValidPassword = "Enter valid password";
   static const String loginButton = "Login";
   static const String signUp = "Sign up";
   static const String alreadyHaveAccount = "Already have an account?";
