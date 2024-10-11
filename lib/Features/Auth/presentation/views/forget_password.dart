@@ -70,7 +70,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   controller: _emailController,
                   labelText: AppStrings.email,
                   hintText: AppStrings.enterYourEmail,
-                  validatorMessage: AppStrings.enterValidEmail,
                   obscureText: false,
                   validator: (value) =>
                       validateNotEmpty(value, AppStrings.enterValidEmail),

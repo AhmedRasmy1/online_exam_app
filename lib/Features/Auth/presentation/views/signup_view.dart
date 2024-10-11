@@ -69,7 +69,6 @@ class _SignUpState extends State<SignUp> {
                     controller: _userNameController,
                     labelText: AppStrings.userName,
                     hintText: AppStrings.enterYourUserName,
-                    validatorMessage: AppStrings.enterValidUserName,
                     obscureText: false,
                     validator: (value) =>
                         validateNotEmpty(value, AppStrings.enterValidUserName),
@@ -85,7 +84,6 @@ class _SignUpState extends State<SignUp> {
                           controller: _firstNameController,
                           labelText: AppStrings.firstName,
                           hintText: AppStrings.enterYourFirstName,
-                          validatorMessage: AppStrings.entervalidfirstName,
                           obscureText: false,
                           validator: (value) => validateNotEmpty(
                               value, AppStrings.entervalidfirstName),
@@ -98,7 +96,6 @@ class _SignUpState extends State<SignUp> {
                           controller: _lastNameController,
                           labelText: AppStrings.lastName,
                           hintText: AppStrings.enterYourLastName,
-                          validatorMessage: AppStrings.entervalidLastName,
                           obscureText: false,
                           validator: (value) => validateNotEmpty(
                               value, AppStrings.entervalidLastName),
@@ -111,7 +108,6 @@ class _SignUpState extends State<SignUp> {
                     controller: _emailController,
                     labelText: AppStrings.email,
                     hintText: AppStrings.enterYourEmail,
-                    validatorMessage: AppStrings.enterValidEmail,
                     obscureText: false,
                     validator: (value) =>
                         validateNotEmpty(value, AppStrings.enterValidEmail),
@@ -127,7 +123,6 @@ class _SignUpState extends State<SignUp> {
                           controller: _passwordController,
                           labelText: AppStrings.password,
                           hintText: AppStrings.enterYourPassword,
-                          validatorMessage: AppStrings.enterValidPassword,
                           obscureText: true,
                           validator: (value) => validateNotEmpty(
                               value, AppStrings.enterValidPassword),
@@ -140,7 +135,6 @@ class _SignUpState extends State<SignUp> {
                           controller: _confirmPasswordController,
                           labelText: AppStrings.confirmPassword,
                           hintText: AppStrings.enterYourConfirmPassword,
-                          validatorMessage: AppStrings.passwordNotMatch,
                           obscureText: true,
                           validator: (value) => _validatePasswordMatch(
                               AppStrings.passwordNotMatch),
@@ -153,7 +147,6 @@ class _SignUpState extends State<SignUp> {
                     controller: _phoneController,
                     labelText: AppStrings.phoneNumber,
                     hintText: AppStrings.enterPhoneNumber,
-                    validatorMessage: AppStrings.enterValidPhoneNumber,
                     obscureText: false,
                     validator: (value) {
                       if (value == null || value.isEmpty) {

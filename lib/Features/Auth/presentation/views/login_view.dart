@@ -54,7 +54,6 @@ class _LoginViewState extends State<LoginView> {
                   controller: _emailController,
                   labelText: AppStrings.email,
                   hintText: AppStrings.enterYourEmail,
-                  validatorMessage: AppStrings.enterValidEmail,
                   obscureText: false,
                   validator: (value) =>
                       validateNotEmpty(value, AppStrings.enterValidEmail),
@@ -64,7 +63,6 @@ class _LoginViewState extends State<LoginView> {
                   controller: _passwordController,
                   labelText: AppStrings.password,
                   hintText: AppStrings.enterYourPassword,
-                  validatorMessage: AppStrings.enterValidPassword,
                   obscureText: true,
                   validator: (value) =>
                       validateNotEmpty(value, AppStrings.enterValidPassword),
