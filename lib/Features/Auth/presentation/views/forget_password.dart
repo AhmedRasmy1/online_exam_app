@@ -67,6 +67,9 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                   buttonColor: buttonColor,
                   onPressed: () {
                     validationMethod(
+                      onPress:() {
+
+                      } ,
                       formKey: _formKey,
                       updateButtonColor: (newColor) {
                         setState(() {
