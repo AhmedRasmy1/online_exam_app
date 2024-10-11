@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_auth_prompt.dart';
+import 'package:online_exam_app/core/functions/form_validators.dart';
 import 'package:online_exam_app/core/resources/routes_manager.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -54,6 +55,9 @@ class _LoginViewState extends State<LoginView> {
                   labelText: AppStrings.email,
                   hintText: AppStrings.enterYourEmail,
                   validatorMessage: AppStrings.enterValidEmail,
+                  obscureText: false,
+                  validator: (value) =>
+                      validateNotEmpty(value, AppStrings.enterValidEmail),
                 ),
                 const SizedBox(height: AppSize.s24),
                 CustomTextFormField(
@@ -61,6 +65,9 @@ class _LoginViewState extends State<LoginView> {
                   labelText: AppStrings.password,
                   hintText: AppStrings.enterYourPassword,
                   validatorMessage: AppStrings.enterValidPassword,
+                  obscureText: true,
+                  validator: (value) =>
+                      validateNotEmpty(value, AppStrings.enterValidPassword),
                 ),
                 const SizedBox(height: AppSize.s16),
                 Row(
