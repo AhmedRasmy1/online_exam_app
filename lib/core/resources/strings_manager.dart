@@ -36,4 +36,5 @@ class AppStrings {
   static const String entervalidLastName = "valid last name";
   static const String passwordNotMatch = "Password not match";
   static const String enterValidPhoneNumber = "Enter valid phone number";
+  static const String continuee = "Continue";
 }

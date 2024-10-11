@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_auth_prompt.dart';
-import 'package:online_exam_app/core/functions/form_validators.dart';
-import 'package:online_exam_app/core/resources/routes_manager.dart';
+import '../widgets/custom_auth_prompt.dart';
+import '../../../../core/functions/form_validators.dart';
+import '../../../../core/resources/routes_manager.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_app_bar.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_auth_prompt.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_elevated_button.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_text_form_field.dart';
-import 'package:online_exam_app/core/functions/extenstions.dart';
-import 'package:online_exam_app/core/functions/form_validators.dart';
-import 'package:online_exam_app/core/resources/app_constants.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/routes_manager.dart';
-import 'package:online_exam_app/core/resources/strings_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_auth_prompt.dart';
+import '../widgets/custom_elevated_button.dart';
+import '../widgets/custom_text_form_field.dart';
+import '../../../../core/functions/extenstions.dart';
+import '../../../../core/functions/form_validators.dart';
+import '../../../../core/resources/app_constants.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/routes_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

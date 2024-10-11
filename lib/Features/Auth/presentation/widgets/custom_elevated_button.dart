@@ -28,7 +28,7 @@ class CustomElevatedButton extends StatelessWidget {
         ),
       ),
       child: Text(
-        AppStrings.login,
+        title,
         style: TextStyle(
           color: ColorManager.white,
           fontSize: FontSize.s16,
