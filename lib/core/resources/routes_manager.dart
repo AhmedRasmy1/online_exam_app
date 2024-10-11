@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_exam_app/Features/Auth/presentation/views/email_verification_view.dart';
+import 'package:online_exam_app/Features/Auth/presentation/views/reset_password_view.dart';
 import '../../Features/Auth/presentation/views/forget_password.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../Features/Auth/presentation/views/signup_view.dart';
@@ -11,6 +12,7 @@ class RoutesManager {
   static const String registerRoute = '/register';
   static const String forgetPasswordRoute = '/forgetPassword';
   static const String emailVerificationRoute = '/emailVerification';
+  static const String resetPasswordRoute = '/resetPassword';
 }
 
 class RouteGenerator {
@@ -26,6 +28,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
       case RoutesManager.emailVerificationRoute:
         return MaterialPageRoute(builder: (_) => const OtpVerificationPage());
+      case RoutesManager.resetPasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ResetPasswordView());
       default:
         return unDefinedRoute();
     }

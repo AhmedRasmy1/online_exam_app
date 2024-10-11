@@ -50,11 +50,11 @@ class CustomTextFormField extends StatelessWidget {
             const BorderRadius.all(Radius.circular(AppSize.s5)),
           ),
           errorBorder: outLintInputBorderMethod(
-            const BorderSide(color: ColorManager.red, width: AppSize.w1_5),
+            const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
             const BorderRadius.all(Radius.circular(AppSize.s5)),
           ),
           focusedErrorBorder: outLintInputBorderMethod(
-            const BorderSide(color: ColorManager.red, width: AppSize.w1_5),
+            const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
             const BorderRadius.all(Radius.circular(AppSize.s5)),
           ),
         ),

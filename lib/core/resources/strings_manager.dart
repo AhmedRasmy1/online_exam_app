@@ -37,4 +37,9 @@ class AppStrings {
   static const String passwordNotMatch = "Password not match";
   static const String enterValidPhoneNumber = "Enter valid phone number";
   static const String continuee = "Continue";
+  static const String emailVerification = "Email verification";
+  static const String subTitleOfEmailVerification =
+      "Please enter your code that send to your email address ";
+  static const String dontReciveCode = "Didn't receive code? ";
+  static const String invalidCode = "Invalid code";
 }

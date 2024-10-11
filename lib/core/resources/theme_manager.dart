@@ -75,7 +75,7 @@ ThemeData getApplicationTheme() {
           color: ColorManager.placeHolderColor, fontSize: FontSize.s14),
       labelStyle:
           getMediumStyle(color: ColorManager.grey, fontSize: FontSize.s16),
-      errorStyle: getRegularStyle(color: ColorManager.red),
+      errorStyle: getRegularStyle(color: ColorManager.error),
       enabledBorder: outLintInputBorderMethod(
         const BorderSide(color: ColorManager.black, width: AppSize.w1_5),
         const BorderRadius.all(Radius.circular(AppSize.s5)),
@@ -85,7 +85,7 @@ ThemeData getApplicationTheme() {
         const BorderRadius.all(Radius.circular(AppSize.s5)),
       ),
       errorBorder: outLintInputBorderMethod(
-        const BorderSide(color: ColorManager.red, width: AppSize.w1_5),
+        const BorderSide(color: ColorManager.error, width: AppSize.w1_5),
         const BorderRadius.all(Radius.circular(AppSize.s5)),
       ),
       focusedErrorBorder: outLintInputBorderMethod(

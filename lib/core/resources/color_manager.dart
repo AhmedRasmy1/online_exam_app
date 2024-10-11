@@ -5,7 +5,7 @@ class ColorManager {
   static const Color lightBlue = Color(0xffEDEFF3);
   static const Color grey = Color(0xff535353); // for subtitles color
   static const Color darkgrey = Color(0xff7a7a7c);
-  static const Color red = Color(0xffCC1010); // for errors and warnings
+  static const Color error = Color(0xffCC1010); // for errors and warnings
   static const Color lightRed = Color(0xffF8D2D2); //
   static const Color black = Color(0xff0F0F0F); // for text color
   static const Color placeHolderColor = Color(0xff535353);
