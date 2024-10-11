@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/custom_auth_prompt.dart';
-import '../../../../core/functions/form_validators.dart';
+import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -16,7 +16,7 @@ class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
   @override
-  _LoginViewState createState() => _LoginViewState();
+  createState() => _LoginViewState();
 }
 
 class _LoginViewState extends State<LoginView> {
@@ -24,18 +24,6 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   Color buttonColor = ColorManager.blue;
-
-  void _login() {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        buttonColor = ColorManager.blue;
-      });
-    } else {
-      setState(() {
-        buttonColor = ColorManager.darkgrey;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +88,16 @@ class _LoginViewState extends State<LoginView> {
                 CustomElevatedButton(
                   buttonColor: buttonColor,
                   title: AppStrings.login,
-                  onPressed: _login,
+                  onPressed: () {
+                    validationMethod(
+                      formKey: _formKey,
+                      updateButtonColor: (newColor) {
+                        setState(() {
+                          buttonColor = newColor;
+                        });
+                      },
+                    );
+                  },
                 ),
                 const AuthPrompt(
                   message: AppStrings.dontHaveAccount,

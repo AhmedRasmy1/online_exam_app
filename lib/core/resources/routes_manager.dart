@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/Features/Auth/presentation/views/email_verification_view.dart';
-import 'package:online_exam_app/Features/Auth/presentation/views/reset_password_view.dart';
+import '../../Features/Auth/presentation/views/email_verification_view.dart';
+import '../../Features/Auth/presentation/views/reset_password_view.dart';
 import '../../Features/Auth/presentation/views/forget_password.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../Features/Auth/presentation/views/signup_view.dart';

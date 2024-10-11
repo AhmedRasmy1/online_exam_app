@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_app_bar.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/font_manager.dart';
-import 'package:online_exam_app/core/resources/routes_manager.dart';
-import 'package:online_exam_app/core/resources/strings_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
+import '../widgets/custom_app_bar.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/font_manager.dart';
+import '../../../../core/resources/routes_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 
 class OtpVerificationPage extends StatefulWidget {
   const OtpVerificationPage({super.key});
 
   @override
-  _OtpVerificationPageState createState() => _OtpVerificationPageState();
+  createState() => _OtpVerificationPageState();
 }
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
