@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/domain/entities/ForgotPasswordEntities.dart';
 import 'package:online_exam_app/domain/repositories/auth_repo.dart';
 
 import '../common/api_result.dart';
@@ -18,5 +19,8 @@ class LoginUseCase {
       String lastName, String email,String password,String rePassword,String phone) {
     return authRepo.register(
         username, firstName, lastName, email, password, rePassword, phone);
+  }
+  Future<Result<ForgotPasswordEntities?>>forgotPassword(String email){
+    return authRepo.forgotPassword(email: email);
   }
 }

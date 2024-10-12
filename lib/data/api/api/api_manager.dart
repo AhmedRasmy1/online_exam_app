@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/api/model/request/register_request.dart';
 import 'package:online_exam_app/data/api/api/model/response/auth_response.dart';
+import 'package:online_exam_app/domain/entities/ForgotPasswordEntities.dart';
 
 import 'ApiConstants.dart';
 
@@ -28,5 +29,12 @@ Future<AuthResponse>register(RegisterRequest registerBody)async{
     return authResponse;
 }
 
+  Future<ForgotPasswordEntities>forgotPassword(String email)async{
+    var response=await _dio.post(ApiConstants.forgotPassword,data: {
+      "email":email
+    });
+    var forgotPasswordResponse=ForgotPasswordEntities.fromJson(response.data);
+    return forgotPasswordResponse;
+  }
 
 }
