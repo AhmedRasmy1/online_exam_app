@@ -23,8 +23,23 @@ Future<AuthResponse>login(String email,String password)async{
     return authResponse;
 }
 
-Future<AuthResponse>register(RegisterRequest registerBody)async{
-    var response=await _dio.post(ApiConstants.signUpUrl);
+Future<AuthResponse>register( String username,
+    String firstName,
+    String lastName,
+    String email,
+    String password,
+    String rePassword,
+    String phone)async{
+    var response=await _dio.post(ApiConstants.signUpUrl,data: {
+      "username":username,
+      "firstName":firstName,
+      "lastName":lastName,
+      "email":email ,
+      "password":password,
+      "rePassword":rePassword,
+      "phone":phone
+
+    });
     var authResponse=AuthResponse.fromJson(response.data);
     return authResponse;
 }
@@ -36,5 +51,12 @@ Future<AuthResponse>register(RegisterRequest registerBody)async{
     var forgotPasswordResponse=ForgotPasswordEntities.fromJson(response.data);
     return forgotPasswordResponse;
   }
+  // Future<ForgotPasswordEntities>forgotPassword(String email)async{
+  //   var response=await _dio.post(ApiConstants.forgotPassword,data: {
+  //     "email":email
+  //   });
+  //   var forgotPasswordResponse=ForgotPasswordEntities.fromJson(response.data);
+  //   return forgotPasswordResponse;
+  // }
 
 }

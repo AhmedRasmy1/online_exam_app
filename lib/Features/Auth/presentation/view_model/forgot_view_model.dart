@@ -23,6 +23,7 @@ class ForgotPasswordViewModel extends Cubit<ForgotScreenState> {
         {
           emit(ErrorState(result.exception));
         }
+
     }
   }
 
