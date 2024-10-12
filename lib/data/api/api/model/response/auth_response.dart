@@ -1,7 +1,8 @@
 class AuthResponse {
   AuthResponse({
     this.message,
-    this.token,});
+    this.token,
+  });
 
   AuthResponse.fromJson(dynamic json) {
     message = json['message'];
@@ -16,5 +17,4 @@ class AuthResponse {
     map['token'] = token;
     return map;
   }
-
 }

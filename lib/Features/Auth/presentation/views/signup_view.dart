@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/Uitls/Uitls.dart';
+import '../../../../core/utils/Uitls.dart';
 import '../../../../di/di.dart';
 import '../view_model/view_model.dart';
 import '../widgets/custom_app_bar.dart';

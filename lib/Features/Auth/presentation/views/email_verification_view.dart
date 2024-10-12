@@ -83,13 +83,15 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                         child: TextFormField(
                           controller: _controllers[index],
                           onChanged: (value) {
-                            if (value.length == 1) {
-                              if (index < 5) {
+                            if (value.isNotEmpty) {
+                              if (value.length == 1 && index < 5) {
                                 FocusScope.of(context).nextFocus();
-                              } else {
+                              } else if (index == 5) {
                                 _validateOtp();
                                 FocusScope.of(context).unfocus();
                               }
+                            } else if (value.isEmpty && index > 0) {
+                              FocusScope.of(context).previousFocus();
                             }
                           },
                           keyboardType: const TextInputType.numberWithOptions(),

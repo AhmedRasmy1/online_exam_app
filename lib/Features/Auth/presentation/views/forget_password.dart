@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../view_model/forgot_view_model.dart';
 import '../../../../di/di.dart';
-import '../../../../core/Uitls/Uitls.dart';
+import '../../../../core/utils/Uitls.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_elevated_button.dart';
