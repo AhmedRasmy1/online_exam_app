@@ -58,7 +58,12 @@ class _SignUpState extends State<SignUp> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      const CustomAppBar(title: AppStrings.signUp),
+                      CustomAppBar(
+                        title: AppStrings.signUp,
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
                       const SizedBox(height: AppSize.s24),
                       CustomTextFormField(
                         controller: _userNameController,

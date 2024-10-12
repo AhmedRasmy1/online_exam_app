@@ -9,14 +9,19 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     required this.title,
+    required this.onTap,
   });
   final String title;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset("assets/images/Vector.svg"),
+        GestureDetector(
+          onTap: onTap,
+          child: SvgPicture.asset("assets/images/Vector.svg"),
+        ),
         const SizedBox(width: AppSize.s8),
         Text(
           title,

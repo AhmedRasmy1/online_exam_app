@@ -53,7 +53,10 @@ class _LoginViewState extends State<LoginView> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const CustomAppBar(title: AppStrings.login),
+                    CustomAppBar(
+                      title: AppStrings.login,
+                      onTap: () {},
+                    ),
                     const SizedBox(height: AppSize.s24),
                     CustomTextFormField(
                       controller: _emailController,

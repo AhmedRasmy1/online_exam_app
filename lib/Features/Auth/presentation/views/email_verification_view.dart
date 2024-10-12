@@ -17,10 +17,10 @@ class OtpVerificationPage extends StatefulWidget {
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
   final List<TextEditingController> _controllers =
-      List.generate(4, (_) => TextEditingController());
+      List.generate(6, (_) => TextEditingController());
   bool _isCodeInvalid = false;
   final String _errorMessage = AppStrings.invalidCode;
-  final String correctOtp = '1234';
+  final String correctOtp = '123456';
 
   void _validateOtp() {
     String enteredOtp =
@@ -44,7 +44,12 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
               top: AppPadding.p8, left: AppPadding.p16, right: AppPadding.p16),
           child: Column(
             children: [
-              const CustomAppBar(title: AppStrings.password),
+              CustomAppBar(
+                title: AppStrings.password,
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
               const SizedBox(height: 40),
               Text(
                 AppStrings.emailVerification,
@@ -68,16 +73,16 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
-                    4,
+                    6,
                     (index) {
                       return SizedBox(
-                        width: 80,
+                        width: 55,
                         height: 72,
                         child: TextFormField(
                           controller: _controllers[index],
                           onChanged: (value) {
                             if (value.length == 1) {
-                              if (index < 3) {
+                              if (index < 5) {
                                 FocusScope.of(context).nextFocus();
 
                                 /// to do

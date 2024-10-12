@@ -48,7 +48,12 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
               key: _formKey,
               child: Column(
                 children: [
-                  const CustomAppBar(title: AppStrings.password),
+                  CustomAppBar(
+                    title: AppStrings.password,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
                   const SizedBox(height: AppSize.s40),
                   Text(
                     AppStrings.titleOfForgetPassword,

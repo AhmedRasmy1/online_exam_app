@@ -31,7 +31,12 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
             key: _formKey,
             child: Column(
               children: [
-                const CustomAppBar(title: AppStrings.password),
+                CustomAppBar(
+                  title: AppStrings.password,
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 const SizedBox(height: AppSize.s40),
                 Text(
                   AppStrings.titleOfResetPassword,
@@ -81,9 +86,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   title: AppStrings.continuee,
                   onPressed: () {
                     validationMethod(
-                      onPress:() {
-
-                      } ,
+                      onPress: () {},
                       formKey: _formKey,
                       updateButtonColor: (newColor) {
                         setState(() {
