@@ -22,10 +22,13 @@ String? validatePasswordMatch({
 void validationMethod({
   required GlobalKey<FormState> formKey,
   required Function(Color) updateButtonColor,
+  required void Function() onPress,
 }) {
   if (formKey.currentState!.validate()) {
+    onPress();
     updateButtonColor(ColorManager.blue);
   } else {
     updateButtonColor(ColorManager.darkgrey);
   }
+
 }

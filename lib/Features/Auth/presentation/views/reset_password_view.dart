@@ -81,6 +81,9 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   title: AppStrings.continuee,
                   onPressed: () {
                     validationMethod(
+                      onPress:() {
+
+                      } ,
                       formKey: _formKey,
                       updateButtonColor: (newColor) {
                         setState(() {

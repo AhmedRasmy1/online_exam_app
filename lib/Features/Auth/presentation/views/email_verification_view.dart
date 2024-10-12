@@ -16,7 +16,7 @@ class OtpVerificationPage extends StatefulWidget {
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
   final List<TextEditingController> _controllers =
-      List.generate(4, (_) => TextEditingController());
+      List.generate(4, (_)=> TextEditingController());
   bool _isCodeInvalid = false;
   final String _errorMessage = AppStrings.invalidCode;
   final String correctOtp = '1234';
@@ -77,7 +77,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           onChanged: (value) {
                             if (value.length == 1) {
                               if (index < 3) {
-                                FocusScope.of(context).nextFocus();
+                                FocusScope.of(context).nextFocus();/// to do
                               } else {
                                 _validateOtp();
                                 FocusScope.of(context).unfocus();
