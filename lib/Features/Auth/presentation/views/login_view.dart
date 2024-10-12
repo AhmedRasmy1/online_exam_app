@@ -30,6 +30,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   Color buttonColor = ColorManager.blue;
+  bool isPasswordHidden = true;
 
   @override
   void initState() {
@@ -71,11 +72,17 @@ class _LoginViewState extends State<LoginView> {
                       controller: _passwordController,
                       labelText: AppStrings.password,
                       hintText: AppStrings.enterYourPassword,
-                      obscureText: false,
-
-                      /// to do
+                      obscureText: isPasswordHidden,
                       validator: (value) => validateNotEmpty(
                           value, AppStrings.enterValidPassword),
+                      suffixIcon: passwordHidden(
+                        isPasswordHidden: isPasswordHidden,
+                        onPressed: () {
+                          setState(() {
+                            isPasswordHidden = !isPasswordHidden;
+                          });
+                        },
+                      ),
                     ),
                     const SizedBox(height: AppSize.s16),
                     Row(

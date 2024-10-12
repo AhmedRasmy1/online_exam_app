@@ -32,3 +32,15 @@ void validationMethod({
     updateButtonColor(ColorManager.darkgrey);
   }
 }
+
+Widget passwordHidden({
+  required bool isPasswordHidden,
+  required void Function()? onPressed,
+}) {
+  return IconButton(
+    icon: Icon(
+      isPasswordHidden ? Icons.visibility_off : Icons.visibility,
+    ),
+    onPressed: onPressed,
+  );
+}

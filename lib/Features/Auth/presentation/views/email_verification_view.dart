@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:online_exam_app/core/functions/extenstions.dart';
+import 'package:online_exam_app/core/resources/app_constants.dart';
 
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -17,10 +19,10 @@ class OtpVerificationPage extends StatefulWidget {
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
   final List<TextEditingController> _controllers =
-      List.generate(6, (_) => TextEditingController());
+      List.generate(AppConstants.listGenerate, (_) => TextEditingController());
   bool _isCodeInvalid = false;
   final String _errorMessage = AppStrings.invalidCode;
-  final String correctOtp = '123456';
+  final String correctOtp = AppStrings.correctOtp;
 
   void _validateOtp() {
     String enteredOtp =
@@ -50,7 +52,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                   Navigator.pop(context);
                 },
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: AppSize.s40),
               Text(
                 AppStrings.emailVerification,
                 style: TextStyle(
@@ -73,19 +75,17 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
-                    6,
+                    AppConstants.listGenerate,
                     (index) {
                       return SizedBox(
-                        width: 55,
-                        height: 72,
+                        width: context.screenWidth / 7.4,
+                        height: context.screenWidth / 6,
                         child: TextFormField(
                           controller: _controllers[index],
                           onChanged: (value) {
                             if (value.length == 1) {
                               if (index < 5) {
                                 FocusScope.of(context).nextFocus();
-
-                                /// to do
                               } else {
                                 _validateOtp();
                                 FocusScope.of(context).unfocus();

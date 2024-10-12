@@ -1,4 +1,3 @@
-import 'package:injectable/injectable.dart';
 import '../../../domain/entities/User.dart';
 
 import '../../../domain/common/api_result.dart';

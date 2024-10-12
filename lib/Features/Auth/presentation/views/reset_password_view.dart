@@ -20,6 +20,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Color buttonColor = ColorManager.blue;
+  bool isPasswordHidden = true;
+  bool isPasswordHidden1 = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,11 +50,10 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                 ),
                 const SizedBox(height: AppSize.s16),
                 Align(
-                  alignment: Alignment.center, // بدل Alignment.topCenter
+                  alignment: Alignment.center,
                   child: Text(
                     AppStrings.subTitleOfResetPassword,
-                    textAlign:
-                        TextAlign.center, // دي اللي هتخلي النص كله في النص
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: FontSize.s14,
                       color: ColorManager.grey,
@@ -65,20 +66,34 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                   controller: _newPasswordController,
                   labelText: AppStrings.newPassword,
                   hintText: AppStrings.enterYourPassword,
-                  obscureText: true,
+                  obscureText: isPasswordHidden,
                   validator: (value) =>
                       validateNotEmpty(value, AppStrings.enterValidPassword),
+                  suffixIcon: passwordHidden(
+                      isPasswordHidden: isPasswordHidden,
+                      onPressed: () {
+                        setState(() {
+                          isPasswordHidden = !isPasswordHidden;
+                        });
+                      }),
                 ),
                 const SizedBox(height: AppSize.s24),
                 CustomTextFormField(
                   controller: _confirmNewPasswordController,
                   labelText: AppStrings.confirmPassword,
                   hintText: AppStrings.confirmPassword,
-                  obscureText: true,
+                  obscureText: isPasswordHidden1,
                   validator: (value) => validatePasswordMatch(
                       password: _newPasswordController.text,
                       confirmPassword: _confirmNewPasswordController.text,
                       message: AppStrings.passwordNotMatch),
+                  suffixIcon: passwordHidden(
+                      isPasswordHidden: isPasswordHidden1,
+                      onPressed: () {
+                        setState(() {
+                          isPasswordHidden1 = !isPasswordHidden1;
+                        });
+                      }),
                 ),
                 const SizedBox(height: AppSize.s48),
                 CustomElevatedButton(

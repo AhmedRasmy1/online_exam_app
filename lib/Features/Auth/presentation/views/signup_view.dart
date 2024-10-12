@@ -34,6 +34,8 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController _phoneController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Color buttonColor = ColorManager.blue;
+  bool isPasswordHidden1 = true;
+  bool isPasswordHidden2 = true;
 
   @override
   void initState() {
@@ -123,9 +125,16 @@ class _SignUpState extends State<SignUp> {
                               controller: _passwordController,
                               labelText: AppStrings.password,
                               hintText: AppStrings.enterYourPassword,
-                              obscureText: true,
+                              obscureText: isPasswordHidden1,
                               validator: (value) => validateNotEmpty(
                                   value, AppStrings.enterValidPassword),
+                              suffixIcon: passwordHidden(
+                                  isPasswordHidden: isPasswordHidden1,
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordHidden1 = !isPasswordHidden1;
+                                    });
+                                  }),
                             ),
                           ),
                           SizedBox(
@@ -135,12 +144,19 @@ class _SignUpState extends State<SignUp> {
                               controller: _confirmPasswordController,
                               labelText: AppStrings.confirmPassword,
                               hintText: AppStrings.enterYourConfirmPassword,
-                              obscureText: true,
+                              obscureText: isPasswordHidden2,
                               validator: (value) => validatePasswordMatch(
                                   password: _passwordController.text,
                                   confirmPassword:
                                       _confirmPasswordController.text,
                                   message: AppStrings.passwordNotMatch),
+                              suffixIcon: passwordHidden(
+                                  isPasswordHidden: isPasswordHidden2,
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordHidden2 = !isPasswordHidden2;
+                                    });
+                                  }),
                             ),
                           ),
                         ],
@@ -151,12 +167,8 @@ class _SignUpState extends State<SignUp> {
                         labelText: AppStrings.phoneNumber,
                         hintText: AppStrings.enterPhoneNumber,
                         obscureText: false,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return AppStrings.enterValidPhoneNumber;
-                          }
-                          return null;
-                        },
+                        validator: (value) => validateNotEmpty(
+                            value, AppStrings.enterValidPhoneNumber),
                       ),
                       const SizedBox(height: AppSize.s48),
                       BlocConsumer<LoginViewModel, LoginScreenState>(

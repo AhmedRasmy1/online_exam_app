@@ -42,4 +42,5 @@ class AppStrings {
       "Please enter your code that send to your email address ";
   static const String dontReciveCode = "Didn't receive code? ";
   static const String invalidCode = "Invalid code";
+  static const String correctOtp = '123456';
 }
