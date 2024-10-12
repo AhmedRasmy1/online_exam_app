@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../widgets/custom_app_bar.dart';
+
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
+import '../widgets/custom_app_bar.dart';
 
 class OtpVerificationPage extends StatefulWidget {
   const OtpVerificationPage({super.key});
@@ -16,7 +17,7 @@ class OtpVerificationPage extends StatefulWidget {
 
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
   final List<TextEditingController> _controllers =
-      List.generate(4, (_)=> TextEditingController());
+      List.generate(4, (_) => TextEditingController());
   bool _isCodeInvalid = false;
   final String _errorMessage = AppStrings.invalidCode;
   final String correctOtp = '1234';
@@ -77,7 +78,9 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           onChanged: (value) {
                             if (value.length == 1) {
                               if (index < 3) {
-                                FocusScope.of(context).nextFocus();/// to do
+                                FocusScope.of(context).nextFocus();
+
+                                /// to do
                               } else {
                                 _validateOtp();
                                 FocusScope.of(context).unfocus();

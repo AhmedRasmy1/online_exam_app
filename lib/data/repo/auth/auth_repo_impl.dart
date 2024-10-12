@@ -1,10 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/contracts/auth/auth_online_datasource.dart';
-import 'package:online_exam_app/data/data_source/auth/auth_offline_datasoure_impl.dart';
-import 'package:online_exam_app/data/data_source/auth/fotgot_password_datasource_impl.dart';
-import 'package:online_exam_app/domain/entities/ForgotPasswordEntities.dart';
-import 'package:online_exam_app/domain/entities/User.dart';
-import 'package:online_exam_app/domain/repositories/auth_repo.dart';
+import '../../contracts/auth/auth_online_datasource.dart';
+import '../../../domain/entities/ForgotPasswordEntities.dart';
+import '../../../domain/entities/User.dart';
+import '../../../domain/repositories/auth_repo.dart';
 
 import '../../../domain/common/api_result.dart';
 import '../../contracts/auth/auth_offline_datasource.dart';
@@ -16,7 +14,8 @@ class AuthRepoImpl implements AuthRepo {
   AuthOnLineDataSource onLineDataSource;
   ForgotPasswordDataSources forgotPasswordDataSources;
 
-  AuthRepoImpl(this.offLineDataSource, this.onLineDataSource,this.forgotPasswordDataSources);
+  AuthRepoImpl(this.offLineDataSource, this.onLineDataSource,
+      this.forgotPasswordDataSources);
 
   @override
   Future<Result<User?>> login(String email, String password) {
@@ -24,21 +23,21 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<Result<User?>> register(String username, String firstName,
+  Future<Result<User?>> register(
+      String username,
+      String firstName,
       String lastName,
-      String email, String password, String rePassword, String phone) {
+      String email,
+      String password,
+      String rePassword,
+      String phone) {
     return onLineDataSource.register(
-        username,
-        firstName,
-        lastName,
-        email,
-        password,
-        rePassword,
-        phone);
+        username, firstName, lastName, email, password, rePassword, phone);
   }
 
   @override
-  Future<Result<ForgotPasswordEntities?>> forgotPassword({required String email})async {
-   return forgotPasswordDataSources.forgotPassword(email)  ;
+  Future<Result<ForgotPasswordEntities?>> forgotPassword(
+      {required String email}) async {
+    return forgotPasswordDataSources.forgotPassword(email);
   }
 }

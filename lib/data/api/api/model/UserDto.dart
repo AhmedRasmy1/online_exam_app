@@ -1,4 +1,4 @@
-import 'package:online_exam_app/domain/entities/User.dart';
+import '../../../../domain/entities/User.dart';
 
 /// _id : "6702ad39e77d68595a291e8b"
 /// username : "elevate123"
@@ -13,16 +13,17 @@ import 'package:online_exam_app/domain/entities/User.dart';
 
 class UserDto {
   UserDto({
-      this.id, 
-      this.username, 
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.phone, 
-      this.role, 
-      this.isVerified, 
-      this.createdAt, 
-      this.token,});
+    this.id,
+    this.username,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.role,
+    this.isVerified,
+    this.createdAt,
+    this.token,
+  });
 
   UserDto.fromJson(dynamic json) {
     id = json['_id'];
@@ -62,7 +63,7 @@ class UserDto {
     return map;
   }
 
-  User toUser(){
+  User toUser() {
     return User(
       username: username,
       lastName: lastName,
@@ -74,5 +75,4 @@ class UserDto {
       token: token,
     );
   }
-
 }

@@ -3,8 +3,9 @@
 
 class ForgotPasswordEntities {
   ForgotPasswordEntities({
-      this.message, 
-      this.info,});
+    this.message,
+    this.info,
+  });
 
   ForgotPasswordEntities.fromJson(dynamic json) {
     message = json['message'];
@@ -19,5 +20,4 @@ class ForgotPasswordEntities {
     map['info'] = info;
     return map;
   }
-
 }

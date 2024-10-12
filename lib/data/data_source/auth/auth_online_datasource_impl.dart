@@ -1,11 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/api/api/apiExtentions.dart';
-import 'package:online_exam_app/data/api/api/model/UserDto.dart';
-import 'package:online_exam_app/domain/common/api_result.dart';
-import 'package:online_exam_app/domain/entities/User.dart';
+import '../../api/api/apiExtentions.dart';
+import '../../api/api/model/UserDto.dart';
+import '../../../domain/common/api_result.dart';
+import '../../../domain/entities/User.dart';
 
 import '../../api/api/api_manager.dart';
-import '../../api/api/model/request/register_request.dart';
 import '../../contracts/auth/auth_online_datasource.dart';
 
 @Injectable(as: AuthOnLineDataSource)

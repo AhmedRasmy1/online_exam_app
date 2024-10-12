@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/presentation/view_model/forgot_view_model.dart';
-import 'package:online_exam_app/di/di.dart';
+import '../view_model/forgot_view_model.dart';
+import '../../../../di/di.dart';
 import '../../../../core/Uitls/Uitls.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../widgets/custom_app_bar.dart';
@@ -110,9 +110,8 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         );
                       }
                       if (state is SuccessState) {
-                        Navigator.pushNamed(context,
-                            RoutesManager.emailVerificationRoute);
-
+                        Navigator.pushNamed(
+                            context, RoutesManager.emailVerificationRoute);
                       }
                     },
                     builder: (context, state) {
@@ -129,7 +128,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                             updateButtonColor: (newColor) {
                               setState(() {
                                 buttonColor = newColor;
-
                               });
                             },
                           );

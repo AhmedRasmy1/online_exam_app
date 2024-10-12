@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'core/resources/theme_manager.dart';
+
 import 'core/resources/routes_manager.dart';
+import 'core/resources/theme_manager.dart';
 import 'di/di.dart';
 
 void main() {

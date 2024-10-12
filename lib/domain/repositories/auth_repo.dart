@@ -1,5 +1,3 @@
-import 'package:injectable/injectable.dart';
-
 import '../common/api_result.dart';
 import '../entities/ForgotPasswordEntities.dart';
 import '../entities/User.dart';

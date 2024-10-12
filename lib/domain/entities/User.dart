@@ -1,14 +1,3 @@
-/// id : "6702ad39e77d68595a291e8b"
-/// username : "elevate123"
-/// firstName : "Elevate"
-/// lastName : "Tech"
-/// email : "admin123@elevate.com"
-/// phone : "01094155711"
-/// role : "user"
-/// isVerified : false
-/// createdAt : "2024-10-06T15:31:05.209Z"
-/// token : ""
-
 class User {
   User({
     this.id,

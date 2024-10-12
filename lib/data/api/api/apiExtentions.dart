@@ -1,25 +1,22 @@
-
 import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:online_exam_app/domain/common/api_result.dart';
+import '../../../domain/common/api_result.dart';
 
 import '../../../domain/common/CoustomExecption.dart';
 
-Future<Result<T>> executeApi<T>(Future<T> Function ()apiCall)async{
-  try{
-    var result=await apiCall.call();
+Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
+  try {
+    var result = await apiCall.call();
     return Success(result);
-  }on TimeoutException catch(ex){
+  } on TimeoutException catch (_) {
     return Fail(NoInternetError());
-  }on DioException catch(ex){
+  } on DioException catch (ex) {
     return Fail(DioHttpException(ex));
-  }on IOException catch(ex){
+  } on IOException catch (_) {
     return Fail(NoInternetError());
-
-  }on Exception catch(ex){
+  } on Exception catch (ex) {
     return Fail(ex);
   }
 }

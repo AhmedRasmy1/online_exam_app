@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../resources/color_manager.dart';
 
 String? validateNotEmpty(String? value, String message) {
@@ -30,5 +31,4 @@ void validationMethod({
   } else {
     updateButtonColor(ColorManager.darkgrey);
   }
-
 }
