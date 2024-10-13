@@ -5,10 +5,10 @@ import '../common/api_result.dart';
 import '../entities/User.dart';
 
 @injectable
-class Register {
+class RegisterUseCase {
   AuthRepo authRepo;
 
-  Register(this.authRepo);
+  RegisterUseCase(this.authRepo);
 
   Future<Result<User?>> register(
       String username,

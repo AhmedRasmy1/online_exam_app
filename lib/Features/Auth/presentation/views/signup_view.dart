@@ -107,6 +107,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                       const SizedBox(height: AppSize.s24),
                       CustomTextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
                         labelText: AppStrings.email,
                         hintText: AppStrings.enterYourEmail,
@@ -164,11 +165,14 @@ class _SignUpState extends State<SignUp> {
                       const SizedBox(height: AppSize.s24),
                       CustomTextFormField(
                         controller: _phoneController,
+                        keyboardType: TextInputType.phone,
                         labelText: AppStrings.phoneNumber,
                         hintText: AppStrings.enterPhoneNumber,
                         obscureText: false,
                         validator: (value) => validateNotEmpty(
-                            value, AppStrings.enterValidPhoneNumber),
+                            value, AppStrings.enterValidPhoneNumber,
+                            // AppStrings.phoneNumberLengthError
+                        ),
                       ),
                       const SizedBox(height: AppSize.s48),
                       BlocConsumer<LoginViewModel, LoginScreenState>(

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/presentation/view_model/reset_view_model.dart';
+import 'package:online_exam_app/di/di.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
@@ -15,6 +18,7 @@ class ResetPasswordView extends StatefulWidget {
 }
 
 class _ResetPasswordViewState extends State<ResetPasswordView> {
+  late ResetPasswordViewModel viewModel;
   final TextEditingController _newPasswordController = TextEditingController();
   final TextEditingController _confirmNewPasswordController =
       TextEditingController();
@@ -22,9 +26,18 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
   Color buttonColor = ColorManager.blue;
   bool isPasswordHidden = true;
   bool isPasswordHidden1 = true;
+
+
+  @override
+  void initState() {
+    viewModel =getIt.get<ResetPasswordViewModel>();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BlocProvider(
+  create: (context) => viewModel,
+  child: SafeArea(
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.only(
@@ -116,6 +129,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           ),
         ),
       ),
-    );
+    ),
+);
   }
 }

@@ -31,18 +31,12 @@ class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
       String password,
       String rePassword,
       String phone) {
-    // var body = RegisterRequest(
-    //     password: password,
-    //     rePassword: rePassword,
-    //     firstName: firstName,
-    //     phone: phone,
-    //     email: email,
-    //     lastName: lastName,
-    //     username: username);
+
     return executeApi(() async {
       var response = await apiManager.register(
           username, firstName, lastName, email, password, rePassword, phone);
       var user = UserDto(token: response.token);
+      print(user);
       return user.toUser();
     });
   }

@@ -1,5 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/data/api/api/model/forgot_password_model.dart';
+import 'package:online_exam_app/data/api/api/model/reset_password_model.dart';
+import 'package:online_exam_app/data/api/api/model/verify_code_model.dart';
+import '../../../domain/entities/reset_password_entities.dart';
+import '../../../domain/entities/verify_code_entitie.dart';
 import 'model/response/auth_response.dart';
 import '../../../domain/entities/ForgotPasswordEntities.dart';
 
@@ -38,20 +43,32 @@ class ApiManager {
       "phone": phone
     });
     var authResponse = AuthResponse.fromJson(response.data);
+    print(response.data);
     return authResponse;
   }
 
-  Future<ForgotPasswordEntities> forgotPassword(String email) async {
+  Future<ForgotPasswordModel> forgotPassword(String email) async {
     var response =
         await _dio.post(ApiConstants.forgotPassword, data: {"email": email});
-    var forgotPasswordResponse = ForgotPasswordEntities.fromJson(response.data);
+    var forgotPasswordResponse = ForgotPasswordModel.fromJson(response.data);
     return forgotPasswordResponse;
   }
-  // Future<ForgotPasswordEntities>forgotPassword(String email)async{
-  //   var response=await _dio.post(ApiConstants.forgotPassword,data: {
-  //     "email":email
-  //   });
-  //   var forgotPasswordResponse=ForgotPasswordEntities.fromJson(response.data);
-  //   return forgotPasswordResponse;
-  // }
+
+  Future<VerifyCodeModel> verifyCode(String resetCode) async {
+    var response = await _dio
+        .post(ApiConstants.verifyCodeApi, data: {"resetCode": resetCode});
+    var verifyCodedResponse = VerifyCodeModel.fromJson(response.data);
+    return verifyCodedResponse;
+  }
+
+  Future<ResetPasswordModel> resetPassword(
+    String email,
+    String newPassword,
+  ) async {
+    var response = await _dio.put(ApiConstants.resetPassword,
+        data: {"email": email, "newPassword": newPassword});
+    var resetPasswordResponse = ResetPasswordModel.fromJson(response.data);
+
+    return resetPasswordResponse;
+  }
 }

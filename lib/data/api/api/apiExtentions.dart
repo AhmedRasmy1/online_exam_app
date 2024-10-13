@@ -13,6 +13,7 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   } on TimeoutException catch (_) {
     return Fail(NoInternetError());
   } on DioException catch (ex) {
+    print(ex);
     return Fail(DioHttpException(ex));
   } on IOException catch (_) {
     return Fail(NoInternetError());
