@@ -19,6 +19,13 @@ class RegisterUseCase {
       String rePassword,
       String phone) {
     return authRepo.register(
-        username, firstName, lastName, email, password, rePassword, phone);
+      username,
+      firstName,
+      lastName,
+      email,
+      password,
+      rePassword,
+      phone,
+    );
   }
 }

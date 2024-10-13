@@ -1,11 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/api/api/model/reset_password_model.dart';
 import 'package:online_exam_app/domain/entities/reset_password_entities.dart';
 import 'package:online_exam_app/domain/use_cases/reset_password_usecase.dart';
 
 import '../../../../domain/common/api_result.dart';
-
 
 @injectable
 class ResetPasswordViewModel extends Cubit<ResetPasswordState> {

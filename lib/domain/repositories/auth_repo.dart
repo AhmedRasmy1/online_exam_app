@@ -5,10 +5,9 @@ import '../entities/reset_password_entities.dart';
 import '../entities/verify_code_entitie.dart';
 
 abstract class AuthRepo {
-  Future<Result<User?>> login(
-    String email,
-    String password,
-  );
+  Future<Result<User?>> login(String email, String password);
+
+  //************************************/
 
   Future<Result<User?>> register(
     String username,
@@ -19,14 +18,13 @@ abstract class AuthRepo {
     String rePassword,
     String phone,
   );
+  //*************************************/
+  Future<Result<ForgotPasswordEntities?>> forgotPassword({
+    required String email,
+  });
+  //*************************************/
 
-  Future<Result<ForgotPasswordEntities?>> forgotPassword(
-      {required String email});
-
-  Future<Result<VerifyCodeEntities?>> verifyCode(
-      {required String code});
+  Future<Result<VerifyCodeEntities?>> verifyCode({required String code});
   Future<Result<ResetPasswordEntities?>> resetPassword(
-      {required String email,required String newPassword});
-
-
+      {required String email, required String newPassword});
 }

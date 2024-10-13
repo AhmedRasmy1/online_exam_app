@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/presentation/view_model/rigester_view_model.dart';
 import '../../../../core/utils/Uitls.dart';
 import '../../../../di/di.dart';
-import '../view_model/view_model.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_auth_prompt.dart';
 import '../widgets/custom_elevated_button.dart';
@@ -23,7 +23,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  late LoginViewModel viewModel;
+  late RigesterViewModel viewModel;
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
 
   @override
   void initState() {
-    viewModel = getIt.get<LoginViewModel>();
+    viewModel = getIt.get<RigesterViewModel>();
     super.initState();
   }
 
@@ -170,17 +170,17 @@ class _SignUpState extends State<SignUp> {
                         hintText: AppStrings.enterPhoneNumber,
                         obscureText: false,
                         validator: (value) => validateNotEmpty(
-                            value, AppStrings.enterValidPhoneNumber,
-                            // AppStrings.phoneNumberLengthError
+                          value, AppStrings.enterValidPhoneNumber,
+                          // AppStrings.phoneNumberLengthError
                         ),
                       ),
                       const SizedBox(height: AppSize.s48),
-                      BlocConsumer<LoginViewModel, LoginScreenState>(
+                      BlocConsumer<RigesterViewModel, RigesterScreenState>(
                         listenWhen: (previous, current) {
                           return true;
                         },
                         listener: (context, state) {
-                          if (state is LoadingState) {
+                          if (state is LoadingRigesterState) {
                             showDialog(
                               context: context,
                               builder: (context) {
@@ -195,7 +195,7 @@ class _SignUpState extends State<SignUp> {
                               },
                             );
                           }
-                          if (state is ErrorState) {
+                          if (state is ErrorRigesterState) {
                             var message = extractErrorMessage(state.exception);
                             showDialog(
                               context: context,
@@ -210,7 +210,7 @@ class _SignUpState extends State<SignUp> {
                               },
                             );
                           }
-                          if (state is SuccessState) {
+                          if (state is SuccessRigesterState) {
                             showDialog(
                               context: context,
                               builder: (context) {

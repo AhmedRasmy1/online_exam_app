@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -13,7 +14,7 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   } on TimeoutException catch (_) {
     return Fail(NoInternetError());
   } on DioException catch (ex) {
-    print(ex);
+    log(ex as String);
     return Fail(DioHttpException(ex));
   } on IOException catch (_) {
     return Fail(NoInternetError());

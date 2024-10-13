@@ -23,29 +23,6 @@ class LoginViewModel extends Cubit<LoginScreenState> {
         }
     }
   }
-
-  void register(
-      {required String username,
-      required String firstName,
-      required String lastName,
-      required String email,
-      required String password,
-      required String rePassword,
-      required String phone}) async {
-    var result = await loginUseCase.register(
-        username, firstName, lastName, email, password, rePassword, phone);
-    switch (result) {
-      case Success<User?>():
-        {
-          emit(SuccessState(result.data));
-        }
-      case Fail<User?>():
-        {
-          print(result.exception);
-          emit(ErrorState(result.exception));
-        }
-    }
-  }
 }
 
 sealed class LoginScreenState {}
