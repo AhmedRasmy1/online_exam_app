@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/resources/routes_manager.dart';
 import 'core/resources/theme_manager.dart';
+import 'core/utils/my_block_observer.dart';
 import 'di/di.dart';
 
 void main() {
   configureDependencies();
+  Bloc.observer = MyBlocObserver();
   runApp(const OnlineExam());
 }
 

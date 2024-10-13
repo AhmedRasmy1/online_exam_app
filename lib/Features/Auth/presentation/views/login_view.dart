@@ -61,6 +61,7 @@ class _LoginViewState extends State<LoginView> {
                     const SizedBox(height: AppSize.s24),
                     CustomTextFormField(
                       controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
                       labelText: AppStrings.email,
                       hintText: AppStrings.enterYourEmail,
                       obscureText: false,

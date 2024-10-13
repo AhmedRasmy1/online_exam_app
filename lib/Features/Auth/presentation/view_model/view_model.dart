@@ -41,6 +41,7 @@ class LoginViewModel extends Cubit<LoginScreenState> {
         }
       case Fail<User?>():
         {
+          print(result.exception);
           emit(ErrorState(result.exception));
         }
     }

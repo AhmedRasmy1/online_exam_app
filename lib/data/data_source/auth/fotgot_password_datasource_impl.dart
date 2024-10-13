@@ -16,7 +16,7 @@ class ForgotPasswordDatasource implements ForgotPasswordDataSources {
   Future<Result<ForgotPasswordEntities?>> forgotPassword(String email) async {
     return executeApi<ForgotPasswordEntities?>(() async {
       var forgotResponse = await apiManager.forgotPassword(email);
-      return forgotResponse;
+      return forgotResponse.toForgotPassword();
     });
   }
 }
