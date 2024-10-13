@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/api/model/forgot_password_model.dart';
@@ -42,7 +40,7 @@ class ApiManager {
       "phone": phone
     });
     var authResponse = AuthResponse.fromJson(response.data);
-    log(response.data);
+    print(response.data);
     return authResponse;
   }
 

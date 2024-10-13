@@ -36,6 +36,8 @@ import '../Features/Auth/presentation/view_model/reset_view_model.dart'
     as _i334;
 import '../Features/Auth/presentation/view_model/rigester_view_model.dart'
     as _i79;
+import '../Features/Auth/presentation/view_model/verify_code_view_model.dart'
+    as _i184;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -82,6 +84,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i887.ForgotPasswordViewModel(gh<_i997.ForgotUseCase>()));
     gh.factory<_i334.ResetPasswordViewModel>(
         () => _i334.ResetPasswordViewModel(gh<_i663.ResetPasswordUseCase>()));
+    gh.factory<_i184.VerifyCodeViewModel>(
+        () => _i184.VerifyCodeViewModel(gh<_i236.VerifyCodeUseCase>()));
     gh.factory<_i8.LoginViewModel>(
         () => _i8.LoginViewModel(gh<_i973.LoginUseCase>()));
     return this;

@@ -1,8 +1,6 @@
-
-
 import '../../../../domain/entities/verify_code_entitie.dart';
 
-class VerifyCodeModel{
+class VerifyCodeModel {
   VerifyCodeModel({
     this.message,
     this.info,
@@ -21,9 +19,10 @@ class VerifyCodeModel{
     map['info'] = info;
     return map;
   }
-  VerifyCodeEntities toVerifyCode(){
+
+  VerifyCodeEntities toVerifyCode() {
     return VerifyCodeEntities(
-      info:info ,
+      info: info,
       message: message,
     );
   }

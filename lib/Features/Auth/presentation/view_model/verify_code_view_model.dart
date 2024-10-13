@@ -1,14 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/domain/common/api_result.dart';
 import 'package:online_exam_app/domain/entities/verify_code_entitie.dart';
 import 'package:online_exam_app/domain/use_cases/verifycode_usecase.dart';
 
+@injectable
 class VerifyCodeViewModel extends Cubit<VerifyCodeState> {
-  VerifyCodeUseCase verifyCodeUseCase;
+  final VerifyCodeUseCase verifyCodeUseCase;
 
   VerifyCodeViewModel(this.verifyCodeUseCase) : super(InitialState());
 
   void verifyCode({required String code}) async {
+    emit(VerifyCodeLoading());
     var result = await verifyCodeUseCase.verifyCode(code);
 
     switch (result) {
@@ -29,7 +32,7 @@ sealed class VerifyCodeState {}
 class InitialState extends VerifyCodeState {}
 
 class VerifyCodeSuccess extends VerifyCodeState {
-  VerifyCodeEntities? verifyCodeEntities;
+  final VerifyCodeEntities? verifyCodeEntities;
 
   VerifyCodeSuccess(this.verifyCodeEntities);
 }
@@ -37,7 +40,7 @@ class VerifyCodeSuccess extends VerifyCodeState {
 class VerifyCodeLoading extends VerifyCodeState {}
 
 class VerifyCodeError extends VerifyCodeState {
-  Exception? exception;
+  final Exception? exception;
 
   VerifyCodeError(this.exception);
 }
