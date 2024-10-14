@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../view_model/reset_view_model.dart';
-import '../../../../core/utils/cash_data.dart';
+import '../view_model/Resetpage_ViewModel/reset_password_view_cubit.dart';
+import '../widgets/bloc_consumer_reser_password_page.dart';
 import '../../../../di/di.dart';
-
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
-import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../widgets/custom_app_bar.dart';
-import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
 class ResetPasswordView extends StatefulWidget {
@@ -41,107 +38,95 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => viewModel,
-      child: BlocListener<ResetPasswordViewModel, ResetPasswordState>(
-        listener: (context, state) {
-          if (state is ResetPasswordSuccessState) {
-            SharedData.deleteItem(key: StringCache.emailResetPassword);
-            Navigator.pushReplacementNamed(context, RoutesManager.loginRoute);
-          }
-        },
-        child: SafeArea(
-          child: Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.only(
-                  top: AppPadding.p8,
-                  left: AppPadding.p16,
-                  right: AppPadding.p16),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    CustomAppBar(
-                      title: AppStrings.password,
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+      child: SafeArea(
+        child: Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.only(
+                top: AppPadding.p8,
+                left: AppPadding.p16,
+                right: AppPadding.p16),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  CustomAppBar(
+                    title: AppStrings.password,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  const SizedBox(height: AppSize.s40),
+                  Text(
+                    AppStrings.titleOfResetPassword,
+                    style: TextStyle(
+                      fontSize: FontSize.s18,
+                      color: ColorManager.black,
+                      fontWeight: FontWeightManager.medium,
                     ),
-                    const SizedBox(height: AppSize.s40),
-                    Text(
-                      AppStrings.titleOfResetPassword,
+                  ),
+                  const SizedBox(height: AppSize.s16),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      AppStrings.subTitleOfResetPassword,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: FontSize.s18,
-                        color: ColorManager.black,
-                        fontWeight: FontWeightManager.medium,
+                        fontSize: FontSize.s14,
+                        color: ColorManager.grey,
+                        fontWeight: FontWeightManager.regular,
                       ),
                     ),
-                    const SizedBox(height: AppSize.s16),
-                    Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        AppStrings.subTitleOfResetPassword,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: FontSize.s14,
-                          color: ColorManager.grey,
-                          fontWeight: FontWeightManager.regular,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: AppSize.s32),
-                    CustomTextFormField(
-                      controller: _newPasswordController,
-                      labelText: AppStrings.newPassword,
-                      hintText: AppStrings.enterYourPassword,
-                      obscureText: isPasswordHidden,
-                      validator: (value) => validateNotEmpty(
-                          value, AppStrings.enterValidPassword),
-                      suffixIcon: passwordHidden(
-                          isPasswordHidden: isPasswordHidden,
-                          onPressed: () {
-                            setState(() {
-                              isPasswordHidden = !isPasswordHidden;
-                            });
-                          }),
-                    ),
-                    const SizedBox(height: AppSize.s24),
-                    CustomTextFormField(
-                      controller: _confirmNewPasswordController,
-                      labelText: AppStrings.confirmPassword,
-                      hintText: AppStrings.confirmPassword,
-                      obscureText: isPasswordHidden1,
-                      validator: (value) => validatePasswordMatch(
-                          password: _newPasswordController.text,
-                          confirmPassword: _confirmNewPasswordController.text,
-                          message: AppStrings.passwordNotMatch),
-                      suffixIcon: passwordHidden(
-                          isPasswordHidden: isPasswordHidden1,
-                          onPressed: () {
-                            setState(() {
-                              isPasswordHidden1 = !isPasswordHidden1;
-                            });
-                          }),
-                    ),
-                    const SizedBox(height: AppSize.s48),
-                    CustomElevatedButton(
-                      buttonColor: buttonColor,
-                      title: AppStrings.continuee,
-                      onPressed: () {
-                        validationMethod(
-                          actionPress: () {
-                            viewModel.resetPassword(
-                                newPassword: _newPasswordController.text);
-                          },
-                          formKey: _formKey,
-                          updateButtonColor: (newColor) {
-                            setState(() {
-                              buttonColor = newColor;
-                            });
-                          },
-                        );
-                      },
-                    )
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: AppSize.s32),
+                  CustomTextFormField(
+                    controller: _newPasswordController,
+                    labelText: AppStrings.newPassword,
+                    hintText: AppStrings.enterYourPassword,
+                    obscureText: isPasswordHidden,
+                    validator: (value) => validateNotEmpty(
+                        value,
+                        AppStrings.enterValidPassword,
+                        AppStrings.passwordLengthError,
+                        AppStrings.passwordFormatError),
+                    suffixIcon: passwordHidden(
+                        isPasswordHidden: isPasswordHidden,
+                        onPressed: () {
+                          setState(() {
+                            isPasswordHidden = !isPasswordHidden;
+                          });
+                        }),
+                  ),
+                  const SizedBox(height: AppSize.s24),
+                  CustomTextFormField(
+                    controller: _confirmNewPasswordController,
+                    labelText: AppStrings.confirmPassword,
+                    hintText: AppStrings.confirmPassword,
+                    obscureText: isPasswordHidden1,
+                    validator: (value) => validatePasswordMatch(
+                        password: _newPasswordController.text,
+                        confirmPassword: _confirmNewPasswordController.text,
+                        message: AppStrings.passwordNotMatch),
+                    suffixIcon: passwordHidden(
+                        isPasswordHidden: isPasswordHidden1,
+                        onPressed: () {
+                          setState(() {
+                            isPasswordHidden1 = !isPasswordHidden1;
+                          });
+                        }),
+                  ),
+                  const SizedBox(height: AppSize.s48),
+                  BlocConsumerForResetPassword(
+                    formKey: _formKey,
+                    newPasswordController: _newPasswordController,
+                    viewModel: viewModel,
+                    buttonColor: buttonColor,
+                    updateButtonColor: (color) {
+                      setState(() {
+                        buttonColor = color;
+                      });
+                    },
+                  ),
+                ],
               ),
             ),
           ),

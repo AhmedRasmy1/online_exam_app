@@ -55,4 +55,12 @@ class AppStrings {
   static const String pleaseWait = 'Please wait...';
   static const String invalidEmailOrPassword = 'Email or password is incorrect';
   static const String somethingWentWrong = 'Something went wrong';
+  static const String didntMatchReqirment =
+      'Password didn\'t match requirement';
+
+  static const String passwordLengthError =
+      'Password must be at least 6 characters';
+
+  static const String passwordFormatError =
+      'upper case letter and one number at least';
 }

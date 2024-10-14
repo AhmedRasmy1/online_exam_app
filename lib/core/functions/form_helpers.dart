@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 
 import '../resources/color_manager.dart';
 
-String? validateNotEmpty(String? value, String message) {
+String? validateNotEmpty(String? value, String messageEmpty,
+    [String? length, String? format]) {
   if (value?.trim() == null || value!.trim().isEmpty) {
-    return message;
+    return messageEmpty;
+  } else if (value.length < 6) {
+    return length;
+  } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{6,}$').hasMatch(value)) {
+    return format;
   }
   return null;
 }
