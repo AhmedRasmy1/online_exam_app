@@ -11,11 +11,13 @@ class VerifyCodeDatasourceImpl implements VerifyCodeDataSource {
   ApiManager apiManager;
 
   VerifyCodeDatasourceImpl(this.apiManager);
+
   @override
   Future<Result<VerifyCodeEntities?>> verifyCode(String code) {
     return executeApi<VerifyCodeEntities?>(() async {
-      var forgotResponse = await apiManager.verifyCode(code);
-      return forgotResponse.toVerifyCode();
+      var verifyCode = await apiManager.verifyCode(code);
+      print("---------------------${verifyCode.status}");
+      return verifyCode.toVerifyCode();
     });
   }
 }
