@@ -5,6 +5,8 @@ import 'package:online_exam_app/data/api/api/model/reset_password_model.dart';
 import 'package:online_exam_app/data/api/api/model/verify_code_model.dart';
 import '../../../domain/entities/reset_password_entities.dart';
 import '../../../domain/entities/verify_code_entitie.dart';
+import 'model/ResetPasswordModel.dart';
+import 'model/VerifCodeModel.dart';
 import 'model/response/auth_response.dart';
 import '../../../domain/entities/ForgotPasswordEntities.dart';
 
@@ -58,6 +60,7 @@ class ApiManager {
     var response = await _dio
         .post(ApiConstants.verifyCodeApi, data: {"resetCode": resetCode});
     var verifyCodedResponse = VerifyCodeModel.fromJson(response.data);
+
     return verifyCodedResponse;
   }
 

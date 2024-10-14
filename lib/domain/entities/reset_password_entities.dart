@@ -1,9 +1,8 @@
 class ResetPasswordEntities {
   String? message;
-  String? info;
-
+  String? token;
   ResetPasswordEntities({
     this.message,
-    this.info,
+    this.token,
   });
 }

@@ -1,9 +1,6 @@
 class VerifyCodeEntities {
-  String? message;
-  String? info;
-
+  String? status;
   VerifyCodeEntities({
-    this.message,
-    this.info,
+    this.status,
   });
 }

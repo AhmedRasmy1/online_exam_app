@@ -50,7 +50,8 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Result<VerifyCodeEntities?>> verifyCode({required String code}) {
-  return verifyCodeDataSource.verifyCode(code);
+    print("auth repo impl $code --------------");
+    return verifyCodeDataSource.verifyCode(code);
   }
 
   @override
