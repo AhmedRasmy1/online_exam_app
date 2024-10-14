@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/utils/cash_data.dart';
-
+import '../view_model/ForgetPasswordPage_viewModel/forget_password_view_cubit.dart';
+import '../widgets/bloc_consumer_forget_password_page.dart';
+import '../widgets/custom_app_bar.dart';
+import '../widgets/custom_text_form_field.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
-import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
-import '../../../../core/utils/Uitls.dart';
 import '../../../../di/di.dart';
-import '../view_model/forgot_view_model.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/custom_elevated_button.dart';
-import '../widgets/custom_text_form_field.dart';
 
 class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
@@ -26,7 +22,6 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   late ForgotPasswordViewModel viewModel;
   final TextEditingController _emailController = TextEditingController();
   Color buttonColor = ColorManager.blue;
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -43,9 +38,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
         child: Scaffold(
           body: Padding(
             padding: const EdgeInsets.only(
-                top: AppPadding.p8,
-                left: AppPadding.p16,
-                right: AppPadding.p16),
+              top: AppPadding.p8,
+              left: AppPadding.p16,
+              right: AppPadding.p16,
+            ),
             child: Form(
               key: _formKey,
               child: Column(
@@ -84,66 +80,10 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         validateNotEmpty(value, AppStrings.enterValidEmail),
                   ),
                   const SizedBox(height: AppSize.s48),
-                  BlocConsumer<ForgotPasswordViewModel, ForgotScreenState>(
-                    listener: (context, state) {
-                      if (state is LoadingState) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const AlertDialog(
-                              content: Row(
-                                children: [
-                                  CircularProgressIndicator(),
-                                  Expanded(child: Text('wait')),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      }
-                      if (state is ErrorState) {
-                        var message = extractErrorMessage(state.exception);
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              content: Row(
-                                children: [
-                                  Expanded(child: Text(message)),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      }
-                      if (state is SuccessState) {
-                        SharedData.setData(
-                            key: StringCache.emailResetPassword,
-                            value: _emailController.text);
-                        Navigator.pushNamed(
-                            context, RoutesManager.emailVerificationRoute);
-                      }
-                    },
-                    builder: (context, state) {
-                      return CustomElevatedButton(
-                        title: AppStrings.continuee,
-                        buttonColor: buttonColor,
-                        onPressed: () {
-                          validationMethod(
-                            actionPress: () {
-                              viewModel.forgotPassword(
-                                  email: _emailController.text);
-                            },
-                            formKey: _formKey,
-                            updateButtonColor: (newColor) {
-                              setState(() {
-                                buttonColor = newColor;
-                              });
-                            },
-                          );
-                        },
-                      );
-                    },
+                  BlocConsumerForForgetPasswordPage(
+                    emailController: _emailController,
+                    buttonColor: buttonColor,
+                    formKey: _formKey,
                   ),
                 ],
               ),

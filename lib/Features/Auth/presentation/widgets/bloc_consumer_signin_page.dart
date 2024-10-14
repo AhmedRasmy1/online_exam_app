@@ -8,7 +8,6 @@ import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
-import '../../../../core/utils/Uitls.dart';
 
 class BlocConsumerForSignupPage extends StatelessWidget {
   final GlobalKey<FormState> formKey;

@@ -29,8 +29,8 @@ import '../domain/use_cases/login_usecase.dart' as _i973;
 import '../domain/use_cases/register_usecase.dart' as _i525;
 import '../domain/use_cases/reset_password_usecase.dart' as _i663;
 import '../domain/use_cases/verifycode_usecase.dart' as _i236;
-import '../Features/Auth/presentation/view_model/forgot_view_model.dart'
-    as _i887;
+import '../Features/Auth/presentation/view_model/ForgetPasswordPage_viewModel/forget_password_view_cubit.dart'
+    as _i4;
 import '../Features/Auth/presentation/view_model/LoginPage_ViewModel/login_view_cubit.dart'
     as _i964;
 import '../Features/Auth/presentation/view_model/reset_view_model.dart'
@@ -83,8 +83,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i357.RigesterViewModel(gh<_i525.RegisterUseCase>()));
     gh.factory<_i334.ResetPasswordViewModel>(
         () => _i334.ResetPasswordViewModel(gh<_i663.ResetPasswordUseCase>()));
-    gh.factory<_i887.ForgotPasswordViewModel>(
-        () => _i887.ForgotPasswordViewModel(gh<_i997.ForgotUseCase>()));
+    gh.factory<_i4.ForgotPasswordViewModel>(
+        () => _i4.ForgotPasswordViewModel(gh<_i997.ForgotUseCase>()));
     gh.factory<_i184.VerifyCodeViewModel>(
         () => _i184.VerifyCodeViewModel(gh<_i236.VerifyCodeUseCase>()));
     gh.factory<_i964.LoginViewModel>(
