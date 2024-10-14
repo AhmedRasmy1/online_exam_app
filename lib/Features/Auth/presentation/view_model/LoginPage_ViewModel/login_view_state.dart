@@ -1,4 +1,4 @@
-import '../../../../../domain/entities/User.dart';
+import '../../../domain/entities/user.dart';
 
 sealed class LoginScreenState {}
 

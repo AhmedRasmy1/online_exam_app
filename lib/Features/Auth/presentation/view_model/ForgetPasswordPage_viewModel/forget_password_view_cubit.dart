@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'forget_password_view_state.dart';
-import '../../../../../domain/common/api_result.dart';
-import '../../../../../domain/entities/ForgotPasswordEntities.dart';
-import '../../../../../domain/use_cases/forgot_password_usecase.dart';
+import '../../../domain/common/api_result.dart';
+import '../../../domain/entities/forgot_password_entities.dart';
+import '../../../domain/use_cases/forgot_password_usecase.dart';
 
 @injectable
 class ForgotPasswordViewModel extends Cubit<ForgotScreenState> {

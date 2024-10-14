@@ -1,4 +1,4 @@
-import '../../../../../domain/entities/reset_password_entities.dart';
+import '../../../domain/entities/reset_password_entities.dart';
 
 sealed class ResetPasswordState {}
 

@@ -11,24 +11,34 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../data/api/api/api_manager.dart' as _i203;
-import '../data/contracts/auth/auth_offline_datasource.dart' as _i93;
-import '../data/contracts/auth/auth_online_datasource.dart' as _i62;
-import '../data/contracts/auth/fotgot_password_datasource.dart' as _i937;
-import '../data/contracts/auth/reset_password_datasource.dart' as _i362;
-import '../data/contracts/auth/verify_codel_datasource.dart' as _i258;
-import '../data/data_source/auth/auth_offline_datasoure_impl.dart' as _i626;
-import '../data/data_source/auth/auth_online_datasource_impl.dart' as _i127;
-import '../data/data_source/auth/fotgot_password_datasource_impl.dart' as _i116;
-import '../data/data_source/auth/reset_password_datasource_impl.dart' as _i121;
-import '../data/data_source/auth/verify_codel_datasource_impl.dart' as _i1058;
-import '../data/repo/auth/auth_repo_impl.dart' as _i602;
-import '../domain/repositories/auth_repo.dart' as _i218;
-import '../domain/use_cases/forgot_password_usecase.dart' as _i997;
-import '../domain/use_cases/login_usecase.dart' as _i973;
-import '../domain/use_cases/register_usecase.dart' as _i525;
-import '../domain/use_cases/reset_password_usecase.dart' as _i663;
-import '../domain/use_cases/verifycode_usecase.dart' as _i236;
+import '../Features/Auth/data/api/api_manager.dart' as _i203;
+import '../Features/Auth/data/data_sources/auth_offline_datasource.dart'
+    as _i93;
+import '../Features/Auth/data/data_sources/auth_online_datasource.dart' as _i62;
+import '../Features/Auth/data/data_sources/fotgot_password_datasource.dart'
+    as _i937;
+import '../Features/Auth/data/data_sources/reset_password_datasource.dart'
+    as _i362;
+import '../Features/Auth/data/data_sources/verify_codel_datasource.dart'
+    as _i258;
+import '../Features/Auth/data/data_source_impl/auth_offline_datasoure_impl.dart'
+    as _i626;
+import '../Features/Auth/data/data_source_impl/auth_online_datasource_impl.dart'
+    as _i127;
+import '../Features/Auth/data/data_source_impl/fotgot_password_datasource_impl.dart'
+    as _i116;
+import '../Features/Auth/data/data_source_impl/reset_password_datasource_impl.dart'
+    as _i121;
+import '../Features/Auth/data/data_source_impl/verify_codel_datasource_impl.dart'
+    as _i1058;
+import '../Features/Auth/data/repositories_impl/auth_repo_impl.dart' as _i602;
+import '../Features/Auth/domain/repositories/auth_repo.dart' as _i218;
+import '../Features/Auth/domain/use_cases/forgot_password_usecase.dart'
+    as _i997;
+import '../Features/Auth/domain/use_cases/login_usecase.dart' as _i973;
+import '../Features/Auth/domain/use_cases/register_usecase.dart' as _i525;
+import '../Features/Auth/domain/use_cases/reset_password_usecase.dart' as _i663;
+import '../Features/Auth/domain/use_cases/verifycode_usecase.dart' as _i236;
 import '../Features/Auth/presentation/view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart'
     as _i444;
 import '../Features/Auth/presentation/view_model/ForgetPasswordPage_viewModel/forget_password_view_cubit.dart'
