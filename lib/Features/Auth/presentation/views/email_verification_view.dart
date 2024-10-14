@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/Features/Auth/presentation/view_model/verify_code_view_model.dart';
+
 import 'package:online_exam_app/core/functions/extenstions.dart';
 import 'package:online_exam_app/core/resources/app_constants.dart';
 import 'package:online_exam_app/di/di.dart';
@@ -12,6 +13,7 @@ import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../core/utils/Uitls.dart';
+
 import '../widgets/custom_app_bar.dart';
 
 class OtpVerificationPage extends StatefulWidget {
@@ -24,8 +26,9 @@ class OtpVerificationPage extends StatefulWidget {
 class _OtpVerificationPageState extends State<OtpVerificationPage> {
   late VerifyCodeViewModel viewModel;
   final List<TextEditingController> _controllers =
-      List.generate(AppConstants.listGenerate, (_) => TextEditingController());
+      List.generate(6, (_) => TextEditingController());
   bool _isCodeInvalid = false;
+
   final String _errorMessage = AppStrings.invalidCode;
   final String correctOtp = AppStrings.correctOtp;
   String enteredOtp = "";
@@ -220,6 +223,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           style: const TextStyle(color: ColorManager.error),
                         ),
                       ],
+
                     ),
                   const SizedBox(height: 24),
                   RichText(
@@ -249,8 +253,10 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 ],
               ),
             ),
+
           ),
         ),
+
       ),
     );
   }

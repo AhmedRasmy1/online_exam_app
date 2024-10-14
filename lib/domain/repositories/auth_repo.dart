@@ -23,10 +23,7 @@ abstract class AuthRepo {
   Future<Result<ForgotPasswordEntities?>> forgotPassword(
       {required String email});
 
-  Future<Result<VerifyCodeEntities?>> verifyCode(
-      {required String code});
+  Future<Result<VerifyCodeEntities?>> verifyCode({required String code});
   Future<Result<ResetPasswordEntities?>> resetPassword(
-      {required String email,required String newPassword});
-
-
+      {required String email, required String newPassword});
 }

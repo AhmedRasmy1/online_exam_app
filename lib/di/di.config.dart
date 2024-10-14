@@ -37,6 +37,9 @@ import '../domain/use_cases/register_usecase.dart' as _i525;
 import '../domain/use_cases/reset_password_usecase.dart' as _i663;
 import '../domain/use_cases/verifycode_usecase.dart' as _i236;
 
+
+
+
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
   _i174.GetIt init({
@@ -72,10 +75,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i973.LoginUseCase(gh<_i218.AuthRepo>()));
     gh.factory<_i525.RegisterUseCase>(
         () => _i525.RegisterUseCase(gh<_i218.AuthRepo>()));
-    gh.factory<_i236.VerifyCodeUseCase>(
-        () => _i236.VerifyCodeUseCase(gh<_i218.AuthRepo>()));
     gh.factory<_i663.ResetPasswordUseCase>(
         () => _i663.ResetPasswordUseCase(gh<_i218.AuthRepo>()));
+
     gh.factory<_i334.ResetPasswordViewModel>(
         () => _i334.ResetPasswordViewModel(gh<_i663.ResetPasswordUseCase>()));
     gh.factory<_i887.ForgotPasswordViewModel>(
@@ -84,6 +86,7 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i184.VerifyCodeViewModel(gh<_i236.VerifyCodeUseCase>()));
     gh.factory<_i384.LoginViewModel>(
         () => _i384.LoginViewModel(gh<_i973.LoginUseCase>()));
+
     return this;
   }
 }

@@ -1,11 +1,11 @@
-class Result<T>{}
+class Result<T> {}
 
-class Success<T> implements Result<T>{
-
- T data;
+class Success<T> implements Result<T> {
+  T data;
   Success(this.data);
 }
-class Fail<T> implements Result<T>{
+
+class Fail<T> implements Result<T> {
   Exception exception;
   Fail(this.exception);
 }

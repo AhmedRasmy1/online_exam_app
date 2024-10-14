@@ -28,22 +28,24 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  awesome_dialog: ^3.2.1
   cupertino_icons: ^1.0.8
+  dio: ^5.7.0
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.10+1
-  injectable:
-  get_it:
-  dio: ^5.7.0
   flutter_bloc: ^8.1.6
-  shared_preferences: ^2.3.2
+
+
+  flutter_svg: ^2.0.10+1
+  get_it: null
+  injectable: null
 
 dev_dependencies:
+  build_runner: null
   flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  injectable_generator:
-  build_runner:
+  injectable_generator: null
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

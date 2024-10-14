@@ -11,7 +11,7 @@ import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../core/utils/Uitls.dart';
 import '../../../../di/di.dart';
-import '../view_model/view_model.dart';
+import '../view_model/login_view_model.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_auth_prompt.dart';
 import '../widgets/custom_elevated_button.dart';
