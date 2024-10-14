@@ -2,7 +2,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_exam_app/Features/Auth/presentation/view_model/rigester_view_model.dart';
-import 'package:online_exam_app/core/resources/font_manager.dart';
 import '../../../../core/utils/Uitls.dart';
 import '../../../../di/di.dart';
 import '../widgets/custom_app_bar.dart';

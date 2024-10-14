@@ -6,11 +6,9 @@ import 'package:online_exam_app/domain/use_cases/verifycode_usecase.dart';
 
 @injectable
 class VerifyCodeViewModel extends Cubit<VerifyCodeState> {
-
   final VerifyCodeUseCase _verifyCodeUseCase;
 
   VerifyCodeViewModel(this._verifyCodeUseCase) : super(InitialVerifyState());
-
 
   void verifyCode({required String code}) async {
     var result = await _verifyCodeUseCase.verifyCode(code);
@@ -18,14 +16,12 @@ class VerifyCodeViewModel extends Cubit<VerifyCodeState> {
     switch (result) {
       case Success<VerifyCodeEntities?>():
         {
-
           print("success==============");
 
           emit(VerifyCodeSuccess(result.data));
         }
       case Fail<VerifyCodeEntities?>():
         {
-
           print("Fail==============");
 
           emit(VerifyCodeError(result.exception));
@@ -36,10 +32,7 @@ class VerifyCodeViewModel extends Cubit<VerifyCodeState> {
 
 sealed class VerifyCodeState {}
 
-
 class InitialVerifyState extends VerifyCodeState {}
-
-
 
 class VerifyCodeSuccess extends VerifyCodeState {
   final VerifyCodeEntities? verifyCodeEntities;

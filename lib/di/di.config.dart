@@ -17,7 +17,6 @@ import '../Features/Auth/presentation/view_model/reset_view_model.dart'
     as _i334;
 import '../Features/Auth/presentation/view_model/verify_code_view_model.dart'
     as _i184;
-import '../Features/Auth/presentation/view_model/view_model.dart' as _i384;
 import '../data/api/api/api_manager.dart' as _i203;
 import '../data/contracts/auth/auth_offline_datasource.dart' as _i93;
 import '../data/contracts/auth/auth_online_datasource.dart' as _i62;
@@ -36,9 +35,6 @@ import '../domain/use_cases/login_usecase.dart' as _i973;
 import '../domain/use_cases/register_usecase.dart' as _i525;
 import '../domain/use_cases/reset_password_usecase.dart' as _i663;
 import '../domain/use_cases/verifycode_usecase.dart' as _i236;
-
-
-
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -84,8 +80,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i887.ForgotPasswordViewModel(gh<_i997.ForgotUseCase>()));
     gh.factory<_i184.VerifyCodeViewModel>(
         () => _i184.VerifyCodeViewModel(gh<_i236.VerifyCodeUseCase>()));
-    gh.factory<_i384.LoginViewModel>(
-        () => _i384.LoginViewModel(gh<_i973.LoginUseCase>()));
 
     return this;
   }
