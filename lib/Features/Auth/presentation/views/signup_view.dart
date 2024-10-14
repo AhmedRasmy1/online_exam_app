@@ -1,12 +1,9 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../view_model/rigester_view_model.dart';
-import '../../../../core/utils/Uitls.dart';
-import '../../../../di/di.dart';
+import '../view_model/SigninPage_ViewModel/signin_view_cubit.dart';
+import '../widgets/bloc_consumer_signin_page.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_auth_prompt.dart';
-import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
@@ -15,6 +12,7 @@ import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
+import '../../../../di/di.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -171,85 +169,26 @@ class _SignUpState extends State<SignUp> {
                         hintText: AppStrings.enterPhoneNumber,
                         obscureText: false,
                         validator: (value) => validateNotEmpty(
-                          value, AppStrings.enterValidPhoneNumber,
-                          // AppStrings.phoneNumberLengthError
+                          value,
+                          AppStrings.enterValidPhoneNumber,
                         ),
                       ),
                       const SizedBox(height: AppSize.s48),
-                      BlocConsumer<RigesterViewModel, RigesterScreenState>(
-                        listenWhen: (previous, current) {
-                          return true;
-                        },
-                        listener: (context, state) {
-                          if (state is LoadingRigesterState) {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return const AlertDialog(
-                                  content: Row(
-                                    children: [
-                                      CircularProgressIndicator(),
-                                      Expanded(child: Text('user add')),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                          if (state is ErrorRigesterState) {
-                            var message = extractErrorMessage(state.exception);
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  content: Row(
-                                    children: [
-                                      Expanded(child: Text(message)),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                          if (state is SuccessRigesterState) {
-                            showAwesomeDialog(
-                              context: context,
-                              message: AppStrings.successfullyCreated,
-                              dialogType: DialogType.success,
-                              onOkPressed: () {
-                                Navigator.pushNamed(
-                                    context, RoutesManager.loginRoute);
-                              },
-                              btnOkColor: ColorManager.green,
-                            );
-                          }
-                        },
-                        builder: (context, state) {
-                          return CustomElevatedButton(
-                            buttonColor: buttonColor,
-                            title: AppStrings.signUp,
-                            onPressed: () {
-                              validationMethod(
-                                actionPress: () {
-                                  viewModel.register(
-                                      username: _userNameController.text,
-                                      firstName: _firstNameController.text,
-                                      lastName: _lastNameController.text,
-                                      email: _emailController.text,
-                                      password: _passwordController.text,
-                                      rePassword:
-                                          _confirmPasswordController.text,
-                                      phone: _phoneController.text);
-                                },
-                                formKey: _formKey,
-                                updateButtonColor: (newColor) {
-                                  setState(() {
-                                    buttonColor = newColor;
-                                  });
-                                },
-                              );
-                            },
-                          );
+                      BlocConsumerForSignupPage(
+                        formKey: _formKey,
+                        emailController: _emailController,
+                        passwordController: _passwordController,
+                        userNameController: _userNameController,
+                        firstNameController: _firstNameController,
+                        lastNameController: _lastNameController,
+                        confirmPasswordController: _confirmPasswordController,
+                        phoneController: _phoneController,
+                        buttonColor: buttonColor,
+                        viewModel: viewModel,
+                        updateButtonColor: (newColor) {
+                          setState(() {
+                            buttonColor = newColor;
+                          });
                         },
                       ),
                       const AuthPrompt(

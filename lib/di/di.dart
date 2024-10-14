@@ -11,4 +11,3 @@ final getIt = GetIt.instance;
   asExtension: true, // default
 )
 void configureDependencies() => getIt.init();
-//123

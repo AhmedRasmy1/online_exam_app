@@ -52,8 +52,7 @@ class AppStrings {
   static const String successfullyLogin = 'You have successfully logged in';
   static const String successfullyResetPassword =
       'Your password has been successfully changed';
-
   static const String pleaseWait = 'Please wait...';
-
   static const String invalidEmailOrPassword = 'Email or password is incorrect';
+  static const String somethingWentWrong = 'Something went wrong';
 }
