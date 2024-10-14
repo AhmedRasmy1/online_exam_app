@@ -36,10 +36,10 @@ String? validatePasswordMatch({
 void validationMethod({
   required GlobalKey<FormState> formKey,
   required Function(Color) updateButtonColor,
-  required void Function() onPress,
+  required void Function() actionPress,
 }) {
   if (formKey.currentState!.validate()) {
-    onPress();
+    actionPress();
     updateButtonColor(ColorManager.blue);
   } else {
     updateButtonColor(ColorManager.darkgrey);
@@ -63,6 +63,7 @@ void showAwesomeDialog({
   required String message,
   required DialogType dialogType,
   required VoidCallback onOkPressed,
+  required Color btnOkColor,
 }) {
   AwesomeDialog(
     context: context,
@@ -78,5 +79,6 @@ void showAwesomeDialog({
       ),
     ),
     btnOkOnPress: onOkPressed,
+    btnOkColor: btnOkColor,
   ).show();
 }

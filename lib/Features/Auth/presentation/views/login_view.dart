@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
-
+import '../view_model/LoginPage_ViewModel/login_view_cubit.dart';
+import '../widgets/bloc_consumer_login_page.dart';
+import '../../../../core/utils/cash_data.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -9,12 +10,9 @@ import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/resources/values_manager.dart';
-import '../../../../core/utils/Uitls.dart';
 import '../../../../di/di.dart';
-import '../view_model/login_view_model.dart';
 import '../widgets/custom_app_bar.dart';
 import '../widgets/custom_auth_prompt.dart';
-import '../widgets/custom_elevated_button.dart';
 import '../widgets/custom_text_form_field.dart';
 
 class LoginView extends StatefulWidget {
@@ -24,8 +22,6 @@ class LoginView extends StatefulWidget {
   createState() => _LoginViewState();
 }
 
-late LoginViewModel viewModel;
-
 class _LoginViewState extends State<LoginView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -33,6 +29,8 @@ class _LoginViewState extends State<LoginView> {
   Color buttonColor = ColorManager.blue;
   bool isPasswordHidden = true;
   bool isActiveRemember = false;
+  late LoginViewModel viewModel;
+
   @override
   void initState() {
     viewModel = getIt.get<LoginViewModel>();
@@ -125,88 +123,19 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: AppSize.s48),
-                    BlocConsumer<LoginViewModel, LoginScreenState>(
-                      listenWhen: (previous, current) {
-                        return true;
-                      },
-                      listener: (context, state) {
-                        if (state is LoadingState) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const AlertDialog(
-                                content: Row(
-                                  children: [
-                                    CircularProgressIndicator(),
-                                    Expanded(child: Text('message')),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        }
-                        if (state is ErrorState) {
-                          var message = extractErrorMessage(state.exception);
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                content: Row(
-                                  children: [
-                                    Expanded(child: Text(message)),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        }
-                        if (state is SuccessState) {
-                          if (SharedData.getData(
-                              key: StringCache.isActiveRemember)) {
-                            SharedData.setData(
-                                key: StringCache.userEmail,
-                                value: _emailController.text);
-                            SharedData.setData(
-                                key: StringCache.userPassword,
-                                value: _passwordController.text);
-                          }
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return const AlertDialog(
-                                content: Row(
-                                  children: [
-                                    Expanded(child: Text('message')),
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        return CustomElevatedButton(
-                          buttonColor: buttonColor,
-                          title: AppStrings.login,
-                          onPressed: () {
-                            //
-                            validationMethod(
-                              onPress: () {
-                                viewModel.login(_emailController.text,
-                                    _passwordController.text);
-                              },
-                              formKey: _formKey,
-                              updateButtonColor: (newColor) {
-                                setState(() {
-                                  buttonColor = newColor;
-                                });
-                              },
-                            );
-                          },
-                        );
+                    BlocConsumerForLoginPage(
+                      formKey: _formKey,
+                      emailController: _emailController,
+                      passwordController: _passwordController,
+                      buttonColor: buttonColor,
+                      viewModel: viewModel,
+                      updateButtonColor: (newColor) {
+                        setState(() {
+                          buttonColor = newColor;
+                        });
                       },
                     ),
+                    const SizedBox(height: AppSize.s16),
                     const AuthPrompt(
                       message: AppStrings.dontHaveAccount,
                       userAccess: AppStrings.signUp,

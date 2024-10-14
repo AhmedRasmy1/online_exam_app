@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/presentation/view_model/reset_view_model.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
-import 'package:online_exam_app/di/di.dart';
+import '../view_model/reset_view_model.dart';
+import '../../../../core/utils/cash_data.dart';
+import '../../../../di/di.dart';
 
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -127,7 +127,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                       title: AppStrings.continuee,
                       onPressed: () {
                         validationMethod(
-                          onPress: () {
+                          actionPress: () {
                             viewModel.resetPassword(
                                 newPassword: _newPasswordController.text);
                           },

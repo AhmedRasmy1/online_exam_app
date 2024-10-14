@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/presentation/view_model/verify_code_view_model.dart';
+import '../view_model/verify_code_view_model.dart';
 
-import 'package:online_exam_app/core/functions/extenstions.dart';
-import 'package:online_exam_app/core/resources/app_constants.dart';
-import 'package:online_exam_app/di/di.dart';
+import '../../../../core/functions/extenstions.dart';
+import '../../../../core/resources/app_constants.dart';
+import '../../../../di/di.dart';
 
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -223,7 +223,6 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                           style: const TextStyle(color: ColorManager.error),
                         ),
                       ],
-
                     ),
                   const SizedBox(height: 24),
                   RichText(
@@ -253,10 +252,8 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                 ],
               ),
             ),
-
           ),
         ),
-
       ),
     );
   }

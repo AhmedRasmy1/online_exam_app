@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import '../entities/ForgotPasswordEntities.dart';
-import '../repositories/auth_repo.dart';
 
 import '../common/api_result.dart';
+import '../entities/ForgotPasswordEntities.dart';
 import '../entities/User.dart';
+import '../repositories/auth_repo.dart';
 
 @injectable
 class LoginUseCase {

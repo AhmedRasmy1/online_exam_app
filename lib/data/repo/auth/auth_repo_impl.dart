@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/data/contracts/auth/verify_codel_datasource.dart';
-import 'package:online_exam_app/domain/entities/reset_password_entities.dart';
+import '../../contracts/auth/verify_codel_datasource.dart';
+import '../../../domain/entities/reset_password_entities.dart';
 import '../../../domain/entities/verify_code_entitie.dart';
 import '../../contracts/auth/auth_online_datasource.dart';
 import '../../../domain/entities/ForgotPasswordEntities.dart';
@@ -56,7 +56,6 @@ class AuthRepoImpl implements AuthRepo {
 
   @override
   Future<Result<VerifyCodeEntities?>> verifyCode({required String code}) {
-
     print("auth repo impl $code --------------");
 
     return verifyCodeDataSource.verifyCode(code);

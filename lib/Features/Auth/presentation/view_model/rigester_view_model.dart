@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/domain/common/api_result.dart';
-import 'package:online_exam_app/domain/entities/User.dart';
-import 'package:online_exam_app/domain/use_cases/register_usecase.dart';
+import '../../../../domain/common/api_result.dart';
+import '../../../../domain/entities/User.dart';
+import '../../../../domain/use_cases/register_usecase.dart';
 
 @injectable
 class RigesterViewModel extends Cubit<RigesterScreenState> {

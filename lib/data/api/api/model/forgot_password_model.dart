@@ -1,4 +1,4 @@
-import 'package:online_exam_app/domain/entities/ForgotPasswordEntities.dart';
+import '../../../../domain/entities/ForgotPasswordEntities.dart';
 
 /// message : "success"
 /// info : "OTP sent to your email"
@@ -22,11 +22,11 @@ class ForgotPasswordModel {
     map['info'] = info;
     return map;
   }
-  ForgotPasswordEntities toForgotPassword(){
+
+  ForgotPasswordEntities toForgotPassword() {
     return ForgotPasswordEntities(
-      info:info ,
+      info: info,
       message: message,
     );
   }
-
 }

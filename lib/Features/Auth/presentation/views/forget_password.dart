@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
+import '../../../../core/utils/cash_data.dart';
 
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -130,7 +130,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                         buttonColor: buttonColor,
                         onPressed: () {
                           validationMethod(
-                            onPress: () {
+                            actionPress: () {
                               viewModel.forgotPassword(
                                   email: _emailController.text);
                             },
