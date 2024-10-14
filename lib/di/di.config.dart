@@ -29,6 +29,8 @@ import '../domain/use_cases/login_usecase.dart' as _i973;
 import '../domain/use_cases/register_usecase.dart' as _i525;
 import '../domain/use_cases/reset_password_usecase.dart' as _i663;
 import '../domain/use_cases/verifycode_usecase.dart' as _i236;
+import '../Features/Auth/presentation/view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart'
+    as _i444;
 import '../Features/Auth/presentation/view_model/ForgetPasswordPage_viewModel/forget_password_view_cubit.dart'
     as _i4;
 import '../Features/Auth/presentation/view_model/LoginPage_ViewModel/login_view_cubit.dart'
@@ -37,8 +39,6 @@ import '../Features/Auth/presentation/view_model/reset_view_model.dart'
     as _i334;
 import '../Features/Auth/presentation/view_model/SigninPage_ViewModel/signin_view_cubit.dart'
     as _i357;
-import '../Features/Auth/presentation/view_model/verify_code_view_model.dart'
-    as _i184;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -85,8 +85,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i334.ResetPasswordViewModel(gh<_i663.ResetPasswordUseCase>()));
     gh.factory<_i4.ForgotPasswordViewModel>(
         () => _i4.ForgotPasswordViewModel(gh<_i997.ForgotUseCase>()));
-    gh.factory<_i184.VerifyCodeViewModel>(
-        () => _i184.VerifyCodeViewModel(gh<_i236.VerifyCodeUseCase>()));
+    gh.factory<_i444.VerifyCodeViewModel>(
+        () => _i444.VerifyCodeViewModel(gh<_i236.VerifyCodeUseCase>()));
     gh.factory<_i964.LoginViewModel>(
         () => _i964.LoginViewModel(gh<_i973.LoginUseCase>()));
     return this;

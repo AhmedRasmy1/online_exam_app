@@ -8,7 +8,6 @@ import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
-import '../../../../core/utils/Uitls.dart';
 import '../../../../core/utils/cash_data.dart';
 
 class BlocConsumerForForgetPasswordPage extends StatelessWidget {
@@ -41,7 +40,7 @@ class BlocConsumerForForgetPasswordPage extends StatelessWidget {
           showAwesomeDialog(
             context: context,
             message: AppStrings.enterValidEmail,
-            dialogType: DialogType.info,
+            dialogType: DialogType.error,
             onOkPressed: () {},
             btnOkColor: ColorManager.error,
           );
