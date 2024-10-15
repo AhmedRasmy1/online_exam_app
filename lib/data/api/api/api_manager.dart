@@ -1,16 +1,13 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/data/api/api/model/forgot_password_model.dart';
-import 'package:online_exam_app/data/api/api/model/reset_password_model.dart';
-import 'package:online_exam_app/data/api/api/model/verify_code_model.dart';
-import '../../../domain/entities/reset_password_entities.dart';
-import '../../../domain/entities/verify_code_entitie.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+
+import 'ApiConstants.dart';
 import 'model/ResetPasswordModel.dart';
 import 'model/VerifCodeModel.dart';
 import 'model/response/auth_response.dart';
-import '../../../domain/entities/ForgotPasswordEntities.dart';
-
-import 'ApiConstants.dart';
 
 @singleton
 class ApiManager {
@@ -18,6 +15,27 @@ class ApiManager {
 
   ApiManager() {
     _dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
+
+    _dio.interceptors.add(PrettyDioLogger());
+
+// customization
+    _dio.interceptors.add(PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseBody: true,
+        responseHeader: false,
+        error: true,
+        compact: true,
+        maxWidth: 90,
+        enabled: kDebugMode,
+        filter: (options, args) {
+          // don't print requests with uris containing '/posts'
+          if (options.path.contains('/posts')) {
+            return false;
+          }
+          // don't print responses with unit8 list data
+          return !args.isResponse || !args.hasUint8ListData;
+        }));
   }
 
   Future<AuthResponse> login(String email, String password) async {
