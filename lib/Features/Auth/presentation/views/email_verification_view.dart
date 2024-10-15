@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_field_for_otp_verirfication.dart';
 import '../view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart';
 import '../widgets/bloc_consumer_email_verification_page.dart';
-import '../../../../core/functions/extenstions.dart';
 import '../../../../core/resources/app_constants.dart';
 import '../../../../di/di.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -77,60 +76,11 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
                     children: List.generate(
                       AppConstants.listGenerate,
                       (index) {
-                        return SizedBox(
-                          width: context.screenWidth / 7.4,
-                          height: context.screenWidth / 6,
-                          child: TextFormField(
-                            controller: _controllers[index],
-                            onChanged: (value) {
-                              if (value.isNotEmpty) {
-                                if (value.length == 1 && index < 5) {
-                                  FocusScope.of(context).nextFocus();
-                                } else if (index == 5) {
-                                  String enteredOtp = _controllers
-                                      .map((controller) => controller.text)
-                                      .join();
-                                  viewModel.verifyCode(code: enteredOtp);
-                                  FocusScope.of(context).unfocus();
-                                }
-                              } else if (value.isEmpty && index > 0) {
-                                FocusScope.of(context).previousFocus();
-                              }
-                            },
-                            keyboardType:
-                                const TextInputType.numberWithOptions(),
-                            textAlign: TextAlign.center,
-                            inputFormatters: [
-                              LengthLimitingTextInputFormatter(1),
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: ColorManager.colorOfEmailverification,
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: _isCodeInvalid
-                                      ? ColorManager.error
-                                      : ColorManager.colorOfEmailverification,
-                                  width: 2,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: _isCodeInvalid
-                                      ? ColorManager.error
-                                      : ColorManager.colorOfEmailverification,
-                                  width: 2,
-                                ),
-                              ),
-                              contentPadding: const EdgeInsets.symmetric(
-                                vertical: AppPadding.p24,
-                              ),
-                            ),
-                            style: const TextStyle(fontSize: 20),
-                          ),
+                        return CustomFieldForOtpVerification(
+                          controllers: _controllers,
+                          viewModel: viewModel,
+                          isCodeInvalid: _isCodeInvalid,
+                          index: index,
                         );
                       },
                     ),
