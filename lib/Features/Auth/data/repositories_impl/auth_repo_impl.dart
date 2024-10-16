@@ -1,5 +1,4 @@
 import 'package:injectable/injectable.dart';
-import '../data_sources/verify_codel_datasource.dart';
 import '../../domain/entities/reset_password_entities.dart';
 import '../../domain/entities/verify_code_entitie.dart';
 import '../data_sources/auth_online_datasource.dart';
@@ -9,23 +8,16 @@ import '../../domain/repositories/auth_repo.dart';
 
 import '../../domain/common/api_result.dart';
 import '../data_sources/auth_offline_datasource.dart';
-import '../data_sources/fotgot_password_datasource.dart';
-import '../data_sources/reset_password_datasource.dart';
 
 @Injectable(as: AuthRepo)
 class AuthRepoImpl implements AuthRepo {
   AuthOffLineDataSource offLineDataSource;
   AuthOnLineDataSource onLineDataSource;
-  ForgotPasswordDataSources forgotPasswordDataSources;
-  VerifyCodeDataSource verifyCodeDataSource;
-  ResetPasswordDataSource resetPasswordDataSource;
 
   AuthRepoImpl(
-      this.offLineDataSource,
-      this.onLineDataSource,
-      this.forgotPasswordDataSources,
-      this.verifyCodeDataSource,
-      this.resetPasswordDataSource);
+    this.offLineDataSource,
+    this.onLineDataSource,
+  );
 
   @override
   Future<Result<User?>> login(String email, String password) {
@@ -50,21 +42,19 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Result<ForgotPasswordEntities?>> forgotPassword(
       {required String email}) async {
-    return forgotPasswordDataSources.forgotPassword(email);
+    return onLineDataSource.forgotPassword(email);
   }
 //************************/
 
   @override
   Future<Result<VerifyCodeEntities?>> verifyCode({required String code}) {
-    print("auth repo impl $code --------------");
-
-    return verifyCodeDataSource.verifyCode(code);
+    return onLineDataSource.verifyCode(code);
   }
 //************************/
 
   @override
   Future<Result<ResetPasswordEntities?>> resetPassword(
       {required String email, required String newPassword}) {
-    return resetPasswordDataSource.resetPassword(email, newPassword);
+    return onLineDataSource.resetPassword(email, newPassword);
   }
 }

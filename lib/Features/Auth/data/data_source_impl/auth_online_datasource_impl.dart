@@ -1,4 +1,7 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/Auth/domain/entities/forgot_password_entities.dart';
+import 'package:online_exam_app/Features/Auth/domain/entities/reset_password_entities.dart';
+import 'package:online_exam_app/Features/Auth/domain/entities/verify_code_entitie.dart';
 import '../api/api_extentions.dart';
 import '../api/model/user_dto.dart';
 import '../../domain/common/api_result.dart';
@@ -37,6 +40,31 @@ class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
       var user = UserDto(token: response.token);
       (user);
       return user.toUser();
+    });
+  }
+
+  @override
+  Future<Result<ForgotPasswordEntities?>> forgotPassword(String email) {
+    return executeApi<ForgotPasswordEntities?>(() async {
+      var forgotResponse = await apiManager.forgotPassword(email);
+      return forgotResponse.toForgotPassword();
+    });
+  }
+
+  @override
+  Future<Result<ResetPasswordEntities?>> resetPassword(
+      String email, String newPassword) {
+    return executeApi<ResetPasswordEntities?>(() async {
+      var responseReset = await apiManager.resetPassword(email, newPassword);
+      return responseReset.toResetPassword();
+    });
+  }
+
+  @override
+  Future<Result<VerifyCodeEntities?>> verifyCode(String code) {
+    return executeApi<VerifyCodeEntities?>(() async {
+      var response = await apiManager.verifyCode(code);
+      return response.toVerifyCode();
     });
   }
 }

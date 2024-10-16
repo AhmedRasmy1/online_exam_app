@@ -39,7 +39,6 @@ class ApiManager {
       "phone": phone
     });
     var authResponse = AuthResponse.fromJson(response.data);
-    print(response.data);
     return authResponse;
   }
 

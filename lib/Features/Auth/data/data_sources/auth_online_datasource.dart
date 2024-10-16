@@ -1,3 +1,7 @@
+import 'package:online_exam_app/Features/Auth/domain/entities/forgot_password_entities.dart';
+import 'package:online_exam_app/Features/Auth/domain/entities/reset_password_entities.dart';
+import 'package:online_exam_app/Features/Auth/domain/entities/verify_code_entitie.dart';
+
 import '../../domain/entities/user.dart';
 
 import '../../domain/common/api_result.dart';
@@ -17,4 +21,8 @@ abstract class AuthOnLineDataSource {
     String rePassword,
     String phone,
   );
+  Future<Result<ForgotPasswordEntities?>> forgotPassword(String email);
+  Future<Result<VerifyCodeEntities?>> verifyCode(String code);
+  Future<Result<ResetPasswordEntities?>> resetPassword(
+      String email, String newPassword);
 }
