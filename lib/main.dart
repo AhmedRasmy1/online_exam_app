@@ -13,6 +13,8 @@ void main() {
   configureDependencies();
   SharedData.cacheInitialization();
   Bloc.observer = MyBlocObserver();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.top]);
   runApp(const OnlineExam());
 }
 

@@ -11,9 +11,9 @@ import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/styles_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 import '../../../../di/di.dart';
-import '../widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 import '../widgets/custom_auth_prompt.dart';
-import '../widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -53,9 +53,9 @@ class _LoginViewState extends State<LoginView> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    CustomAppBar(
+                    const CustomAppBar(
                       title: AppStrings.login,
-                      onTap: () {},
+                      onTap: null,
                     ),
                     const SizedBox(height: AppSize.s24),
                     CustomTextFormField(
@@ -75,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
                       obscureText: isPasswordHidden,
                       validator: (value) => validateNotEmpty(
                           value, AppStrings.enterValidPassword),
-                      suffixIcon: passwordHidden(
+                      suffix: passwordHidden(
                         isPasswordHidden: isPasswordHidden,
                         onPressed: () {
                           setState(() {

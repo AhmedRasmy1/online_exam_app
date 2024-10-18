@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class ColorManager {
   static const Color blue = Color(0xff02369c); // for primary color
+  static const Color lightPrimary = Color(0xff5679BD);
   static const Color lightBlue = Color(0xffEDEFF3);
   static const Color grey = Color(0xff535353); // for subtitles color
   static const Color darkgrey = Color(0xff7a7a7c);

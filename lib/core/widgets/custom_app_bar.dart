@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/font_manager.dart';
-import '../../../../core/resources/values_manager.dart';
+import '../resources/color_manager.dart';
+import '../resources/font_manager.dart';
+import '../resources/values_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -12,16 +12,17 @@ class CustomAppBar extends StatelessWidget {
     required this.onTap,
   });
   final String title;
-  final void Function() onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        GestureDetector(
-          onTap: onTap,
-          child: SvgPicture.asset("assets/images/Vector.svg"),
-        ),
+        if (onTap != null)
+          GestureDetector(
+            onTap: onTap,
+            child: SvgPicture.asset("assets/images/Vector.svg"),
+          ),
         const SizedBox(width: AppSize.s8),
         Text(
           title,
