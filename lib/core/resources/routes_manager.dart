@@ -14,6 +14,7 @@ class RoutesManager {
   static const String forgetPasswordRoute = '/forgetPassword';
   static const String emailVerificationRoute = '/emailVerification';
   static const String resetPasswordRoute = '/resetPassword';
+  static const String homeRoute = '/home';
 }
 
 class RouteGenerator {
@@ -30,6 +31,8 @@ class RouteGenerator {
       case RoutesManager.emailVerificationRoute:
         return MaterialPageRoute(builder: (_) => const OtpVerificationPage());
       case RoutesManager.resetPasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ResetPasswordView());
+      case RoutesManager.homeRoute:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
       default:
         return unDefinedRoute();
