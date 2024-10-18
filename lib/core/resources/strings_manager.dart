@@ -17,7 +17,7 @@ class AppStrings {
   static const String firstName = "First Name";
   static const String enterYourFirstName = "Enter first name";
   static const String lastName = "Last Name";
-  static const String enterYourLastName = "Enter first name";
+  static const String enterYourLastName = "Enter Last name";
   static const String phoneNumber = "phone Number";
   static const String enterPhoneNumber = "Enter your phone number";
   static const String confirmPassword = "Confirm Password";
@@ -63,4 +63,7 @@ class AppStrings {
 
   static const String passwordFormatError =
       'upper case letter and one number at least';
+  static const String profile = 'Profile';
+  static const String update = 'Update';
+  static const String change = 'Change';
 }

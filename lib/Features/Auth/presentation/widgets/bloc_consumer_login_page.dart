@@ -1,9 +1,10 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/resources/routes_manager.dart';
 import '../view_model/LoginPage_ViewModel/login_view_cubit.dart';
 import '../view_model/LoginPage_ViewModel/login_view_state.dart';
-import 'custom_elevated_button.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
@@ -64,6 +65,7 @@ class BlocConsumerForLoginPage extends StatelessWidget {
             onOkPressed: () {},
             btnOkColor: ColorManager.green,
           );
+          Navigator.pushNamed(context, RoutesManager.homeRoute);
         }
       },
       builder: (context, state) {

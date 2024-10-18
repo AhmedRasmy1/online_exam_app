@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../view_model/SigninPage_ViewModel/signin_view_cubit.dart';
 import '../widgets/bloc_consumer_signin_page.dart';
-import '../widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
 import '../widgets/custom_auth_prompt.dart';
-import '../widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -128,7 +128,7 @@ class _SignUpState extends State<SignUp> {
                               obscureText: isPasswordHidden1,
                               validator: (value) => validateNotEmpty(
                                   value, AppStrings.enterValidPassword),
-                              suffixIcon: passwordHidden(
+                              suffix: passwordHidden(
                                   isPasswordHidden: isPasswordHidden1,
                                   onPressed: () {
                                     setState(() {
@@ -150,7 +150,7 @@ class _SignUpState extends State<SignUp> {
                                   confirmPassword:
                                       _confirmPasswordController.text,
                                   message: AppStrings.passwordNotMatch),
-                              suffixIcon: passwordHidden(
+                              suffix: passwordHidden(
                                   isPasswordHidden: isPasswordHidden2,
                                   onPressed: () {
                                     setState(() {

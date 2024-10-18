@@ -1,6 +1,6 @@
-import 'package:online_exam_app/Features/Auth/domain/entities/forgot_password_entities.dart';
-import 'package:online_exam_app/Features/Auth/domain/entities/reset_password_entities.dart';
-import 'package:online_exam_app/Features/Auth/domain/entities/verify_code_entitie.dart';
+import '../../domain/entities/forgot_password_entities.dart';
+import '../../domain/entities/reset_password_entities.dart';
+import '../../domain/entities/verify_code_entitie.dart';
 
 import '../../domain/entities/user.dart';
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/core/resources/routes_manager.dart';
+import 'core/resources/color_manager.dart';
+import 'core/resources/routes_manager.dart';
 import 'core/resources/theme_manager.dart';
 import 'core/utils/cash_data.dart';
 import 'core/utils/my_block_observer.dart';
@@ -11,6 +13,8 @@ void main() {
   configureDependencies();
   SharedData.cacheInitialization();
   Bloc.observer = MyBlocObserver();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.top]);
   runApp(const OnlineExam());
 }
 
@@ -19,11 +23,19 @@ class OnlineExam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: getApplicationTheme(),
-      onGenerateRoute: RouteGenerator.getRoute,
-      initialRoute: RoutesManager.splashRoute,
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        statusBarColor: ColorManager.white,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: getApplicationTheme(),
+        onGenerateRoute: RouteGenerator.getRoute,
+        initialRoute: RoutesManager.splashRoute,
+      ),
     );
   }
 }

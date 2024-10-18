@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/resources/color_manager.dart';
-import '../../../../core/resources/font_manager.dart';
-import '../../../../core/resources/styles_manager.dart';
-import '../../../../core/resources/theme_manager.dart';
-import '../../../../core/resources/values_manager.dart';
+import '../resources/color_manager.dart';
+import '../resources/font_manager.dart';
+import '../resources/styles_manager.dart';
+import '../resources/theme_manager.dart';
+import '../resources/values_manager.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -14,7 +14,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     required this.obscureText,
     required this.validator,
-    this.suffixIcon, this.keyboardType,
+    this.suffix,
+    this.keyboardType,
   });
 
   final TextEditingController controller;
@@ -22,16 +23,23 @@ class CustomTextFormField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
   final String? Function(String?) validator;
-  final Widget? suffixIcon;
+  final Widget? suffix;
   final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      keyboardType:keyboardType ,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
-        suffixIcon: suffixIcon,
+        suffixIcon: suffix != null
+            ? Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  suffix!,
+                ],
+              )
+            : null,
         labelText: labelText,
         labelStyle: getRegularStyle(
           color: ColorManager.grey,

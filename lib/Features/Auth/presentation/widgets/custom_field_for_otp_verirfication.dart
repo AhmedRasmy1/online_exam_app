@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:online_exam_app/Features/Auth/presentation/view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart';
-import 'package:online_exam_app/core/functions/extenstions.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
+import '../view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart';
+import '../../../../core/functions/extenstions.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/values_manager.dart';
 
 class CustomFieldForOtpVerification extends StatelessWidget {
   const CustomFieldForOtpVerification({

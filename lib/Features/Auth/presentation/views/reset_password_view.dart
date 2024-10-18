@@ -9,8 +9,8 @@ import '../../../../core/resources/values_manager.dart';
 import '../../../../di/di.dart';
 import '../view_model/Resetpage_ViewModel/reset_password_view_cubit.dart';
 import '../widgets/bloc_consumer_reser_password_page.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/custom_text_form_field.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 
 class ResetPasswordView extends StatefulWidget {
   const ResetPasswordView({super.key});
@@ -89,7 +89,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                         AppStrings.enterValidPassword,
                         AppStrings.passwordLengthError,
                         AppStrings.passwordFormatError),
-                    suffixIcon: passwordHidden(
+                    suffix: passwordHidden(
                         isPasswordHidden: isPasswordHidden,
                         onPressed: () {
                           setState(() {
@@ -107,7 +107,7 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
                         password: _newPasswordController.text,
                         confirmPassword: _confirmNewPasswordController.text,
                         message: AppStrings.passwordNotMatch),
-                    suffixIcon: passwordHidden(
+                    suffix: passwordHidden(
                         isPasswordHidden: isPasswordHidden1,
                         onPressed: () {
                           setState(() {
