@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'core/resources/routes_manager.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
 import 'core/resources/theme_manager.dart';
 import 'core/utils/cash_data.dart';
 import 'core/utils/my_block_observer.dart';
 import 'di/di.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); //! what is this?
   configureDependencies();
   SharedData.cacheInitialization();
   Bloc.observer = MyBlocObserver();
