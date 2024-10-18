@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/Features/Home/presentation/widgets/custom_button_navigation_bar.dart';
-import 'package:online_exam_app/core/resources/app_constants.dart';
+import '../widgets/custom_button_navigation_bar.dart';
+import '../../../../core/resources/app_constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

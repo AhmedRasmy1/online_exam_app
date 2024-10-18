@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/core/functions/form_helpers.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
+import '../../../../core/functions/form_helpers.dart';
+import '../../../../core/resources/color_manager.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   const CustomBottomNavigationBar({

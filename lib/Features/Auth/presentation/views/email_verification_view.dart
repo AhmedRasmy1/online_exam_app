@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/presentation/widgets/custom_field_for_otp_verirfication.dart';
+import '../widgets/custom_field_for_otp_verirfication.dart';
 import '../view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart';
 import '../widgets/bloc_consumer_email_verification_page.dart';
 import '../../../../core/resources/app_constants.dart';
