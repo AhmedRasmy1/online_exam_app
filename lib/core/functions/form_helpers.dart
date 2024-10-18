@@ -1,5 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:online_exam_app/core/resources/values_manager.dart';
 
 import '../resources/color_manager.dart';
 
@@ -86,4 +88,27 @@ void showAwesomeDialog({
     btnOkOnPress: onOkPressed,
     btnOkColor: btnOkColor,
   ).show();
+}
+
+Widget buildIcon(String assetPath, int index, int currentIndex) {
+  bool isSelected = index == currentIndex;
+
+  return Container(
+    padding: const EdgeInsets.symmetric(
+        horizontal: AppPadding.p20, vertical: AppPadding.p4),
+    decoration: BoxDecoration(
+      color:
+          isSelected ? ColorManager.blue.withOpacity(0.2) : Colors.transparent,
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: SvgPicture.asset(
+      assetPath,
+      width: 24,
+      height: 24,
+      colorFilter: ColorFilter.mode(
+        isSelected ? ColorManager.blue : ColorManager.grey,
+        BlendMode.srcIn,
+      ),
+    ),
+  );
 }

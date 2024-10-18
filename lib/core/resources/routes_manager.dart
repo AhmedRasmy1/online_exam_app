@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/Features/Home/presentation/views/home_view.dart';
 
 import '../../Features/Auth/presentation/views/email_verification_view.dart';
 import '../../Features/Auth/presentation/views/forget_password.dart';
@@ -14,11 +15,14 @@ class RoutesManager {
   static const String forgetPasswordRoute = '/forgetPassword';
   static const String emailVerificationRoute = '/emailVerification';
   static const String resetPasswordRoute = '/resetPassword';
+  static const String homeRoute = '/home';
 }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RoutesManager.homeRoute:
+        return MaterialPageRoute(builder: (_) => const HomePage());
       case RoutesManager.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case RoutesManager.loginRoute:
