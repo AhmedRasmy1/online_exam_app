@@ -100,7 +100,7 @@ class _ProfileViewState extends State<ProfileView> {
                       controller: _passwordController,
                       labelText: AppStrings.password,
                       hintText: AppStrings.enterYourPassword,
-                      obscureText: false,
+                      obscureText: true,
                       validator: (value) => validateNotEmpty(
                           value, AppStrings.enterValidPassword),
                       suffix: GestureDetector(

@@ -14,7 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     required this.obscureText,
     required this.validator,
-    this.suffix, // تغيير هنا
+    this.suffix,
     this.keyboardType,
   });
 
