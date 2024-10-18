@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/Features/Home/presentation/views/home_page.dart';
 
 import '../../Features/Auth/presentation/views/email_verification_view.dart';
 import '../../Features/Auth/presentation/views/forget_password.dart';
@@ -33,7 +34,7 @@ class RouteGenerator {
       case RoutesManager.resetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
       case RoutesManager.homeRoute:
-        return MaterialPageRoute(builder: (_) => const ResetPasswordView());
+        return MaterialPageRoute(builder: (_) => const HomePage());
       default:
         return unDefinedRoute();
     }
