@@ -20,11 +20,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AppConstants.viewOptions[_selectIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: _selectIndex,
-        onItemTapped: _onItemTapped,
+    return SafeArea(
+      child: Scaffold(
+        body: AppConstants.viewOptions[_selectIndex],
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: _selectIndex,
+          onItemTapped: _onItemTapped,
+        ),
       ),
     );
   }
