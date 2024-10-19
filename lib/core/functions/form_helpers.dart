@@ -21,10 +21,8 @@ String? validatePhone(String? value, String message, String messageLength,
     String messageStartWithZero) {
   if (value?.trim() == null || value!.trim().isEmpty) {
     return message;
-  } else if (value.length != 11) {
+  } else if (!RegExp(r'^01[0125][0-9]{8}$').hasMatch(value)) {
     return messageLength;
-  } else if (!value.startsWith('0')) {
-    return messageStartWithZero;
   }
   return null;
 }
