@@ -13,9 +13,17 @@ class CustomCircleAvatar extends StatelessWidget {
     return Stack(
       children: [
         // Circular Avatar
-        const CircleAvatar(
+        CircleAvatar(
           radius: 60,
-          backgroundImage: AssetImage('assets/images/avatar.png'),
+          backgroundColor: Colors.transparent,
+          child: ClipOval(
+            child: SvgPicture.asset(
+              'assets/images/avatar.svg',
+              width: 120,
+              height: 120,
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         // Camera Icon Positioned in the bottom-right
         Positioned(
