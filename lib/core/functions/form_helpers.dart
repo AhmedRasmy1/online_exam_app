@@ -11,7 +11,9 @@ String? validateNotEmpty(String? value, String messageEmpty,
     return messageEmpty;
   } else if (value.length < 6) {
     return length;
-  } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d).{6,}$').hasMatch(value)) {
+  } else if (!RegExp(
+          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')
+      .hasMatch(value)) {
     return format;
   }
   return null;
