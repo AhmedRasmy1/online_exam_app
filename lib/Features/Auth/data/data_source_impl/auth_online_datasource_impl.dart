@@ -1,13 +1,12 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/Auth/data/api/api_extentions.dart';
+import 'package:online_exam_app/Features/Auth/data/api/api_manager.dart';
+import 'package:online_exam_app/Features/Auth/data/api/model/user_dto.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
 import '../../domain/entities/forgot_password_entities.dart';
 import '../../domain/entities/reset_password_entities.dart';
 import '../../domain/entities/verify_code_entitie.dart';
-import '../api/api_extentions.dart';
-import '../api/model/user_dto.dart';
-import '../../domain/common/api_result.dart';
 import '../../domain/entities/user.dart';
-
-import '../api/api_manager.dart';
 import '../data_sources/auth_online_datasource.dart';
 
 @Injectable(as: AuthOnLineDataSource)

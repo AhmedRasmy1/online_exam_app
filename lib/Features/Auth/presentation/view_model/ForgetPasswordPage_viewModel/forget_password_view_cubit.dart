@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
 import 'forget_password_view_state.dart';
-import '../../../domain/common/api_result.dart';
 import '../../../domain/entities/forgot_password_entities.dart';
 import '../../../domain/use_cases/forgot_password_usecase.dart';
 

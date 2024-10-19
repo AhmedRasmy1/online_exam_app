@@ -1,10 +1,9 @@
+import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
+
 import '../../domain/entities/forgot_password_entities.dart';
 import '../../domain/entities/reset_password_entities.dart';
 import '../../domain/entities/verify_code_entitie.dart';
-
 import '../../domain/entities/user.dart';
-
-import '../../domain/common/api_result.dart';
 
 abstract class AuthOnLineDataSource {
   Future<Result<User?>> login(

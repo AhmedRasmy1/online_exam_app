@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
 import '../repositories/auth_repo.dart';
-
-import '../common/api_result.dart';
 import '../entities/user.dart';
 
 @injectable

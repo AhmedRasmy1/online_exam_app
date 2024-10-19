@@ -1,12 +1,11 @@
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
 import '../../domain/entities/reset_password_entities.dart';
 import '../../domain/entities/verify_code_entitie.dart';
 import '../data_sources/auth_online_datasource.dart';
 import '../../domain/entities/forgot_password_entities.dart';
 import '../../domain/entities/user.dart';
 import '../../domain/repositories/auth_repo.dart';
-
-import '../../domain/common/api_result.dart';
 import '../data_sources/auth_offline_datasource.dart';
 
 @Injectable(as: AuthRepo)
