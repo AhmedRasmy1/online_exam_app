@@ -1,4 +1,4 @@
-import '../../../domain/entities/user.dart';
+import '../../domain/entities/user.dart';
 
 /// _id : "6702ad39e77d68595a291e8b"
 /// username : "elevate123"
