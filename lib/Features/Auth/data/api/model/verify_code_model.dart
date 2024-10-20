@@ -1,7 +1,5 @@
 import '../../../domain/entities/verify_code_entitie.dart';
 
-/// status : "Success"
-
 class VerifyCodeModel {
   String? status;
 
