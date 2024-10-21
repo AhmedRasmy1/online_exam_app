@@ -45,5 +45,26 @@ class StringCache {
   static const String emailResetPassword = 'emailResetPassword';
   static const String userEmail = 'userEmail';
   static const String userPassword = 'userPassword';
+  static const String userName = 'userName';
+  static const String userFirstName = 'userFirstName';
+  static const String userLastName = 'userLastName';
+  static const String userPhone = 'userPhone';
   static const String isActiveRemember = 'isActiveRemember';
+// static bool isActive = SharedData.getData(key: isActiveRemember) ?? false;
+}
+
+class GetDataCache {
+  static bool isActive =
+      SharedData.getData(key: StringCache.isActiveRemember) ?? false;
+  static String userEmail =
+      SharedData.getData(key: StringCache.userEmail) ?? 'dfdsf';
+  static String userName =
+      SharedData.getData(key: StringCache.userName) ?? 'dsfdsf';
+  static String userFirstName =
+      SharedData.getData(key: StringCache.userFirstName) ?? 'sdfsdf';
+  static String userLastName =
+      SharedData.getData(key: StringCache.userLastName) ?? 'sdfsdf';
+  static String userPhone =
+      SharedData.getData(key: StringCache.userPhone) ?? 'sdfsdf';
+
 }

@@ -66,7 +66,7 @@ class BlocConsumerForSignupPage extends StatelessWidget {
             message: AppStrings.successfullyCreated,
             dialogType: DialogType.success,
             onOkPressed: () {
-              Navigator.pushNamed(context, RoutesManager.loginRoute);
+              Navigator.pushNamed(context, RoutesManager.emailVerificationRoute);
             },
             btnOkColor: ColorManager.green,
           );

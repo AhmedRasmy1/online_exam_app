@@ -5,4 +5,5 @@ class ApiConstants {
   static const String forgotPassword = "v1/auth/forgotPassword";
   static const String verifyCodeApi = "v1/auth/verifyResetCode";
   static const String resetPassword = "v1/auth/resetPassword";
+  static const String getUser =  'v1/auth/profileData';
 }

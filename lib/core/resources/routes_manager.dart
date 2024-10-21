@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../Features/Home/presentation/views/home_view.dart';
+import 'package:online_exam_app/Features/layout/presentation/views/layout_view.dart';
+
 
 import '../../Features/Auth/presentation/views/email_verification_view.dart';
 import '../../Features/Auth/presentation/views/forget_password.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
 import '../../Features/Auth/presentation/views/reset_password_view.dart';
 import '../../Features/Auth/presentation/views/signup_view.dart';
-import '../../Features/Auth/presentation/views/splach_view.dart';
+import '../../Features/splash/presentation/pages/splash_view.dart';
+
 
 class RoutesManager {
   static const String splashRoute = '/';
@@ -15,14 +17,14 @@ class RoutesManager {
   static const String forgetPasswordRoute = '/forgetPassword';
   static const String emailVerificationRoute = '/emailVerification';
   static const String resetPasswordRoute = '/resetPassword';
-  static const String homeRoute = '/home';
+  static const String layoutRoute = '/layout';
 }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RoutesManager.homeRoute:
-        return MaterialPageRoute(builder: (_) => const HomePage());
+      case RoutesManager.layoutRoute:
+        return MaterialPageRoute(builder: (_) => const LayoutView());
       case RoutesManager.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case RoutesManager.loginRoute:

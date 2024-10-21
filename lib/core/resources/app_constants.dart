@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../Features/Home/presentation/views/explore_view.dart';
-import '../../Features/Home/presentation/views/profile_view.dart';
-import '../../Features/Home/presentation/views/result_view.dart';
+import 'package:online_exam_app/Features/profile/presentation/pages/profile_view.dart';
+
+import '../../Features/explore/presentation/pages/explore_view.dart';
+import '../../Features/result/presentation/pages/result_view.dart';
+
+
+
 
 class AppConstants {
   static const int splachDelay = 3;

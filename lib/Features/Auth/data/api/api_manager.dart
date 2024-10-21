@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import '../../domain/entities/user.dart';
+import 'model/User_Model.dart';
 import 'model/forgot_password_model.dart';
 import 'model/reset_password_model.dart';
 import 'model/verify_code_model.dart';
@@ -14,14 +16,25 @@ class ApiManager {
     _dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
   }
 
-  Future<AuthResponse> login(String email, String password) async {
+  Future<UserModel> login(String email, String password) async {
     var response = await _dio.post(ApiConstants.signInUrl,
         data: {"email": email, "password": password});
     var authResponse = AuthResponse.fromJson(response.data);
-    return authResponse;
+    var user= await getUserForToken(authResponse.token);
+    return user;
+  }
+  Future<UserModel> getUserForToken(String? token) async {
+    var response = await _dio.get(
+      ApiConstants.getUser,
+      options: Options(
+        headers: {'token':token},
+      ),
+    );
+    var user=UserModel.fromJson(response.data);
+    return user;
   }
 
-  Future<AuthResponse> register(
+  Future<UserModel> register(
       String username,
       String firstName,
       String lastName,
@@ -39,7 +52,8 @@ class ApiManager {
       "phone": phone
     });
     var authResponse = AuthResponse.fromJson(response.data);
-    return authResponse;
+    var user= await getUserForToken(authResponse.token);
+    return user;
   }
 
   Future<ForgotPasswordModel> forgotPassword(String email) async {

@@ -52,7 +52,7 @@ class BlocConsumerForLoginPage extends StatelessWidget {
           );
         }
         if (state is SuccessState) {
-          if (SharedData.getData(key: StringCache.isActiveRemember)) {
+          if (GetDataCache.isActive) {
             SharedData.setData(
                 key: StringCache.userEmail, value: emailController.text);
             SharedData.setData(
@@ -65,7 +65,7 @@ class BlocConsumerForLoginPage extends StatelessWidget {
             onOkPressed: () {},
             btnOkColor: ColorManager.green,
           );
-          Navigator.pushNamed(context, RoutesManager.homeRoute);
+          Navigator.pushNamed(context, RoutesManager.layoutRoute);
         }
       },
       builder: (context, state) {

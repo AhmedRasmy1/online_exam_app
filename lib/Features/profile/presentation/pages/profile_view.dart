@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_circle_avatar.dart';
+import 'package:online_exam_app/core/utils/cash_data.dart';
+import '../../../layout/presentation/widgets/custom_circle_avatar.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -19,16 +20,24 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _userNameController =
+      TextEditingController(text: GetDataCache.userName);
+
+  final TextEditingController _firstNameController =
+      TextEditingController(text: GetDataCache.userFirstName);
+  final TextEditingController _lastNameController =
+      TextEditingController(text: GetDataCache.userLastName);
+  final TextEditingController _emailController =
+      TextEditingController(text: GetDataCache.userEmail);
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _phoneController =
+      TextEditingController(text: GetDataCache.userPhone);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Color buttonColor = ColorManager.blue;
+
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Scaffold(
         body: ListView(
@@ -133,8 +142,11 @@ class _ProfileViewState extends State<ProfileView> {
                       buttonColor: buttonColor,
                       title: AppStrings.update,
                       onPressed: () {
+                        print( GetDataCache.userEmail);
                         validationMethod(
-                          actionPress: () {},
+                          actionPress: () {
+
+                          },
                           updateButtonColor: (Color color) {
                             setState(() {
                               buttonColor = color;

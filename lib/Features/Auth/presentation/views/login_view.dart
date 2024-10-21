@@ -94,11 +94,16 @@ class _LoginViewState extends State<LoginView> {
                           onChanged: (value) {
                             setState(() {
                               isActiveRemember = value ?? false;
-                              if (isActiveRemember) {
-                                SharedData.setData(
-                                    key: StringCache.isActiveRemember,
-                                    value: true);
-                              }
+                              SharedData.setData(
+                                  key: StringCache.isActiveRemember,
+                                  value:isActiveRemember);
+                              print(isActiveRemember);
+                              print(SharedData.getData(key: StringCache.isActiveRemember));
+                              // if (isActiveRemember) {
+                              //   SharedData.setData(
+                              //       key: StringCache.isActiveRemember,
+                              //       value: true);
+                              // }
                             });
                           },
                         ),
