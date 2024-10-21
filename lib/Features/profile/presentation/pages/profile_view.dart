@@ -19,7 +19,6 @@ class ProfileView extends StatefulWidget {
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
-
 class _ProfileViewState extends State<ProfileView> {
   final TextEditingController _userNameController = TextEditingController(
       text: SharedData.getData(key: StringCache.userName));
