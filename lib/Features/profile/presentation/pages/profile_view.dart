@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:online_exam_app/Features/profile/presentation/widgets/custom_circle_avatar.dart';
 import 'package:online_exam_app/core/utils/cash_data.dart';
-import '../../../Home/presentation/widgets/custom_circle_avatar.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -19,6 +19,7 @@ class ProfileView extends StatefulWidget {
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
+
 class _ProfileViewState extends State<ProfileView> {
   final TextEditingController _userNameController = TextEditingController(
       text: SharedData.getData(key: StringCache.userName));
@@ -28,8 +29,7 @@ class _ProfileViewState extends State<ProfileView> {
       text: SharedData.getData(key: StringCache.userLastName));
   final TextEditingController _emailController = TextEditingController(
       text: SharedData.getData(key: StringCache.userEmail));
-  final TextEditingController _passwordController =
-      TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController(
       text: SharedData.getData(key: StringCache.userPhone));
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
