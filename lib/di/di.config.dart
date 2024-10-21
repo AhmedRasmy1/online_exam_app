@@ -11,7 +11,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../Features/Auth/data/api/api_manager.dart' as _i320;
+import '../core/api/api_manager.dart' as _i320;
 import '../Features/Auth/data/data_source_impl/auth_offline_datasoure_impl.dart'
     as _i366;
 import '../Features/Auth/data/data_source_impl/auth_online_datasource_impl.dart'

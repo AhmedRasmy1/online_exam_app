@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widgets/custom_circle_avatar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:online_exam_app/core/utils/cash_data.dart';
+import '../../../Home/presentation/widgets/custom_circle_avatar.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -19,14 +21,21 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  final TextEditingController _userNameController = TextEditingController();
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController(
+      text: SharedData.getData(key: StringCache.userName));
+  final TextEditingController _firstNameController = TextEditingController(
+      text: SharedData.getData(key: StringCache.userFirstName));
+  final TextEditingController _lastNameController = TextEditingController(
+      text: SharedData.getData(key: StringCache.userLastName));
+  final TextEditingController _emailController = TextEditingController(
+      text: SharedData.getData(key: StringCache.userEmail));
+  final TextEditingController _passwordController =
+      TextEditingController();
+  final TextEditingController _phoneController = TextEditingController(
+      text: SharedData.getData(key: StringCache.userPhone));
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Color buttonColor = ColorManager.blue;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -96,15 +105,26 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                     const SizedBox(height: AppSize.s24),
                     CustomTextFormField(
-                      keyboardType: TextInputType.visiblePassword,
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.only(left: AppPadding.p16),
+                        child: SvgPicture.asset('assets/images/password.svg'),
+                      ),
+                      enabled: true,
+                      // keyboardType: TextInputType.visiblePassword,
                       controller: _passwordController,
                       labelText: AppStrings.password,
-                      hintText: AppStrings.enterYourPassword,
-                      obscureText: true,
-                      validator: (value) => validateNotEmpty(
-                          value, AppStrings.enterValidPassword),
-                      suffix: GestureDetector(
-                        onTap: () {},
+                      // hintText: AppStrings.enterYourPassword,
+                      // obscureText: true,
+                      suffix: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Scaffold(
+                                  appBar: AppBar(),
+                                ),
+                              ));
+                        },
                         child: Padding(
                           padding: const EdgeInsets.only(right: AppPadding.p16),
                           child: Text(
