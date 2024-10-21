@@ -46,4 +46,9 @@ class StringCache {
   static const String userEmail = 'userEmail';
   static const String userPassword = 'userPassword';
   static const String isActiveRemember = 'isActiveRemember';
+  static const String userLastName = 'userLastName';
+  static const String userFirstName = 'userFirstName';
+  static const String userName = 'userName';
+  static const String userToken = 'userToken';
+  static const String userPhone = 'userPhone';
 }

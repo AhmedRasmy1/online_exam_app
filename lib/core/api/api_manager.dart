@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'model/forgot_password_model.dart';
-import 'model/reset_password_model.dart';
-import 'model/verify_code_model.dart';
-import 'model/response/auth_response.dart';
+
+
+
+import '../../Features/Auth/data/model/forgot_password_model.dart';
+import '../../Features/Auth/data/model/reset_password_model.dart';
+import '../../Features/Auth/data/model/response/AuthResponse.dart';
+import '../../Features/Auth/data/model/verify_code_model.dart';
 import 'api_constants.dart';
 
 @singleton

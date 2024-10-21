@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import '../../domain/common/api_result.dart';
+import '../../Features/Auth/domain/common/api_result.dart';
 
-import '../../domain/common/coustom_execption.dart';
+import '../../Features/Auth/domain/common/coustom_execption.dart';
 
 Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
