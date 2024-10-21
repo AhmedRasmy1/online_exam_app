@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../view_model/SigninPage_ViewModel/signin_view_cubit.dart';
-import '../widgets/bloc_consumer_signin_page.dart';
-import '../../../../core/widgets/custom_app_bar.dart';
-import '../widgets/custom_auth_prompt.dart';
-import '../../../../core/widgets/custom_text_form_field.dart';
+
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -12,7 +8,12 @@ import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../di/di.dart';
+import '../view_model/SigninPage_ViewModel/signin_view_cubit.dart';
+import '../widgets/bloc_consumer_signin_page.dart';
+import '../widgets/custom_auth_prompt.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

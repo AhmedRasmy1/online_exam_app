@@ -1,4 +1,4 @@
-import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
+import '../../Features/Auth/domain/common/coustom_execption.dart';
 
 String extractErrorMessage(Exception? ex) {
   var message = 'something went wrong';

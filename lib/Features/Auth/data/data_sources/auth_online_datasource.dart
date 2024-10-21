@@ -1,4 +1,4 @@
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
+import '../../domain/common/api_result.dart';
 
 import '../../domain/entities/forgot_password_entities.dart';
 import '../../domain/entities/reset_password_entities.dart';

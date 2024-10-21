@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:online_exam_app/Features/profile/presentation/widgets/custom_circle_avatar.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
+import '../widgets/custom_circle_avatar.dart';
+import '../../../../core/utils/cash_data.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
