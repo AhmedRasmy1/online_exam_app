@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/core/resources/assets_manager.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 
@@ -16,15 +17,15 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return BottomNavigationBar(
       items: [
         BottomNavigationBarItem(
-          icon: buildIcon('assets/images/explore_icon.svg', 0, currentIndex),
+          icon: buildIcon(ImageAssets.exploreIcon, 0, currentIndex),
           label: 'Explore',
         ),
         BottomNavigationBarItem(
-          icon: buildIcon('assets/images/result_icon.svg', 1, currentIndex),
+          icon: buildIcon(ImageAssets.resultIcon, 1, currentIndex),
           label: 'Result',
         ),
         BottomNavigationBarItem(
-          icon: buildIcon('assets/images/profile_icon.svg', 2, currentIndex),
+          icon: buildIcon(ImageAssets.profileIcon, 2, currentIndex),
           label: 'Profile',
         ),
       ],
