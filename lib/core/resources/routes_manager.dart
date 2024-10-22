@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/Features/profile/presentation/pages/change_password_view.dart';
 import '../../Features/Home/presentation/views/home_view.dart';
 
 import '../../Features/Auth/presentation/views/email_verification_view.dart';
@@ -16,6 +17,7 @@ class RoutesManager {
   static const String emailVerificationRoute = '/emailVerification';
   static const String resetPasswordRoute = '/resetPassword';
   static const String homeRoute = '/home';
+  static const String changePasswordRoute = '/changePassword';
 }
 
 class RouteGenerator {
@@ -35,6 +37,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const OtpVerificationPage());
       case RoutesManager.resetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ResetPasswordView());
+      case RoutesManager.changePasswordRoute:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordView());
       default:
         return unDefinedRoute();
     }

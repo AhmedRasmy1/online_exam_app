@@ -66,4 +66,7 @@ class AppStrings {
   static const String profile = 'Profile';
   static const String update = 'Update';
   static const String change = 'Change';
+  static const String resetPassword = 'Reset Password';
+  static const String currentPassword = 'Current Password';
+  static const String confirmNewPassword = 'Confirm Password';
 }

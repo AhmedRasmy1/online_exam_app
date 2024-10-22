@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
 import '../widgets/custom_circle_avatar.dart';
 import '../../../../core/utils/cash_data.dart';
 import '../../../../core/functions/extenstions.dart';
@@ -116,13 +117,8 @@ class _ProfileViewState extends State<ProfileView> {
                       // obscureText: true,
                       suffix: InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Scaffold(
-                                  appBar: AppBar(),
-                                ),
-                              ));
+                          Navigator.pushNamed(
+                              context, RoutesManager.changePasswordRoute);
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: AppPadding.p16),
