@@ -5,4 +5,5 @@ class ImageAssets {
   static const String profileIcon = 'assets/images/profile_icon.svg';
   static const String resultIcon = 'assets/images/result_icon.svg';
   static const String exploreIcon = 'assets/images/explore_icon.svg';
+  static const String languageTranslator = 'assets/images/translator.svg';
 }
