@@ -48,6 +48,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
                 children: [
                   CustomAppBar(
                     title: AppStrings.password,
+                    color: ColorManager.black,
                     onTap: () {
                       Navigator.pop(context);
                     },

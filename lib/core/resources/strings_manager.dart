@@ -69,4 +69,5 @@ class AppStrings {
   static const String resetPassword = 'Reset Password';
   static const String currentPassword = 'Current Password';
   static const String confirmNewPassword = 'Confirm Password';
+  static const String quizzy = 'Quizzy';
 }

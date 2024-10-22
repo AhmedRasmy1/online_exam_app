@@ -39,6 +39,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
               children: [
                 CustomAppBar(
                   title: AppStrings.resetPassword,
+                  color: ColorManager.black,
                   onTap: () {
                     Navigator.pop(context);
                   },

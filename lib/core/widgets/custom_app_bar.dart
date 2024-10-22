@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../resources/color_manager.dart';
 import '../resources/font_manager.dart';
 import '../resources/values_manager.dart';
 
@@ -10,9 +8,11 @@ class CustomAppBar extends StatelessWidget {
     super.key,
     required this.title,
     required this.onTap,
+    required this.color,
   });
   final String title;
   final void Function()? onTap;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class CustomAppBar extends StatelessWidget {
           title,
           style: TextStyle(
             fontSize: FontSize.s20,
-            color: ColorManager.black,
+            color: color,
             fontWeight: FontWeightManager.bold,
           ),
         )

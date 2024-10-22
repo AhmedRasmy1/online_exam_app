@@ -51,7 +51,10 @@ class _ProfileViewState extends State<ProfileView> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    const CustomAppBar(title: AppStrings.profile, onTap: null),
+                    const CustomAppBar(
+                        title: AppStrings.profile,
+                        color: ColorManager.black,
+                        onTap: null),
                     const SizedBox(height: AppSize.s24),
                     const CustomCircleAvatar(),
                     const SizedBox(height: AppSize.s24),

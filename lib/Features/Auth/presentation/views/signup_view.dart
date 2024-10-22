@@ -62,6 +62,7 @@ class _SignUpState extends State<SignUp> {
                     children: [
                       CustomAppBar(
                         title: AppStrings.signUp,
+                        color: ColorManager.black,
                         onTap: () {
                           Navigator.pop(context);
                         },

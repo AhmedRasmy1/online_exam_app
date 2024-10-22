@@ -47,6 +47,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
               children: [
                 CustomAppBar(
                   title: AppStrings.password,
+                  color: ColorManager.black,
                   onTap: () {
                     Navigator.pop(context);
                   },
