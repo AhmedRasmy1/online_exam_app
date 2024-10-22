@@ -71,4 +71,6 @@ class AppStrings {
   static const String confirmNewPassword = 'Confirm Password';
   static const String quizzy = 'Quizzy';
   static const String search = 'Search';
+  static const String explore = 'Explore';
+  static const String result = 'Result';
 }
