@@ -87,11 +87,11 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                   labelText: AppStrings.confirmNewPassword,
                   hintText: AppStrings.enterYourPassword,
                   obscureText: isPasswordHidden3,
-                  validator: (value) => validateNotEmpty(
-                      value,
-                      AppStrings.enterValidPassword,
-                      AppStrings.passwordLengthError,
-                      AppStrings.passwordFormatError),
+                  validator: (value) => validatePasswordMatch(
+                    password: _newPassword.text,
+                    confirmPassword: _reNewPassword.text,
+                    message: AppStrings.passwordNotMatch,
+                  ),
                   suffix: passwordHidden(
                       isPasswordHidden: isPasswordHidden3,
                       onPressed: () {

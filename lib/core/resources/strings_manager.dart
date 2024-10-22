@@ -62,7 +62,7 @@ class AppStrings {
       'Password must be at least 6 characters';
 
   static const String passwordFormatError =
-      'upper case letter and one number at least';
+      'upper case letter , one number \nand one special character at least';
   static const String profile = 'Profile';
   static const String update = 'Update';
   static const String change = 'Change';

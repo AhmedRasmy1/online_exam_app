@@ -128,7 +128,9 @@ class _SignUpState extends State<SignUp> {
                               hintText: AppStrings.enterYourPassword,
                               obscureText: isPasswordHidden1,
                               validator: (value) => validateNotEmpty(
-                                  value, AppStrings.enterValidPassword),
+                                value,
+                                AppStrings.enterValidPassword,
+                              ),
                               suffix: passwordHidden(
                                   isPasswordHidden: isPasswordHidden1,
                                   onPressed: () {
