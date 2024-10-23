@@ -1,14 +1,12 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/core/api/api_extentions.dart';
-import 'package:online_exam_app/core/api/api_manager.dart';
-
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
+import '../../../../core/api/api_extentions.dart';
+import '../../../../core/api/api_manager.dart';
+import '../../domain/common/api_result.dart';
 import '../../domain/entities/forgot_password_entities.dart';
 import '../../domain/entities/reset_password_entities.dart';
 import '../../domain/entities/verify_code_entitie.dart';
 import '../../domain/entities/user.dart';
 import '../data_sources/auth_online_datasource.dart';
-import '../model/user_dto.dart';
 
 @Injectable(as: AuthOnLineDataSource)
 class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
@@ -20,7 +18,7 @@ class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
   Future<Result<User?>> login(String email, String password) async {
     return executeApi<User?>(() async {
       var authResponse = await apiManager.login(email, password);
-      var user =authResponse.user?.toUser();
+      var user = authResponse.user?.toUser();
       return user;
     });
   }
@@ -37,7 +35,7 @@ class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
     return executeApi(() async {
       var response = await apiManager.register(
           username, firstName, lastName, email, password, rePassword, phone);
-      var user =response.user?.toUser();
+      var user = response.user?.toUser();
       (user);
       return user;
     });

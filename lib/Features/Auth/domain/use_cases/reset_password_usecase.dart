@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
+import '../common/api_result.dart';
 
 import '../entities/reset_password_entities.dart';
 import '../repositories/auth_repo.dart';

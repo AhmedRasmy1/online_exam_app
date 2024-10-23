@@ -62,8 +62,17 @@ class AppStrings {
       'Password must be at least 6 characters';
 
   static const String passwordFormatError =
-      'upper case letter and one number at least';
+      'upper case letter,\none number,\nand one special character at least';
   static const String profile = 'Profile';
   static const String update = 'Update';
   static const String change = 'Change';
+  static const String resetPassword = 'Reset Password';
+  static const String currentPassword = 'Current Password';
+  static const String confirmNewPassword = 'Confirm Password';
+  static const String quizzy = 'Quizzy';
+  static const String search = 'Search';
+  static const String explore = 'Explore';
+  static const String result = 'Result';
+  static const String browseBySubject = 'Browse By Subject';
+  static const String language = 'Language';
 }

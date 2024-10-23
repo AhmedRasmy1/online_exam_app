@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
-import '../../../Home/presentation/widgets/custom_circle_avatar.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
+import '../widgets/custom_circle_avatar.dart';
+import '../../../../core/utils/cash_data.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/app_constants.dart';
@@ -19,6 +20,7 @@ class ProfileView extends StatefulWidget {
   @override
   State<ProfileView> createState() => _ProfileViewState();
 }
+
 class _ProfileViewState extends State<ProfileView> {
   final TextEditingController _userNameController = TextEditingController(
       text: SharedData.getData(key: StringCache.userName));
@@ -28,8 +30,7 @@ class _ProfileViewState extends State<ProfileView> {
       text: SharedData.getData(key: StringCache.userLastName));
   final TextEditingController _emailController = TextEditingController(
       text: SharedData.getData(key: StringCache.userEmail));
-  final TextEditingController _passwordController =
-      TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController(
       text: SharedData.getData(key: StringCache.userPhone));
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -50,7 +51,10 @@ class _ProfileViewState extends State<ProfileView> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    const CustomAppBar(title: AppStrings.profile, onTap: null),
+                    const CustomAppBar(
+                        title: AppStrings.profile,
+                        color: ColorManager.black,
+                        onTap: null),
                     const SizedBox(height: AppSize.s24),
                     const CustomCircleAvatar(),
                     const SizedBox(height: AppSize.s24),
@@ -116,13 +120,8 @@ class _ProfileViewState extends State<ProfileView> {
                       // obscureText: true,
                       suffix: InkWell(
                         onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Scaffold(
-                                  appBar: AppBar(),
-                                ),
-                              ));
+                          Navigator.pushNamed(
+                              context, RoutesManager.changePasswordRoute);
                         },
                         child: Padding(
                           padding: const EdgeInsets.only(right: AppPadding.p16),

@@ -9,16 +9,16 @@ class AuthResponse {
   String? token;
   UserModel? user;
   AuthResponse({
-      this.message, 
-      this.token, 
-      this.user,});
+    this.message,
+    this.token,
+    this.user,
+  });
 
   AuthResponse.fromJson(dynamic json) {
     message = json['message'];
     token = json['token'];
     user = json['user'] != null ? UserModel.fromJson(json['user']) : null;
   }
-
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -29,7 +29,6 @@ class AuthResponse {
     }
     return map;
   }
-
 }
 
 /// _id : "670b34bfe77d68595a292b4d"
@@ -44,15 +43,16 @@ class AuthResponse {
 
 class UserModel {
   UserModel({
-      this.id, 
-      this.username, 
-      this.firstName, 
-      this.lastName, 
-      this.email, 
-      this.phone, 
-      this.role, 
-      this.isVerified, 
-      this.createdAt,});
+    this.id,
+    this.username,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.phone,
+    this.role,
+    this.isVerified,
+    this.createdAt,
+  });
 
   UserModel.fromJson(dynamic json) {
     id = json['_id'];
@@ -89,18 +89,15 @@ class UserModel {
     return map;
   }
 
-  User toUser(){
+  User toUser() {
     return User(
-      username: username,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      firstName: firstName,
-      token: AuthResponse().token,
-      isVerified: isVerified,
-      id: id
-
-    );
+        username: username,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        firstName: firstName,
+        token: AuthResponse().token,
+        isVerified: isVerified,
+        id: id);
   }
-
 }

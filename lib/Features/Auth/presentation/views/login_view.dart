@@ -56,6 +56,7 @@ class _LoginViewState extends State<LoginView> {
                   children: [
                     const CustomAppBar(
                       title: AppStrings.login,
+                      color: ColorManager.black,
                       onTap: null,
                     ),
                     const SizedBox(height: AppSize.s24),
