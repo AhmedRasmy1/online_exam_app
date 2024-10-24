@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/Features/explore/presentation/pages/exam_preview.dart';
 import 'package:online_exam_app/Features/explore/presentation/pages/subject_details.dart';
 import 'package:online_exam_app/Features/profile/presentation/pages/change_password_view.dart';
 import '../../Features/Home/presentation/views/home_view.dart';
@@ -20,6 +21,7 @@ class RoutesManager {
   static const String homeRoute = '/home';
   static const String changePasswordRoute = '/changePassword';
   static const String subjectsDetailRoute = '/subjectsDetail';
+  static const String examPreviewRoute = '/examPreview';
 }
 
 class RouteGenerator {
@@ -43,6 +45,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ChangePasswordView());
       case RoutesManager.subjectsDetailRoute:
         return MaterialPageRoute(builder: (_) => const SubjectDetails());
+      case RoutesManager.examPreviewRoute:
+        return MaterialPageRoute(builder: (_) => const ExamPreview());
       default:
         return unDefinedRoute();
     }
