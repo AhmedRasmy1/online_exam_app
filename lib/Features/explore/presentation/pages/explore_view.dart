@@ -3,6 +3,7 @@ import 'package:online_exam_app/Features/explore/presentation/widgets/custom_con
 import 'package:online_exam_app/Features/explore/presentation/widgets/custom_search_field.dart';
 import 'package:online_exam_app/core/resources/color_manager.dart';
 import 'package:online_exam_app/core/resources/font_manager.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
 import 'package:online_exam_app/core/resources/strings_manager.dart';
 import 'package:online_exam_app/core/resources/values_manager.dart';
 import 'package:online_exam_app/core/widgets/custom_app_bar.dart';
@@ -43,7 +44,13 @@ class ExploreView extends StatelessWidget {
               child: ListView.builder(
                 itemCount: 4,
                 itemBuilder: (context, index) {
-                  return const CustomContainer();
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RoutesManager.subjectsDetailRoute);
+                    },
+                    child: const CustomContainer(),
+                  );
                 },
               ),
             )
