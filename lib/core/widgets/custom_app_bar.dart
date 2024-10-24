@@ -6,13 +6,14 @@ import '../resources/values_manager.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
-    required this.title,
-    required this.onTap,
-    required this.color,
+    this.title,
+    this.onTap,
+    this.color,
   });
-  final String title;
+
+  final String? title;
   final void Function()? onTap;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +25,15 @@ class CustomAppBar extends StatelessWidget {
             child: SvgPicture.asset("assets/images/Vector.svg"),
           ),
         const SizedBox(width: AppSize.s8),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: FontSize.s20,
-            color: color,
-            fontWeight: FontWeightManager.bold,
+        if (title != null)
+          Text(
+            title!,
+            style: TextStyle(
+              fontSize: FontSize.s20,
+              color: color ?? Colors.black,
+              fontWeight: FontWeightManager.bold,
+            ),
           ),
-        )
       ],
     );
   }

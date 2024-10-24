@@ -6,4 +6,5 @@ class ImageAssets {
   static const String resultIcon = 'assets/images/result_icon.svg';
   static const String exploreIcon = 'assets/images/explore_icon.svg';
   static const String languageTranslator = 'assets/images/translator.svg';
+  static const String subjectLevel = 'assets/images/level_subject_svg.svg';
 }
