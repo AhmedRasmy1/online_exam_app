@@ -131,11 +131,6 @@ class SubjectDetails extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSize.s48),
-              CustomElevatedButton(
-                buttonColor: ColorManager.blue,
-                title: 'Start Exam',
-                onPressed: () {},
-              )
             ],
           ),
         ),

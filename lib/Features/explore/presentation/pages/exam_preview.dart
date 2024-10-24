@@ -4,6 +4,7 @@ import 'package:online_exam_app/core/resources/color_manager.dart';
 import 'package:online_exam_app/core/resources/font_manager.dart';
 import 'package:online_exam_app/core/resources/values_manager.dart';
 import 'package:online_exam_app/core/widgets/custom_app_bar.dart';
+import 'package:online_exam_app/core/widgets/custom_elevated_button.dart';
 
 class ExamPreview extends StatelessWidget {
   const ExamPreview({super.key});
@@ -92,35 +93,42 @@ class ExamPreview extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSize.s16),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      dense: true,
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 0),
-                      horizontalTitleGap: -10,
-                      leading: Text(
-                        "•",
-                        style: TextStyle(
-                          fontSize: FontSize.s16,
-                          color: ColorManager.grey,
-                          fontWeight: FontWeightManager.bold,
-                        ),
+              // هنا قمنا بإزالة الـ Expanded
+              ListView.builder(
+                itemCount: 4,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    dense: true,
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 0),
+                    horizontalTitleGap: -10,
+                    leading: Text(
+                      "•",
+                      style: TextStyle(
+                        fontSize: FontSize.s16,
+                        color: ColorManager.grey,
+                        fontWeight: FontWeightManager.bold,
                       ),
-                      title: Text(
-                        "Lorem ipsum dolor sit amet consectetur.",
-                        style: TextStyle(
-                          fontSize: FontSize.s16,
-                          color: ColorManager.grey,
-                          fontWeight: FontWeightManager.bold,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                    ),
+                    title: Text(
+                      "Lorem ipsum dolor sit amet consectetur.",
+                      style: TextStyle(
+                        fontSize: FontSize.s16,
+                        color: ColorManager.grey,
+                        fontWeight: FontWeightManager.bold,
                       ),
-                    );
-                  },
-                ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(height: AppSize.s48),
+              CustomElevatedButton(
+                buttonColor: ColorManager.blue,
+                title: 'Start Exam',
+                onPressed: () {},
               )
             ],
           ),
