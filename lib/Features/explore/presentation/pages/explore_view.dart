@@ -49,7 +49,7 @@ class ExploreView extends StatelessWidget {
                       Navigator.pushNamed(
                           context, RoutesManager.subjectsDetailRoute);
                     },
-                    child: const CustomContainer(),
+                    child: const CustomContainerForSubject(),
                   );
                 },
               ),

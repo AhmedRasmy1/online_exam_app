@@ -7,8 +7,8 @@ import 'package:online_exam_app/core/resources/font_manager.dart';
 import 'package:online_exam_app/core/resources/strings_manager.dart';
 import 'package:online_exam_app/core/resources/values_manager.dart';
 
-class CustomContainer extends StatelessWidget {
-  const CustomContainer({
+class CustomContainerForSubject extends StatelessWidget {
+  const CustomContainerForSubject({
     super.key,
   });
 
