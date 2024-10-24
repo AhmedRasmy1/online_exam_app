@@ -29,7 +29,7 @@ class ExamPreview extends StatelessWidget {
               const SizedBox(height: AppSize.s24),
               Row(
                 children: [
-                  SvgPicture.asset('assets/images/multiple-choice.svg'),
+                  SvgPicture.asset('assets/images/test.svg'),
                   const SizedBox(width: AppSize.s8),
                   Text(
                     'Languages',
