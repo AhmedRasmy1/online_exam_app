@@ -28,7 +28,6 @@ String? validatePhone(String? value, String message, String messageLength,
   }
   return null;
 }
-
 String? validatePasswordMatch({
   required String password,
   required String confirmPassword,
