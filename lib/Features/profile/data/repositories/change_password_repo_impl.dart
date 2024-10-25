@@ -15,9 +15,8 @@ class ChangePasswordRepoImpl implements ChangePasswordRepo {
       {required String oldPassword,
       required String newPassword,
       required String rePassword,
-      required String token
-      }) {
+      required String token}) {
     return changePasswordDataSources.changePassword(
-        oldPassword, newPassword, rePassword,token);
+        oldPassword, newPassword, rePassword, token);
   }
 }

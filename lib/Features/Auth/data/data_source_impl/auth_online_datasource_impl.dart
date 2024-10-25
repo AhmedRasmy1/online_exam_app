@@ -18,7 +18,7 @@ class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
   Future<Result<User?>> login(String email, String password) async {
     return executeApi<User?>(() async {
       var authResponse = await apiManager.login(email, password);
-      String? token=authResponse.token??'';
+      String? token = authResponse.token ?? '';
 
       var user = authResponse.user?.toUser(token);
       return user;
@@ -37,7 +37,7 @@ class AuthOnLineDataSourceImpl implements AuthOnLineDataSource {
     return executeApi(() async {
       var response = await apiManager.register(
           username, firstName, lastName, email, password, rePassword, phone);
-      String? token=response.token??'';
+      String? token = response.token ?? '';
       var user = response.user?.toUser(token);
       (user);
       return user;

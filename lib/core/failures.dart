@@ -28,7 +28,7 @@ class ServerFailure extends Failure {
       case DioExceptionType.connectionError:
         return ServerFailure('connection Error');
       case DioExceptionType.unknown:
-        if(dioException.message!.contains('SocketException')){
+        if (dioException.message!.contains('SocketException')) {
           return ServerFailure('No EnterNet Connection ');
         }
         return ServerFailure('Opps Something error, TRY AGAIN');

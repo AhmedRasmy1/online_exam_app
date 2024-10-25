@@ -41,7 +41,7 @@ class AuthResponse {
 /// isVerified : false
 /// createdAt : "2024-10-13T02:47:27.461Z"
 
-class UserModel{
+class UserModel {
   UserModel({
     this.id,
     this.username,

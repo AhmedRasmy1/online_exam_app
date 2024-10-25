@@ -131,7 +131,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                         );
                       }
                       if (state is ChangePasswordFail) {
-                         var message = extractErrorMessage(state.exception);
+                        var message = extractErrorMessage(state.exception);
                         showAwesomeDialog(
                           context: context,
                           message: message,

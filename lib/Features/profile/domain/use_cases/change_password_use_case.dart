@@ -18,8 +18,6 @@ class ChangePasswordUseCase {
         oldPassword: oldPassword,
         newPassword: newPassword,
         rePassword: rePassword,
-      token: token
-
-    );
+        token: token);
   }
 }

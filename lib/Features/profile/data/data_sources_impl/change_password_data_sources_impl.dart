@@ -13,11 +13,11 @@ class ChangePasswordDataSourcesImpl implements ChangePasswordDataSources {
 
   @override
   Future<Result<ChangePasswordEntities>> changePassword(
-      String oldPassword, String newPassword, String rePassword ,String token) {
+      String oldPassword, String newPassword, String rePassword, String token) {
     return executeApi<ChangePasswordEntities>(
       () async {
         var response = await apiManager.changePassword(
-            oldPassword, newPassword, rePassword,token);
+            oldPassword, newPassword, rePassword, token);
         return response.toNewPassword();
       },
     );
