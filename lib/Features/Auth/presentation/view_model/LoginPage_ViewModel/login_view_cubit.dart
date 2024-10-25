@@ -32,6 +32,7 @@ class LoginViewModel extends Cubit<LoginScreenState> {
                 key: StringCache.userName, value: result.data?.username),
           ]);
 
+
           emit(SuccessState(result.data));
         }
       case Fail<User?>():

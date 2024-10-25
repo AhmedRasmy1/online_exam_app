@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/profile/data/models/ChangePasswordModel.dart';
 
 import '../../Features/Auth/data/model/forgot_password_model.dart';
 import '../../Features/Auth/data/model/reset_password_model.dart';
 import '../../Features/Auth/data/model/response/auth_response.dart';
 import '../../Features/Auth/data/model/verify_code_model.dart';
+import '../utils/cash_data.dart';
 import 'api_constants.dart';
 
 @singleton
@@ -67,5 +69,20 @@ class ApiManager {
     var resetPasswordResponse = ResetPasswordModel.fromJson(response.data);
 
     return resetPasswordResponse;
+  }
+
+  Future<ChangePasswordModel> changePassword(String oldPassword,
+      String newPassword, String rePassword, String token) async {
+    var tokenHeader = {"token": token};
+    var response = await _dio.patch(ApiConstants.changePassword,
+        data: {
+          "oldPassword": oldPassword,
+          "password": newPassword,
+          "rePassword": rePassword
+        },
+        options: Options(method: 'PATCH', headers: tokenHeader));
+
+    var changePasswordResponse = ChangePasswordModel.fromJson(response.data);
+    return changePasswordResponse;
   }
 }

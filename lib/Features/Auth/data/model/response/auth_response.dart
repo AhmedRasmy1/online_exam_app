@@ -41,7 +41,7 @@ class AuthResponse {
 /// isVerified : false
 /// createdAt : "2024-10-13T02:47:27.461Z"
 
-class UserModel {
+class UserModel{
   UserModel({
     this.id,
     this.username,
@@ -89,14 +89,14 @@ class UserModel {
     return map;
   }
 
-  User toUser() {
+  User toUser(String token) {
     return User(
         username: username,
         lastName: lastName,
         email: email,
         phone: phone,
         firstName: firstName,
-        token: AuthResponse().token,
+        token: token,
         isVerified: isVerified,
         id: id);
   }
