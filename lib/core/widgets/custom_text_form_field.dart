@@ -17,7 +17,8 @@ class CustomTextFormField extends StatelessWidget {
     this.suffix,
     this.keyboardType,
     this.enabled,
-    this.prefixIcon, this.initialValue,
+    this.prefixIcon,
+    this.initialValue,
   });
 
   final TextEditingController controller;

@@ -6,7 +6,8 @@ class RegisterRequest {
     this.email,
     this.password,
     this.rePassword,
-    this.phone,});
+    this.phone,
+  });
 
   RegisterRequest.fromJson(dynamic json) {
     username = json['username'];
@@ -36,5 +37,4 @@ class RegisterRequest {
     map['phone'] = phone;
     return map;
   }
-
 }

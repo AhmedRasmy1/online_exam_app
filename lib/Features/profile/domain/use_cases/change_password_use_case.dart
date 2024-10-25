@@ -1,25 +1,23 @@
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
 import 'package:online_exam_app/Features/profile/domain/entities/ChangePasswordEntitie.dart';
-import 'package:online_exam_app/Features/profile/domain/repositories/change_password_repo.dart';
+import 'package:online_exam_app/Features/profile/domain/repositories/profile_repo.dart';
 
 @injectable
 class ChangePasswordUseCase {
-  ChangePasswordRepo changePasswordRepo;
+  ProfileRepo profileRepo;
 
-  ChangePasswordUseCase(this.changePasswordRepo);
+  ChangePasswordUseCase(this.profileRepo);
 
   Future<Result<ChangePasswordEntities>> changePassword(
       {required String oldPassword,
       required String newPassword,
       required String rePassword,
       required String token}) {
-    return changePasswordRepo.changePassword(
+    return profileRepo.changePassword(
         oldPassword: oldPassword,
         newPassword: newPassword,
         rePassword: rePassword,
-      token: token
-
-    );
+        token: token);
   }
 }

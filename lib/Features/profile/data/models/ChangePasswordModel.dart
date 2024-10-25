@@ -5,8 +5,9 @@ import '../../domain/entities/ChangePasswordEntitie.dart';
 
 class ChangePasswordModel {
   ChangePasswordModel({
-      this.message, 
-      this.token,});
+    this.message,
+    this.token,
+  });
 
   ChangePasswordModel.fromJson(dynamic json) {
     message = json['message'];
@@ -21,10 +22,11 @@ class ChangePasswordModel {
     map['token'] = token;
     return map;
   }
-  ChangePasswordEntities toNewPassword(){
+
+  ChangePasswordEntities toNewPassword() {
     return ChangePasswordEntities(
-      token:token ,
-      message:message ,
+      token: token,
+      message: message,
     );
   }
 }

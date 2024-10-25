@@ -1,0 +1,43 @@
+import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
+import 'package:online_exam_app/Features/profile/data/data_sources/profile_data_sources.dart';
+import 'package:online_exam_app/Features/profile/domain/entities/ChangePasswordEntitie.dart';
+import 'package:online_exam_app/Features/profile/domain/entities/edit_profile_entity.dart';
+import 'package:online_exam_app/core/api/api_extentions.dart';
+import 'package:online_exam_app/core/api/api_manager.dart';
+
+@Injectable(as: ProfileDataSources)
+class ProfileDataSourceImpl implements ProfileDataSources {
+  ApiManager apiManager;
+
+  ProfileDataSourceImpl(this.apiManager);
+
+  @override
+  Future<Result<ChangePasswordEntities>> changePassword(
+      String oldPassword, String newPassword, String rePassword, String token) {
+    return executeApi<ChangePasswordEntities>(
+      () async {
+        var response = await apiManager.changePassword(
+            oldPassword, newPassword, rePassword, token);
+        return response.toNewPassword();
+      },
+    );
+  }
+
+  @override
+  Future<Result<EditProfileEntity>> editProfile(
+      String username,
+      String firstName,
+      String lastName,
+      String email,
+      String phone,
+      String token) {
+    return executeApi<EditProfileEntity>(
+      () async {
+        var response = await apiManager.editProfile(
+            username, firstName, lastName, email, phone, token);
+        return response.toEditProfileEntity();
+      },
+    );
+  }
+}

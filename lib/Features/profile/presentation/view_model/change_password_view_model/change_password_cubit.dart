@@ -14,28 +14,27 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
       : super(ChangePasswordInitial());
   final ChangePasswordUseCase _changePasswordUseCase;
 
-
   void changePassword(
-      {required String oldPassword, required String newPassword, required String rePassword}) async {
-
-    String token=SharedData.getData(key: StringCache.userToken)??'';
+      {required String oldPassword,
+      required String newPassword,
+      required String rePassword}) async {
+    String token = SharedData.getData(key: StringCache.userToken) ?? '';
     print('token ===================$token');
     var result = await _changePasswordUseCase.changePassword(
         oldPassword: oldPassword,
         newPassword: newPassword,
         rePassword: rePassword,
-      token: token
-    );
+        token: token);
 
-   switch (result) {
-     case Success<ChangePasswordEntities>():{
-       emit(ChangePasswordSuccess(result.data));
-     }
-     case Fail<ChangePasswordEntities>():{
-       emit( ChangePasswordFail(result.exception));
-     }
-   }
+    switch (result) {
+      case Success<ChangePasswordEntities>():
+        {
+          emit(ChangePasswordSuccess(result.data));
+        }
+      case Fail<ChangePasswordEntities>():
+        {
+          emit(ChangePasswordFail(result.exception));
+        }
+    }
   }
-
-
 }

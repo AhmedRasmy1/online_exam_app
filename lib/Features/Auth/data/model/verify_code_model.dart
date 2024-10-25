@@ -1,5 +1,3 @@
-
-
 import '../../domain/entities/verify_code_entitie.dart';
 
 class VerifyCodeModel {

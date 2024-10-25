@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/profile/presentation/view_model/change_password_cubit.dart';
+import 'package:online_exam_app/Features/profile/presentation/view_model/change_password_view_model/change_password_cubit.dart';
 import 'package:online_exam_app/core/functions/form_helpers.dart';
 import 'package:online_exam_app/core/resources/color_manager.dart';
 import 'package:online_exam_app/core/resources/strings_manager.dart';
@@ -131,7 +131,7 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                         );
                       }
                       if (state is ChangePasswordFail) {
-                         var message = extractErrorMessage(state.exception);
+                        var message = extractErrorMessage(state.exception);
                         showAwesomeDialog(
                           context: context,
                           message: message,
