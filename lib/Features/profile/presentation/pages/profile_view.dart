@@ -1,6 +1,10 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:online_exam_app/Features/profile/presentation/view_model/edit_profile_view_model/edit_profile_cubit.dart';
 import 'package:online_exam_app/core/resources/routes_manager.dart';
+import 'package:online_exam_app/di/di.dart';
 import '../widgets/custom_circle_avatar.dart';
 import '../../../../core/utils/cash_data.dart';
 import '../../../../core/functions/extenstions.dart';
@@ -35,138 +39,180 @@ class _ProfileViewState extends State<ProfileView> {
       text: SharedData.getData(key: StringCache.userPhone));
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Color buttonColor = ColorManager.blue;
+  late EditProfileCubit viewModel;
+
+  @override
+  void initState() {
+    viewModel = getIt.get<EditProfileCubit>();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: AppPadding.p8,
-                  left: AppPadding.p16,
-                  right: AppPadding.p16),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    const CustomAppBar(
-                        title: AppStrings.profile,
-                        color: ColorManager.black,
-                        onTap: null),
-                    const SizedBox(height: AppSize.s24),
-                    const CustomCircleAvatar(),
-                    const SizedBox(height: AppSize.s24),
-                    CustomTextFormField(
-                      controller: _userNameController,
-                      labelText: AppStrings.userName,
-                      hintText: AppStrings.enterYourUserName,
-                      obscureText: false,
-                      validator: (value) => validateNotEmpty(
-                          value, AppStrings.enterValidUserName),
-                    ),
-                    const SizedBox(height: AppSize.s24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: context.screenWidth /
-                              AppConstants.screenWidthRatio,
-                          child: CustomTextFormField(
-                            controller: _firstNameController,
-                            labelText: AppStrings.firstName,
-                            hintText: AppStrings.enterYourFirstName,
-                            obscureText: false,
-                            validator: (value) => validateNotEmpty(
-                                value, AppStrings.entervalidfirstName),
-                          ),
-                        ),
-                        SizedBox(
-                          width: context.screenWidth /
-                              AppConstants.screenWidthRatio,
-                          child: CustomTextFormField(
-                            controller: _lastNameController,
-                            labelText: AppStrings.lastName,
-                            hintText: AppStrings.enterYourLastName,
-                            obscureText: false,
-                            validator: (value) => validateNotEmpty(
-                                value, AppStrings.entervalidLastName),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppSize.s24),
-                    CustomTextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      controller: _emailController,
-                      labelText: AppStrings.email,
-                      hintText: AppStrings.enterYourEmail,
-                      obscureText: false,
-                      validator: (value) =>
-                          validateNotEmpty(value, AppStrings.enterValidEmail),
-                    ),
-                    const SizedBox(height: AppSize.s24),
-                    CustomTextFormField(
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.only(left: AppPadding.p16),
-                        child: SvgPicture.asset('assets/images/password.svg'),
+    return BlocProvider(
+      create: (context) => viewModel,
+      child: SafeArea(
+        child: Scaffold(
+          body: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: AppPadding.p8,
+                    left: AppPadding.p16,
+                    right: AppPadding.p16),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      const CustomAppBar(
+                          title: AppStrings.profile,
+                          color: ColorManager.black,
+                          onTap: null),
+                      const SizedBox(height: AppSize.s24),
+                      const CustomCircleAvatar(),
+                      const SizedBox(height: AppSize.s24),
+                      CustomTextFormField(
+                        controller: _userNameController,
+                        labelText: AppStrings.userName,
+                        hintText: AppStrings.enterYourUserName,
+                        obscureText: false,
+                        validator: (value) => validateNotEmpty(
+                            value, AppStrings.enterValidUserName),
                       ),
-                      enabled: true,
-                      // keyboardType: TextInputType.visiblePassword,
-                      controller: _passwordController,
-                      labelText: AppStrings.password,
-                      // hintText: AppStrings.enterYourPassword,
-                      // obscureText: true,
-                      suffix: InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(
-                              context, RoutesManager.changePasswordRoute);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(right: AppPadding.p16),
-                          child: Text(
-                            AppStrings.change,
-                            style: TextStyle(
-                              color: ColorManager.blue,
-                              fontSize: FontSize.s14,
-                              fontWeight: FontWeightManager.semiBold,
+                      const SizedBox(height: AppSize.s24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: context.screenWidth /
+                                AppConstants.screenWidthRatio,
+                            child: CustomTextFormField(
+                              controller: _firstNameController,
+                              labelText: AppStrings.firstName,
+                              hintText: AppStrings.enterYourFirstName,
+                              obscureText: false,
+                              validator: (value) => validateNotEmpty(
+                                  value, AppStrings.entervalidfirstName),
+                            ),
+                          ),
+                          SizedBox(
+                            width: context.screenWidth /
+                                AppConstants.screenWidthRatio,
+                            child: CustomTextFormField(
+                              controller: _lastNameController,
+                              labelText: AppStrings.lastName,
+                              hintText: AppStrings.enterYourLastName,
+                              obscureText: false,
+                              validator: (value) => validateNotEmpty(
+                                  value, AppStrings.entervalidLastName),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: AppSize.s24),
+                      CustomTextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: _emailController,
+                        labelText: AppStrings.email,
+                        hintText: AppStrings.enterYourEmail,
+                        obscureText: false,
+                        validator: (value) =>
+                            validateNotEmpty(value, AppStrings.enterValidEmail),
+                      ),
+                      const SizedBox(height: AppSize.s24),
+                      CustomTextFormField(
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(left: AppPadding.p16),
+                          child: SvgPicture.asset('assets/images/password.svg'),
+                        ),
+                        enabled: true,
+                        // keyboardType: TextInputType.visiblePassword,
+                        controller: _passwordController,
+                        labelText: AppStrings.password,
+                        // hintText: AppStrings.enterYourPassword,
+                        // obscureText: true,
+                        suffix: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, RoutesManager.changePasswordRoute);
+                          },
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(right: AppPadding.p16),
+                            child: Text(
+                              AppStrings.change,
+                              style: TextStyle(
+                                color: ColorManager.blue,
+                                fontSize: FontSize.s14,
+                                fontWeight: FontWeightManager.semiBold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: AppSize.s24),
-                    CustomTextFormField(
-                      keyboardType: TextInputType.phone,
-                      controller: _phoneController,
-                      labelText: AppStrings.phoneNumber,
-                      hintText: AppStrings.enterPhoneNumber,
-                      obscureText: false,
-                      validator: (value) => validateNotEmpty(
-                          value, AppStrings.enterValidPhoneNumber),
-                    ),
-                    const SizedBox(height: AppSize.s48),
-                    CustomElevatedButton(
-                      buttonColor: buttonColor,
-                      title: AppStrings.update,
-                      onPressed: () {
-                        validationMethod(
-                          actionPress: () {},
-                          updateButtonColor: (Color color) {
-                            setState(() {
-                              buttonColor = color;
-                            });
-                          },
-                          formKey: _formKey,
-                        );
-                      },
-                    )
-                  ],
+                      const SizedBox(height: AppSize.s24),
+                      CustomTextFormField(
+                        keyboardType: TextInputType.phone,
+                        controller: _phoneController,
+                        labelText: AppStrings.phoneNumber,
+                        hintText: AppStrings.enterPhoneNumber,
+                        obscureText: false,
+                        validator: (value) => validateNotEmpty(
+                            value, AppStrings.enterValidPhoneNumber),
+                      ),
+                      const SizedBox(height: AppSize.s48),
+                      BlocConsumer<EditProfileCubit, EditProfileState>(
+                        listener: (context, state) {
+                          if (state is EditProfileSuccess) {
+                            showAwesomeDialog(
+                              context: context,
+                              message: "profile updated successfully",
+                              dialogType: DialogType.success,
+                              onOkPressed: () {},
+                              btnOkColor: ColorManager.green,
+                            );
+                          } else if (state is EditProfileFail) {
+                            showAwesomeDialog(
+                              context: context,
+                              message: state.exception.toString(),
+                              dialogType: DialogType.error,
+                              onOkPressed: () {},
+                              btnOkColor: ColorManager.error,
+                            );
+                          }
+                        },
+                        builder: (context, state) {
+                          return CustomElevatedButton(
+                            buttonColor: buttonColor,
+                            title: AppStrings.update,
+                            onPressed: () {
+                              validationMethod(
+                                actionPress: () {
+                                  viewModel.editProfile(
+                                    username: _userNameController.text,
+                                    firstName: _firstNameController.text,
+                                    lastName: _lastNameController.text,
+                                    email: _emailController.text,
+                                    phone: _phoneController.text,
+                                  );
+                                },
+                                updateButtonColor: (Color color) {
+                                  setState(() {
+                                    buttonColor = color;
+                                  });
+                                },
+                                formKey: _formKey,
+                              );
+                            },
+                          );
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/Features/profile/data/models/ChangePasswordModel.dart';
-
+import 'package:online_exam_app/Features/profile/data/models/edit_profile_model.dart';
 import '../../Features/Auth/data/model/forgot_password_model.dart';
 import '../../Features/Auth/data/model/reset_password_model.dart';
 import '../../Features/Auth/data/model/response/auth_response.dart';
 import '../../Features/Auth/data/model/verify_code_model.dart';
-import '../utils/cash_data.dart';
 import 'api_constants.dart';
 
 @singleton
@@ -84,5 +83,21 @@ class ApiManager {
 
     var changePasswordResponse = ChangePasswordModel.fromJson(response.data);
     return changePasswordResponse;
+  }
+
+  Future<EditProfileModel> editProfile(String username, String firstName,
+      String lastName, String email, String phone, String token) async {
+    var tokenHeader = {"token": token};
+    var response = await _dio.put(ApiConstants.editProfile,
+        data: {
+          "username": username,
+          "firstName": firstName,
+          "lastName": lastName,
+          "email": email,
+          "phone": phone
+        },
+        options: Options(method: 'PUT', headers: tokenHeader));
+    var editProfileResponse = EditProfileModel.fromJson(response.data);
+    return editProfileResponse;
   }
 }
