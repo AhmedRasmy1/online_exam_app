@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
+import '../../domain/common/coustom_execption.dart';
 
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';

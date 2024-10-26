@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
+import '../../../../Auth/domain/common/api_result.dart';
 
-import 'package:online_exam_app/Features/profile/domain/entities/edit_profile_entity.dart';
-import 'package:online_exam_app/Features/profile/domain/use_cases/edit_profile_use_case.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
+import '../../../domain/entities/edit_profile_entity.dart';
+import '../../../domain/use_cases/edit_profile_use_case.dart';
+import '../../../../../core/utils/cash_data.dart';
 
 part 'edit_profile_state.dart';
 
@@ -25,14 +25,6 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     required String phone,
   }) async {
     String token = SharedData.getData(key: StringCache.userToken) ?? '';
-
-    print('Requesting to edit profile with data: ${{
-      "username": username,
-      "firstName": firstName,
-      "lastName": lastName,
-      "email": email,
-      "phone": phone,
-    }} and token: $token');
 
     var result = await _editProfileUseCase.editProfile(
       username: username,

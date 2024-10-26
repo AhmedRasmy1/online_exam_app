@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
-import 'package:online_exam_app/Features/profile/data/models/ChangePasswordModel.dart';
-import 'package:online_exam_app/Features/profile/data/models/edit_profile_model.dart';
+import '../../Features/Auth/domain/common/coustom_execption.dart';
+import '../../Features/profile/data/models/change_password_model.dart';
+import '../../Features/profile/data/models/edit_profile_model.dart';
 import '../../Features/Auth/data/model/forgot_password_model.dart';
 import '../../Features/Auth/data/model/reset_password_model.dart';
 import '../../Features/Auth/data/model/response/auth_response.dart';
@@ -17,15 +17,20 @@ class ApiManager {
     _dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
   }
 
+  Exception handleDioError(DioException e) {
+    return ServerError(
+      e.response?.statusCode,
+      e.response?.data['message'] ?? 'Unknown Error',
+    );
+  }
+
   Future<AuthResponse> login(String email, String password) async {
     try {
       var response = await _dio.post(ApiConstants.signInUrl,
           data: {"email": email, "password": password});
-      var authResponse = AuthResponse.fromJson(response.data);
-      return authResponse;
+      return AuthResponse.fromJson(response.data);
     } on DioException catch (e) {
-      throw ServerError(e.response?.statusCode,
-          e.response?.data['message'] ?? 'Unknown Error');
+      throw handleDioError(e);
     }
   }
 
@@ -47,11 +52,9 @@ class ApiManager {
         "rePassword": rePassword,
         "phone": phone
       });
-      var authResponse = AuthResponse.fromJson(response.data);
-      return authResponse;
+      return AuthResponse.fromJson(response.data);
     } on DioException catch (e) {
-      throw ServerError(e.response?.statusCode,
-          e.response?.data['message'] ?? 'Unknown Error');
+      throw handleDioError(e);
     }
   }
 
@@ -59,19 +62,16 @@ class ApiManager {
     try {
       var response =
           await _dio.post(ApiConstants.forgotPassword, data: {"email": email});
-      var forgotPasswordResponse = ForgotPasswordModel.fromJson(response.data);
-      return forgotPasswordResponse;
+      return ForgotPasswordModel.fromJson(response.data);
     } on DioException catch (e) {
-      throw ServerError(e.response?.statusCode,
-          e.response?.data['message'] ?? "Unknown Error");
+      throw handleDioError(e);
     }
   }
 
   Future<VerifyCodeModel> verifyCode(String resetCode) async {
     var response = await _dio
         .post(ApiConstants.verifyCodeApi, data: {"resetCode": resetCode});
-    var verifyCodedResponse = VerifyCodeModel.fromJson(response.data);
-    return verifyCodedResponse;
+    return VerifyCodeModel.fromJson(response.data);
   }
 
   Future<ResetPasswordModel> resetPassword(
@@ -80,9 +80,7 @@ class ApiManager {
   ) async {
     var response = await _dio.put(ApiConstants.resetPassword,
         data: {"email": email, "newPassword": newPassword});
-    var resetPasswordResponse = ResetPasswordModel.fromJson(response.data);
-
-    return resetPasswordResponse;
+    return ResetPasswordModel.fromJson(response.data);
   }
 
   Future<ChangePasswordModel> changePassword(String oldPassword,
@@ -96,12 +94,9 @@ class ApiManager {
             "rePassword": rePassword
           },
           options: Options(method: 'PATCH', headers: tokenHeader));
-
-      var changePasswordResponse = ChangePasswordModel.fromJson(response.data);
-      return changePasswordResponse;
+      return ChangePasswordModel.fromJson(response.data);
     } on DioException catch (e) {
-      throw ServerError(e.response?.statusCode,
-          e.response?.data['message'] ?? "Unknown Error");
+      throw handleDioError(e);
     }
   }
 
@@ -118,11 +113,9 @@ class ApiManager {
             "phone": phone
           },
           options: Options(method: 'PUT', headers: tokenHeader));
-      var editProfileResponse = EditProfileModel.fromJson(response.data);
-      return editProfileResponse;
+      return EditProfileModel.fromJson(response.data);
     } on DioException catch (e) {
-      throw ServerError(e.response?.statusCode,
-          e.response?.data['message'] ?? "Unknown Error");
+      throw handleDioError(e);
     }
   }
 }

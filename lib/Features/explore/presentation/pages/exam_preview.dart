@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/font_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
-import 'package:online_exam_app/core/widgets/custom_app_bar.dart';
-import 'package:online_exam_app/core/widgets/custom_elevated_button.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/font_manager.dart';
+import '../../../../core/resources/values_manager.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
 
 class ExamPreview extends StatelessWidget {
   const ExamPreview({super.key});

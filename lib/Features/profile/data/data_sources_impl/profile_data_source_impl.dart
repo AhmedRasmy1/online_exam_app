@@ -1,10 +1,10 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
-import 'package:online_exam_app/Features/profile/data/data_sources/profile_data_sources.dart';
-import 'package:online_exam_app/Features/profile/domain/entities/ChangePasswordEntitie.dart';
-import 'package:online_exam_app/Features/profile/domain/entities/edit_profile_entity.dart';
-import 'package:online_exam_app/core/api/api_extentions.dart';
-import 'package:online_exam_app/core/api/api_manager.dart';
+import '../../../Auth/domain/common/api_result.dart';
+import '../data_sources/profile_data_sources.dart';
+import '../../domain/entities/change_password_entity.dart';
+import '../../domain/entities/edit_profile_entity.dart';
+import '../../../../core/api/api_extentions.dart';
+import '../../../../core/api/api_manager.dart';
 
 @Injectable(as: ProfileDataSources)
 class ProfileDataSourceImpl implements ProfileDataSources {

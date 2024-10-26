@@ -1,11 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
-import 'package:online_exam_app/Features/profile/domain/entities/ChangePasswordEntitie.dart';
-import 'package:online_exam_app/Features/profile/domain/use_cases/change_password_use_case.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
-
+import '../../../../Auth/domain/common/api_result.dart';
+import '../../../domain/entities/change_password_entity.dart';
+import '../../../domain/use_cases/change_password_use_case.dart';
+import '../../../../../core/utils/cash_data.dart';
 part 'change_password_state.dart';
 
 @injectable
@@ -19,7 +18,7 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
       required String newPassword,
       required String rePassword}) async {
     String token = SharedData.getData(key: StringCache.userToken) ?? '';
-    print('token ===================$token');
+
     var result = await _changePasswordUseCase.changePassword(
         oldPassword: oldPassword,
         newPassword: newPassword,

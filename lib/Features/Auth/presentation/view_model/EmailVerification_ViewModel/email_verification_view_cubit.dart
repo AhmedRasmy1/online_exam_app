@@ -13,18 +13,14 @@ class VerifyCodeViewModel extends Cubit<VerifyCodeState> {
 
   void verifyCode({required String code}) async {
     var result = await _verifyCodeUseCase.verifyCode(code);
-    print("${result.toString()}-----------------");
+
     switch (result) {
       case Success<VerifyCodeEntities?>():
         {
-          print("success==============");
-
           emit(VerifyCodeSuccess(result.data));
         }
       case Fail<VerifyCodeEntities?>():
         {
-          print("Fail==============");
-
           emit(VerifyCodeError(result.exception));
         }
     }

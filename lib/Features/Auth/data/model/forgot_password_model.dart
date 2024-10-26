@@ -1,8 +1,5 @@
 import '../../domain/entities/forgot_password_entities.dart';
 
-/// message : "success"
-/// info : "OTP sent to your email"
-
 class ForgotPasswordModel {
   ForgotPasswordModel({
     this.message,

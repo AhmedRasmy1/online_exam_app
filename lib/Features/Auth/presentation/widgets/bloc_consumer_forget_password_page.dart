@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
+import '../../domain/common/coustom_execption.dart';
 import '../view_model/ForgetPasswordPage_viewModel/forget_password_view_cubit.dart';
 import '../view_model/ForgetPasswordPage_viewModel/forget_password_view_state.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';

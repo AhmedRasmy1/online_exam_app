@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/core/resources/assets_manager.dart';
-import 'package:online_exam_app/core/resources/strings_manager.dart';
+import '../../../../core/resources/assets_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 

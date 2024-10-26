@@ -1,20 +1,18 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
-import 'package:online_exam_app/Features/profile/presentation/view_model/change_password_view_model/change_password_cubit.dart';
-import 'package:online_exam_app/core/functions/form_helpers.dart';
-import 'package:online_exam_app/core/resources/color_manager.dart';
-import 'package:online_exam_app/core/resources/routes_manager.dart';
-import 'package:online_exam_app/core/resources/strings_manager.dart';
-import 'package:online_exam_app/core/resources/values_manager.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
-import 'package:online_exam_app/core/widgets/custom_app_bar.dart';
-import 'package:online_exam_app/core/widgets/custom_elevated_button.dart';
-import 'package:online_exam_app/core/widgets/custom_text_form_field.dart';
-import 'package:online_exam_app/di/di.dart';
-
-import '../../../../core/utils/uitlss.dart';
+import '../../../Auth/domain/common/coustom_execption.dart';
+import '../view_model/change_password_view_model/change_password_cubit.dart';
+import '../../../../core/functions/form_helpers.dart';
+import '../../../../core/resources/color_manager.dart';
+import '../../../../core/resources/routes_manager.dart';
+import '../../../../core/resources/strings_manager.dart';
+import '../../../../core/resources/values_manager.dart';
+import '../../../../core/utils/cash_data.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_elevated_button.dart';
+import '../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../di/di.dart';
 
 class ChangePasswordView extends StatefulWidget {
   const ChangePasswordView({super.key});

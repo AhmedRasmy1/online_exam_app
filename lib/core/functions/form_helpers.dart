@@ -2,7 +2,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../resources/values_manager.dart';
-
 import '../resources/color_manager.dart';
 
 String? validateNotEmpty(String? value, String messageEmpty,

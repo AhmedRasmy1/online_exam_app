@@ -1,4 +1,4 @@
-import 'package:online_exam_app/Features/profile/domain/entities/edit_profile_entity.dart';
+import '../../domain/entities/edit_profile_entity.dart';
 
 class EditProfileModel {
   String? id;
