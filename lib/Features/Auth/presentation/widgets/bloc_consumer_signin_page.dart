@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
 
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -52,10 +53,16 @@ class BlocConsumerForSignupPage extends StatelessWidget {
           );
         }
         if (state is ErrorRigesterState) {
-          // var message = extractErrorMessage(state.exception); // todo message
+          String message;
+          if (state.exception is ServerError) {
+            message = (state.exception as ServerError).serverMessage ??
+                AppStrings.somethingWentWrong;
+          } else {
+            message = AppStrings.somethingWentWrong;
+          }
           showAwesomeDialog(
             context: context,
-            message: AppStrings.somethingWentWrong,
+            message: message,
             dialogType: DialogType.error,
             onOkPressed: () {},
             btnOkColor: ColorManager.error,

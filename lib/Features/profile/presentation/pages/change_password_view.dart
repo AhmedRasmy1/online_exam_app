@@ -1,9 +1,11 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
 import 'package:online_exam_app/Features/profile/presentation/view_model/change_password_view_model/change_password_cubit.dart';
 import 'package:online_exam_app/core/functions/form_helpers.dart';
 import 'package:online_exam_app/core/resources/color_manager.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
 import 'package:online_exam_app/core/resources/strings_manager.dart';
 import 'package:online_exam_app/core/resources/values_manager.dart';
 import 'package:online_exam_app/core/utils/cash_data.dart';
@@ -68,10 +70,9 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                     hintText: AppStrings.enterYourPassword,
                     obscureText: isPasswordHidden1,
                     validator: (value) => validateNotEmpty(
-                        value,
-                        AppStrings.enterValidPassword,
-                        AppStrings.passwordLengthError,
-                        AppStrings.passwordFormatError),
+                      value,
+                      AppStrings.enterValidPassword,
+                    ),
                     suffix: passwordHidden(
                         isPasswordHidden: isPasswordHidden1,
                         onPressed: () {
@@ -131,11 +132,17 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
                         );
                       }
                       if (state is ChangePasswordFail) {
-                        var message = extractErrorMessage(state.exception);
+                        String message;
+                        if (state.exception is ServerError) {
+                          message =
+                              (state.exception as ServerError).serverMessage ??
+                                  AppStrings.somethingWentWrong;
+                        } else {
+                          message = AppStrings.somethingWentWrong;
+                        }
                         showAwesomeDialog(
                           context: context,
                           message: message,
-                          //todo message
                           dialogType: DialogType.error,
                           onOkPressed: () {},
                           btnOkColor: ColorManager.error,
@@ -148,11 +155,11 @@ class _ChangePasswordViewState extends State<ChangePasswordView> {
 
                         showAwesomeDialog(
                           context: context,
-                          message: AppStrings.successfullyLogin,
+                          message: 'Password Changed Successfully',
                           dialogType: DialogType.success,
                           onOkPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
+                            Navigator.pushNamed(
+                                context, RoutesManager.loginRoute);
                           },
                           btnOkColor: ColorManager.green,
                         );

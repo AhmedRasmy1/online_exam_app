@@ -21,13 +21,9 @@ class RigesterViewModel extends Cubit<RigesterScreenState> {
         username, firstName, lastName, email, password, rePassword, phone);
     switch (result) {
       case Success<User?>():
-        {
-          emit(SuccessRigesterState(result.data));
-        }
+        emit(SuccessRigesterState(result.data));
       case Fail<User?>():
-        {
-          emit(ErrorRigesterState(result.exception));
-        }
+        emit(ErrorRigesterState(result.exception));
     }
   }
 }

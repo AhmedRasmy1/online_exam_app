@@ -78,9 +78,10 @@ void showAwesomeDialog({
     dialogType: dialogType,
     body: Center(
       child: Text(
+        textAlign: TextAlign.center,
         message,
         style: const TextStyle(
-          fontStyle: FontStyle.italic,
+          fontStyle: FontStyle.normal,
           fontWeight: FontWeight.bold,
         ),
       ),

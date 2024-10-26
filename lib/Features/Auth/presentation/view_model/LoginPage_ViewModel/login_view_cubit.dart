@@ -19,7 +19,6 @@ class LoginViewModel extends Cubit<LoginScreenState> {
           await Future.wait([
             SharedData.setData(
                 key: StringCache.userEmail, value: result.data?.email),
-            //  SharedData.setData(key: StringCache.isActiveRemember, value: result.data?.email),
             SharedData.setData(
                 key: StringCache.userLastName, value: result.data?.lastName),
             SharedData.setData(

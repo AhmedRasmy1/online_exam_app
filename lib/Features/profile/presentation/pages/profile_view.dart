@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
 import 'package:online_exam_app/Features/profile/presentation/view_model/edit_profile_view_model/edit_profile_cubit.dart';
 import 'package:online_exam_app/core/resources/routes_manager.dart';
 import 'package:online_exam_app/di/di.dart';
@@ -172,9 +173,17 @@ class _ProfileViewState extends State<ProfileView> {
                               btnOkColor: ColorManager.green,
                             );
                           } else if (state is EditProfileFail) {
+                            String message;
+                            if (state.exception is ServerError) {
+                              message = (state.exception as ServerError)
+                                      .serverMessage ??
+                                  AppStrings.somethingWentWrong;
+                            } else {
+                              message = AppStrings.somethingWentWrong;
+                            }
                             showAwesomeDialog(
                               context: context,
-                              message: state.exception.toString(),
+                              message: message,
                               dialogType: DialogType.error,
                               onOkPressed: () {},
                               btnOkColor: ColorManager.error,

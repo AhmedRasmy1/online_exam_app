@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
 
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
@@ -43,10 +44,16 @@ class BlocConsumerForLoginPage extends StatelessWidget {
           );
         }
         if (state is ErrorState) {
-          // var message = extractErrorMessage(state.exception);
+          String message;
+          if (state.exception is ServerError) {
+            message = (state.exception as ServerError).serverMessage ??
+                AppStrings.somethingWentWrong;
+          } else {
+            message = AppStrings.somethingWentWrong;
+          }
           showAwesomeDialog(
             context: context,
-            message: AppStrings.invalidEmailOrPassword, //todo message
+            message: message, //todo message
             dialogType: DialogType.error,
             onOkPressed: () {},
             btnOkColor: ColorManager.error,

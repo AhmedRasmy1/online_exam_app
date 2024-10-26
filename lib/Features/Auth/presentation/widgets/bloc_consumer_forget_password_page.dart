@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/Features/Auth/domain/common/coustom_execption.dart';
 import '../view_model/ForgetPasswordPage_viewModel/forget_password_view_cubit.dart';
 import '../view_model/ForgetPasswordPage_viewModel/forget_password_view_state.dart';
 import '../../../../core/widgets/custom_elevated_button.dart';
@@ -36,10 +37,16 @@ class BlocConsumerForForgetPasswordPage extends StatelessWidget {
           );
         }
         if (state is ErrorState) {
-          // var message = extractErrorMessage(state.exception); //todo message
+          String message;
+          if (state.exception is ServerError) {
+            message = (state.exception as ServerError).serverMessage ??
+                AppStrings.somethingWentWrong;
+          } else {
+            message = AppStrings.somethingWentWrong;
+          }
           showAwesomeDialog(
             context: context,
-            message: AppStrings.enterValidEmail,
+            message: message,
             dialogType: DialogType.error,
             onOkPressed: () {},
             btnOkColor: ColorManager.error,
