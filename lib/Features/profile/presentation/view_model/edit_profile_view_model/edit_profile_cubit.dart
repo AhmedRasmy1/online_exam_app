@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import '../../../../Auth/domain/common/api_result.dart';
+import '../../../../../core/common/api_result.dart';
 
 import '../../../domain/entities/edit_profile_entity.dart';
 import '../../../domain/use_cases/edit_profile_use_case.dart';

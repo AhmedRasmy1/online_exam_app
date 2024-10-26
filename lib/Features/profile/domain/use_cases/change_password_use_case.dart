@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import '../../../Auth/domain/common/api_result.dart';
+import '../../../../core/common/api_result.dart';
 import '../entities/change_password_entity.dart';
 import '../repositories/profile_repo.dart';
 

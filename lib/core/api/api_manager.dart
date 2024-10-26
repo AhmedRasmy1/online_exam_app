@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import '../../Features/Auth/domain/common/coustom_execption.dart';
+import '../common/coustom_execption.dart';
 import '../../Features/profile/data/models/change_password_model.dart';
 import '../../Features/profile/data/models/edit_profile_model.dart';
 import '../../Features/Auth/data/model/forgot_password_model.dart';

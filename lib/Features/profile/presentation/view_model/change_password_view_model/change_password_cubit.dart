@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import '../../../../Auth/domain/common/api_result.dart';
+import '../../../../../core/common/api_result.dart';
 import '../../../domain/entities/change_password_entity.dart';
 import '../../../domain/use_cases/change_password_use_case.dart';
 import '../../../../../core/utils/cash_data.dart';

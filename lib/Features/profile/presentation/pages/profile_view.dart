@@ -2,7 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../Auth/domain/common/coustom_execption.dart';
+import '../../../../core/common/coustom_execption.dart';
 import '../view_model/edit_profile_view_model/edit_profile_cubit.dart';
 import '../../../../core/resources/routes_manager.dart';
 import '../../../../di/di.dart';

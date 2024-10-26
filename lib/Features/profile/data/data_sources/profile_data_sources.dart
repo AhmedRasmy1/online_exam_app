@@ -1,4 +1,4 @@
-import '../../../Auth/domain/common/api_result.dart';
+import '../../../../core/common/api_result.dart';
 import '../../domain/entities/change_password_entity.dart';
 import '../../domain/entities/edit_profile_entity.dart';
 

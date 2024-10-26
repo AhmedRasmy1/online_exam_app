@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import '../../domain/common/api_result.dart';
+import '../../../../core/common/api_result.dart';
 import '../../domain/entities/user.dart';
 
 import '../data_sources/auth_offline_datasource.dart';

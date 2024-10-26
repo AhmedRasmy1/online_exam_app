@@ -1,4 +1,4 @@
-import '../common/api_result.dart';
+import '../../../../core/common/api_result.dart';
 import '../entities/forgot_password_entities.dart';
 import '../entities/user.dart';
 import '../entities/reset_password_entities.dart';

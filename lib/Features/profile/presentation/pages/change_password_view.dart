@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../Auth/domain/common/coustom_execption.dart';
+import '../../../../core/common/coustom_execption.dart';
 import '../view_model/change_password_view_model/change_password_cubit.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';

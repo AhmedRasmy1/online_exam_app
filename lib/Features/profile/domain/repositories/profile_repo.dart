@@ -1,6 +1,6 @@
 import '../entities/edit_profile_entity.dart';
 
-import '../../../Auth/domain/common/api_result.dart';
+import '../../../../core/common/api_result.dart';
 import '../entities/change_password_entity.dart';
 
 abstract class ProfileRepo {
