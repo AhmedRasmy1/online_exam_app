@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import '../../domain/entities/subjects_entity.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
 import '../../../../core/resources/values_manager.dart';
@@ -11,6 +11,8 @@ class ExamPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SubjectEntity subject =
+        ModalRoute.of(context)!.settings.arguments as SubjectEntity;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -30,10 +32,14 @@ class ExamPreview extends StatelessWidget {
               const SizedBox(height: AppSize.s24),
               Row(
                 children: [
-                  SvgPicture.asset('assets/images/test.svg'),
+                  Image.network(
+                    subject.icon,
+                    width: 70,
+                    height: 70,
+                  ),
                   const SizedBox(width: AppSize.s8),
                   Text(
-                    'Languages',
+                    subject.name,
                     style: TextStyle(
                       fontSize: FontSize.s22,
                       color: ColorManager.black,

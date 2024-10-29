@@ -47,7 +47,8 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => const SubjectDetails(), settings: settings);
       case RoutesManager.examPreviewRoute:
-        return MaterialPageRoute(builder: (_) => const ExamPreview());
+        return MaterialPageRoute(
+            builder: (_) => const ExamPreview(), settings: settings);
       default:
         return unDefinedRoute();
     }

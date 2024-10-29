@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/explore/data/data_sources/subjects_source.dart';
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
-import 'package:online_exam_app/Features/explore/domain/repositores/subjects_repo.dart';
-import 'package:online_exam_app/core/common/api_result.dart';
+import '../data_sources/subjects_source.dart';
+import '../../domain/entities/subjects_entity.dart';
+import '../../domain/repositores/subjects_repo.dart';
+import '../../../../core/common/api_result.dart';
 
 @Injectable(as: SubjectsRepo)
 class SubjectsRepoImpl implements SubjectsRepo {

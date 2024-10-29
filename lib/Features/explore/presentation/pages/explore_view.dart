@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/explore/presentation/view_molde/subjects_view_model/subjects_cubit.dart';
-import 'package:online_exam_app/di/di.dart';
+import '../view_molde/subjects_view_model/subjects_cubit.dart';
+import '../../../../di/di.dart';
 import '../widgets/custom_container.dart';
 import '../widgets/custom_search_field.dart';
 import '../../../../core/resources/color_manager.dart';

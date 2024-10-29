@@ -2,10 +2,10 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
-import 'package:online_exam_app/Features/explore/domain/use_cases/subjects_use_case.dart';
-import 'package:online_exam_app/core/common/api_result.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
+import '../../../domain/entities/subjects_entity.dart';
+import '../../../domain/use_cases/subjects_use_case.dart';
+import '../../../../../core/common/api_result.dart';
+import '../../../../../core/utils/cash_data.dart';
 part 'subjects_state.dart';
 
 @injectable

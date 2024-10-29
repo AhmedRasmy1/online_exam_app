@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
+import '../../domain/entities/subjects_entity.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -35,14 +35,14 @@ class SubjectDetails extends StatelessWidget {
               const SizedBox(height: AppSize.s32),
               ListView.builder(
                 itemCount: 3,
-                shrinkWrap: true, // يقلل حجم الـ ListView
-                physics:
-                    const NeverScrollableScrollPhysics(), // إلغاء سكرول الـ ListView
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(
-                          context, RoutesManager.examPreviewRoute);
+                          context, RoutesManager.examPreviewRoute,
+                          arguments: subject);
                     },
                     child: Container(
                       margin: const EdgeInsets.only(top: AppMargin.m16),

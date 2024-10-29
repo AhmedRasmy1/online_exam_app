@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
-import 'package:online_exam_app/Features/explore/domain/repositores/subjects_repo.dart';
-import 'package:online_exam_app/core/common/api_result.dart';
+import '../entities/subjects_entity.dart';
+import '../repositores/subjects_repo.dart';
+import '../../../../core/common/api_result.dart';
 
 @injectable
 class SubjectsUseCase {

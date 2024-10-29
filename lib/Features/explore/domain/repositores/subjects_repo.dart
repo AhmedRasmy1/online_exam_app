@@ -1,5 +1,5 @@
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
-import 'package:online_exam_app/core/common/api_result.dart';
+import '../entities/subjects_entity.dart';
+import '../../../../core/common/api_result.dart';
 
 abstract class SubjectsRepo {
   Future<Result<List<SubjectEntity>>> getAllSubjects(String token);

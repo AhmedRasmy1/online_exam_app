@@ -1,4 +1,4 @@
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
+import '../../domain/entities/subjects_entity.dart';
 
 class SubjectModel {
   final String id;

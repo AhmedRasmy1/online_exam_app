@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/explore/data/data_sources/subjects_source.dart';
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
-import 'package:online_exam_app/core/api/api_extentions.dart';
-import 'package:online_exam_app/core/api/api_manager.dart';
-import 'package:online_exam_app/core/common/api_result.dart';
+import '../data_sources/subjects_source.dart';
+import '../../domain/entities/subjects_entity.dart';
+import '../../../../core/api/api_extentions.dart';
+import '../../../../core/api/api_manager.dart';
+import '../../../../core/common/api_result.dart';
 
 @Injectable(as: SubjectsSource)
 class SubjectSourceImpl implements SubjectsSource {
