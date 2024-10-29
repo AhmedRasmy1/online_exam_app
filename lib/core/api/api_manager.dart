@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/explore/data/models/subjects_model.dart';
 import '../common/coustom_execption.dart';
 import '../../Features/profile/data/models/change_password_model.dart';
 import '../../Features/profile/data/models/edit_profile_model.dart';
@@ -118,4 +121,30 @@ class ApiManager {
       throw handleDioError(e);
     }
   }
+
+  Future<List<SubjectModel>> getAllSubjects(String token) async {
+    try {
+      var tokenHeader = {"token": token};
+      var method = 'GET';
+      var response = await _dio.get(ApiConstants.getAllSubjects,
+          options: Options(method: method, headers: tokenHeader));
+      var subjectsList = (response.data['subjects'] as List)
+          .map((subject) => SubjectModel.fromJson(subject))
+          .toList();
+      log('Subjects: $subjectsList'); // for testing
+      return subjectsList;
+    } on DioException catch (e) {
+      throw handleDioError(e);
+    }
+  }
+
+  // Future<AuthResponse> resendCode(String email) async {
+  //   try {
+  //     var response = await _dio.post(ApiConstants.resendCode,
+  //         data: {"email": email});
+  //     return AuthResponse.fromJson(response.data);
+  //   } on DioException catch (e) {
+  //     throw handleDioError(e);
+  //   }
+  // }
 }
