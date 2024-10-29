@@ -16,7 +16,7 @@ class SubjectDetails extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as SubjectEntity;
     return SafeArea(
       child: Scaffold(
-        body: Padding(
+        body: SingleChildScrollView(
           padding: const EdgeInsets.only(
             top: AppPadding.p8,
             left: AppPadding.p16,
@@ -33,96 +33,97 @@ class SubjectDetails extends StatelessWidget {
                 color: ColorManager.black,
               ),
               const SizedBox(height: AppSize.s32),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, RoutesManager.examPreviewRoute);
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.only(top: AppMargin.m16),
-                        padding: const EdgeInsets.symmetric(
-                          vertical: AppPadding.p16,
-                          horizontal: AppPadding.p16,
-                        ),
-                        width: context.screenWidth,
-                        height: context.screenHeight / 7,
-                        decoration: BoxDecoration(
-                          color: ColorManager.white,
-                          borderRadius: BorderRadius.circular(AppSize.s20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: ColorManager.black.withOpacity(0.1),
-                              blurRadius: 10,
-                              spreadRadius: 2,
-                              offset: const Offset(0, 0),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Image.network(
-                              subject.icon,
-                              width: 70,
-                              height: 70,
-                            ),
-                            const SizedBox(width: AppSize.s16),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        "High Level",
-                                        style: TextStyle(
-                                          fontSize: FontSize.s16,
-                                          color: ColorManager.black,
-                                          fontWeight: FontWeightManager.medium,
-                                        ),
-                                      ),
-                                      Text(
-                                        '30 Minutes',
-                                        style: TextStyle(
-                                          fontSize: FontSize.s14,
-                                          color: ColorManager.blue,
-                                          fontWeight: FontWeightManager.regular,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: AppSize.s5),
-                                  Text(
-                                    "20 Question",
-                                    style: TextStyle(
-                                      fontSize: FontSize.s14,
-                                      color: ColorManager.grey,
-                                      fontWeight: FontWeightManager.regular,
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    "From: 1.00   To: 6.00",
-                                    style: TextStyle(
-                                      fontSize: FontSize.s14,
-                                      color: ColorManager.black,
-                                      fontWeight: FontWeightManager.bold,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+              ListView.builder(
+                itemCount: 3,
+                shrinkWrap: true, // يقلل حجم الـ ListView
+                physics:
+                    const NeverScrollableScrollPhysics(), // إلغاء سكرول الـ ListView
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RoutesManager.examPreviewRoute);
+                    },
+                    child: Container(
+                      margin: const EdgeInsets.only(top: AppMargin.m16),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: AppPadding.p16,
+                        horizontal: AppPadding.p16,
                       ),
-                    );
-                  },
-                ),
+                      width: context.screenWidth,
+                      height: context.screenHeight / 7,
+                      decoration: BoxDecoration(
+                        color: ColorManager.white,
+                        borderRadius: BorderRadius.circular(AppSize.s20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: ColorManager.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            spreadRadius: 2,
+                            offset: const Offset(0, 0),
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            subject.icon,
+                            width: 70,
+                            height: 70,
+                          ),
+                          const SizedBox(width: AppSize.s16),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "High Level",
+                                      style: TextStyle(
+                                        fontSize: FontSize.s16,
+                                        color: ColorManager.black,
+                                        fontWeight: FontWeightManager.medium,
+                                      ),
+                                    ),
+                                    Text(
+                                      '30 Minutes',
+                                      style: TextStyle(
+                                        fontSize: FontSize.s14,
+                                        color: ColorManager.blue,
+                                        fontWeight: FontWeightManager.regular,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: AppSize.s5),
+                                Text(
+                                  "20 Question",
+                                  style: TextStyle(
+                                    fontSize: FontSize.s14,
+                                    color: ColorManager.grey,
+                                    fontWeight: FontWeightManager.regular,
+                                  ),
+                                ),
+                                const Spacer(),
+                                Text(
+                                  "From: 1.00   To: 6.00",
+                                  style: TextStyle(
+                                    fontSize: FontSize.s14,
+                                    color: ColorManager.black,
+                                    fontWeight: FontWeightManager.bold,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
               ),
               const SizedBox(height: AppSize.s48),
             ],
