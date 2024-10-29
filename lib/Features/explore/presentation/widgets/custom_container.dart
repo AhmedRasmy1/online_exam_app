@@ -1,51 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../../core/functions/extenstions.dart';
-import '../../../../core/resources/assets_manager.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
-import '../../../../core/resources/strings_manager.dart';
 import '../../../../core/resources/values_manager.dart';
 
 class CustomContainerForSubject extends StatelessWidget {
   const CustomContainerForSubject({
     super.key,
+    required this.iconUrl,
+    required this.title,
   });
-
+  final String iconUrl;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: AppMargin.m16),
-      width: context.screenWidth,
-      height: context.screenHeight / 9.4,
+      margin: const EdgeInsets.symmetric(vertical: AppMargin.m8),
       decoration: BoxDecoration(
         color: ColorManager.white,
-        borderRadius: BorderRadius.circular(AppSize.s20),
+        borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: ColorManager.black.withOpacity(0.1),
-            blurRadius: 10,
+            color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
-            offset: const Offset(0, 0),
+            blurRadius: 5,
+            offset: const Offset(0, 3), // changes position of shadow
           ),
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: AppPadding.p24),
+        padding: const EdgeInsets.all(AppPadding.p16),
         child: Row(
           children: [
-            SvgPicture.asset(
-              ImageAssets.languageTranslator,
-              height: AppSize.s54,
-              width: AppSize.s54,
-            ),
+            Image.network(iconUrl, height: 50, width: 50),
             const SizedBox(width: AppSize.s8),
-            Text(
-              AppStrings.language,
-              style: TextStyle(
-                fontSize: FontSize.s16,
-                color: ColorManager.black,
-                fontWeight: FontWeightManager.medium,
+            Expanded(
+              child: Text(
+                title,
+                style: const TextStyle(
+                  fontSize: FontSize.s16,
+                  color: ColorManager.black,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

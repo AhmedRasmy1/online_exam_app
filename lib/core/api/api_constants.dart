@@ -7,4 +7,5 @@ class ApiConstants {
   static const String resetPassword = "v1/auth/resetPassword";
   static const String changePassword = "v1/auth/changePassword";
   static const String editProfile = "v1/auth/editProfile";
+  static const String getAllSubjects = 'v1/subjects';
 }

@@ -38,6 +38,14 @@ import '../Features/Auth/presentation/view_model/Resetpage_ViewModel/reset_passw
     as _i1;
 import '../Features/Auth/presentation/view_model/SigninPage_ViewModel/signin_view_cubit.dart'
     as _i357;
+import '../Features/explore/data/data_sources/subjects_source.dart' as _i832;
+import '../Features/explore/data/data_sources_impl/subject_source_impl.dart'
+    as _i352;
+import '../Features/explore/data/repository/subjects_repo_impl.dart' as _i366;
+import '../Features/explore/domain/repositores/subjects_repo.dart' as _i21;
+import '../Features/explore/domain/use_cases/subjects_use_case.dart' as _i767;
+import '../Features/explore/presentation/view_molde/subjects_view_model/subjects_cubit.dart'
+    as _i313;
 import '../Features/profile/data/data_sources/profile_data_sources.dart'
     as _i775;
 import '../Features/profile/data/data_sources_impl/profile_data_source_impl.dart'
@@ -71,12 +79,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i102.AuthOnLineDataSourceImpl(gh<_i108.ApiManager>()));
     gh.factory<_i775.ProfileDataSources>(
         () => _i661.ProfileDataSourceImpl(gh<_i108.ApiManager>()));
+    gh.factory<_i832.SubjectsSource>(
+        () => _i352.SubjectSourceImpl(gh<_i108.ApiManager>()));
     gh.factory<_i297.AuthRepo>(() => _i129.AuthRepoImpl(
           gh<_i604.AuthOffLineDataSource>(),
           gh<_i245.AuthOnLineDataSource>(),
         ));
     gh.factory<_i413.ProfileRepo>(
         () => _i1031.ProfileRepoImpl(gh<_i775.ProfileDataSources>()));
+    gh.factory<_i21.SubjectsRepo>(
+        () => _i366.SubjectsRepoImpl(gh<_i832.SubjectsSource>()));
     gh.factory<_i573.ForgotUseCase>(
         () => _i573.ForgotUseCase(gh<_i297.AuthRepo>()));
     gh.factory<_i745.LoginUseCase>(
@@ -91,8 +103,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i4.ForgotPasswordViewModel(gh<_i573.ForgotUseCase>()));
     gh.factory<_i964.LoginViewModel>(
         () => _i964.LoginViewModel(gh<_i745.LoginUseCase>()));
+    gh.factory<_i767.SubjectsUseCase>(
+        () => _i767.SubjectsUseCase(gh<_i21.SubjectsRepo>()));
     gh.factory<_i357.RigesterViewModel>(
         () => _i357.RigesterViewModel(gh<_i1052.RegisterUseCase>()));
+    gh.factory<_i313.SubjectsCubit>(
+        () => _i313.SubjectsCubit(gh<_i767.SubjectsUseCase>()));
     gh.factory<_i396.ChangePasswordUseCase>(
         () => _i396.ChangePasswordUseCase(gh<_i413.ProfileRepo>()));
     gh.factory<_i734.EditProfileUseCase>(
