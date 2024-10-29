@@ -44,7 +44,8 @@ class RouteGenerator {
       case RoutesManager.changePasswordRoute:
         return MaterialPageRoute(builder: (_) => const ChangePasswordView());
       case RoutesManager.subjectsDetailRoute:
-        return MaterialPageRoute(builder: (_) => const SubjectDetails());
+        return MaterialPageRoute(
+            builder: (_) => const SubjectDetails(), settings: settings);
       case RoutesManager.examPreviewRoute:
         return MaterialPageRoute(builder: (_) => const ExamPreview());
       default:

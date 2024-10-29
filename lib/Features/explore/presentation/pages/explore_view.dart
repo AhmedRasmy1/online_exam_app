@@ -76,9 +76,11 @@ class _ExploreViewState extends State<ExploreView> {
                         var subjects = data[index];
                         return GestureDetector(
                           onTap: () {
+                            var subjects = data[index];
                             Navigator.pushNamed(
                               context,
                               RoutesManager.subjectsDetailRoute,
+                              arguments: subjects,
                             );
                           },
                           child: CustomContainerForSubject(

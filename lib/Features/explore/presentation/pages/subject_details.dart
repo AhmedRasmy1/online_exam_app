@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -12,6 +12,8 @@ class SubjectDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SubjectEntity subject =
+        ModalRoute.of(context)!.settings.arguments as SubjectEntity;
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -24,7 +26,7 @@ class SubjectDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(
-                title: "Languages",
+                title: subject.name,
                 onTap: () {
                   Navigator.pop(context);
                 },
@@ -62,10 +64,12 @@ class SubjectDetails extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            SvgPicture.asset(
-                              "assets/images/test.svg",
-                              height: context.screenHeight / 9,
+                            Image.network(
+                              subject.icon,
+                              width: 70,
+                              height: 70,
                             ),
+                            const SizedBox(width: AppSize.s16),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
