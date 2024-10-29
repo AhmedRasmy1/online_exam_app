@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_exam_app/Features/explore/domain/entities/subjects_entity.dart';
 import 'package:online_exam_app/Features/explore/presentation/view_molde/subjects_view_model/subjects_cubit.dart';
-import 'package:online_exam_app/core/common/api_result.dart';
-import 'package:online_exam_app/core/utils/cash_data.dart';
 import 'package:online_exam_app/di/di.dart';
 import '../widgets/custom_container.dart';
 import '../widgets/custom_search_field.dart';
@@ -74,13 +71,15 @@ class _ExploreViewState extends State<ExploreView> {
                     return ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: data!.length,
+                      itemCount: data.length,
                       itemBuilder: (context, index) {
                         var subjects = data[index];
                         return GestureDetector(
                           onTap: () {
                             Navigator.pushNamed(
-                                context, RoutesManager.subjectsDetailRoute);
+                              context,
+                              RoutesManager.subjectsDetailRoute,
+                            );
                           },
                           child: CustomContainerForSubject(
                             iconUrl: subjects!.icon,

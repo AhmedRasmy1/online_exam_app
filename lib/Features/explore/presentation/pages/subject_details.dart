@@ -30,16 +30,7 @@ class SubjectDetails extends StatelessWidget {
                 },
                 color: ColorManager.black,
               ),
-              const SizedBox(height: AppSize.s40),
-              Text(
-                "English",
-                style: TextStyle(
-                  fontSize: FontSize.s18,
-                  color: ColorManager.black,
-                  fontWeight: FontWeightManager.medium,
-                ),
-              ),
-              const SizedBox(height: AppSize.s10),
+              const SizedBox(height: AppSize.s32),
               Expanded(
                 child: ListView.builder(
                   itemCount: 3,

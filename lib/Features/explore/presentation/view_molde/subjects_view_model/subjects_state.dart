@@ -8,7 +8,7 @@ final class SubjectsInitial extends SubjectsState {}
 final class SubjectsLoading extends SubjectsState {}
 
 final class SubjectsSuccess extends SubjectsState {
-  final List<SubjectEntity?>? subjects;
+  final List<SubjectEntity?> subjects;
 
   SubjectsSuccess(this.subjects);
 }
