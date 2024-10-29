@@ -1,9 +1,5 @@
 import '../../../domain/entities/user.dart';
 
-/// message : "success"
-/// token : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MGIzNGJmZTc3ZDY4NTk1YTI5MmI0ZCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzI5NTM5ODAzfQ.OsynMqlXiwJV_HDmczVN7eobIp_1-lU_eBqHlLR4nXc"
-/// user : {"_id":"670b34bfe77d68595a292b4d","username":"svsvsgsgsdvd","firstName":"zcarqfqfqf","lastName":"wfsfsfafwf","email":"05ssvsfsvs@mail.com","phone":"01200361130","role":"user","isVerified":false,"createdAt":"2024-10-13T02:47:27.461Z"}
-
 class AuthResponse {
   String? message;
   String? token;
@@ -30,16 +26,6 @@ class AuthResponse {
     return map;
   }
 }
-
-/// _id : "670b34bfe77d68595a292b4d"
-/// username : "svsvsgsgsdvd"
-/// firstName : "zcarqfqfqf"
-/// lastName : "wfsfsfafwf"
-/// email : "05ssvsfsvs@mail.com"
-/// phone : "01200361130"
-/// role : "user"
-/// isVerified : false
-/// createdAt : "2024-10-13T02:47:27.461Z"
 
 class UserModel {
   UserModel({

@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../domain/common/api_result.dart';
+import '../../../../../core/common/api_result.dart';
 import 'signin_view_state.dart';
 import '../../../domain/entities/user.dart';
 import '../../../domain/use_cases/register_usecase.dart';
@@ -21,13 +21,9 @@ class RigesterViewModel extends Cubit<RigesterScreenState> {
         username, firstName, lastName, email, password, rePassword, phone);
     switch (result) {
       case Success<User?>():
-        {
-          emit(SuccessRigesterState(result.data));
-        }
+        emit(SuccessRigesterState(result.data));
       case Fail<User?>():
-        {
-          emit(ErrorRigesterState(result.exception));
-        }
+        emit(ErrorRigesterState(result.exception));
     }
   }
 }

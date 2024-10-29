@@ -1,7 +1,7 @@
-import 'package:online_exam_app/Features/profile/domain/entities/edit_profile_entity.dart';
+import '../entities/edit_profile_entity.dart';
 
-import '../../../Auth/domain/common/api_result.dart';
-import '../entities/ChangePasswordEntitie.dart';
+import '../../../../core/common/api_result.dart';
+import '../entities/change_password_entity.dart';
 
 abstract class ProfileRepo {
   Future<Result<ChangePasswordEntities>> changePassword(

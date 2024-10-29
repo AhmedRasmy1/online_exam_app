@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../../domain/common/api_result.dart';
-
+import '../../../../../core/common/api_result.dart';
 import '../../../../../core/utils/cash_data.dart';
 import '../../../domain/entities/reset_password_entities.dart';
 import '../../../domain/use_cases/reset_password_usecase.dart';
@@ -23,7 +22,6 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordState> {
         }
       case Fail<ResetPasswordEntities?>():
         {
-          print(result.exception);
           emit(ErrorState(result.exception));
         }
     }

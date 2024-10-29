@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/utils/cash_data.dart';
-import '../../../domain/common/api_result.dart';
+import '../../../../../core/common/api_result.dart';
 import 'login_view_state.dart';
 import '../../../domain/entities/user.dart';
 import '../../../domain/use_cases/login_usecase.dart';
@@ -19,7 +19,6 @@ class LoginViewModel extends Cubit<LoginScreenState> {
           await Future.wait([
             SharedData.setData(
                 key: StringCache.userEmail, value: result.data?.email),
-            //  SharedData.setData(key: StringCache.isActiveRemember, value: result.data?.email),
             SharedData.setData(
                 key: StringCache.userLastName, value: result.data?.lastName),
             SharedData.setData(

@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-// ignore: depend_on_referenced_packages
 import 'package:bloc/bloc.dart';
 
 class MyBlocObserver implements BlocObserver {

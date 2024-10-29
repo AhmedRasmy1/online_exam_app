@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import '../view_model/EmailVerification_ViewModel/email_verification_view_cubit.dart';
 import '../../../../core/functions/extenstions.dart';
 import '../../../../core/resources/color_manager.dart';

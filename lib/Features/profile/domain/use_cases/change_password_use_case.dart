@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:online_exam_app/Features/Auth/domain/common/api_result.dart';
-import 'package:online_exam_app/Features/profile/domain/entities/ChangePasswordEntitie.dart';
-import 'package:online_exam_app/Features/profile/domain/repositories/profile_repo.dart';
+import '../../../../core/common/api_result.dart';
+import '../entities/change_password_entity.dart';
+import '../repositories/profile_repo.dart';
 
 @injectable
 class ChangePasswordUseCase {

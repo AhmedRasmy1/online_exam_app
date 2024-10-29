@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import '../../Features/Auth/domain/common/api_result.dart';
+import '../common/api_result.dart';
 
-import '../../Features/Auth/domain/common/coustom_execption.dart';
+import '../common/coustom_execption.dart';
 
 Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   try {
@@ -13,8 +13,14 @@ Future<Result<T>> executeApi<T>(Future<T> Function() apiCall) async {
   } on TimeoutException catch (_) {
     return Fail(NoInternetError());
   } on DioException catch (ex) {
-    print(ex);
-    return Fail(DioHttpException(ex));
+    if (ex.response != null) {
+      return Fail(ServerError(
+        ex.response?.statusCode,
+        ex.response?.data['message'] ?? "Unexpected error",
+      ));
+    } else {
+      return Fail(DioHttpException(ex));
+    }
   } on IOException catch (_) {
     return Fail(NoInternetError());
   } on Exception catch (ex) {

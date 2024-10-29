@@ -1,7 +1,5 @@
 import 'package:injectable/injectable.dart';
-
-import '../common/api_result.dart';
-
+import '../../../../core/common/api_result.dart';
 import '../entities/verify_code_entitie.dart';
 import '../repositories/auth_repo.dart';
 
