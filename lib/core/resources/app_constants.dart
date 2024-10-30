@@ -12,4 +12,11 @@ class AppConstants {
     ResultView(),
     ProfileView(),
   ];
+
+  static const List<String> examRules = [
+    "Read all questions carefully.",
+    "Manage your time effectively.",
+    "Do not use any external resources.",
+    "Review your answers before submitting."
+  ];
 }

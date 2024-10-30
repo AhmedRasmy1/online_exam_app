@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import '../../Features/explore/data/models/exams_model.dart';
 
 import '../../Features/Auth/data/model/forgot_password_model.dart';
 import '../../Features/Auth/data/model/reset_password_model.dart';
@@ -139,13 +140,19 @@ class ApiManager {
     }
   }
 
-  // Future<AuthResponse> resendCode(String email) async {
-  //   try {
-  //     var response = await _dio.post(ApiConstants.resendCode,
-  //         data: {"email": email});
-  //     return AuthResponse.fromJson(response.data);
-  //   } on DioException catch (e) {
-  //     throw handleDioError(e);
-  //   }
-  // }
+  Future<List<ExamsModel>> getExamById(String id, String token) async {
+    try {
+      var tokenHeader = {"token": token};
+      var method = 'GET';
+      var response = await _dio.get(ApiConstants.getExamById + id,
+          options: Options(method: method, headers: tokenHeader));
+      var examsList = (response.data['exams'] as List)
+          .map((exam) => ExamsModel.fromJson(exam))
+          .toList();
+      log('Exams: $examsList'); // for testing
+      return examsList;
+    } on DioException catch (e) {
+      throw handleDioError(e);
+    }
+  }
 }

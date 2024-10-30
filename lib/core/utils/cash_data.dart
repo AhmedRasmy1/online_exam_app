@@ -51,4 +51,5 @@ class StringCache {
   static const String userName = 'userName';
   static const String userToken = 'userToken';
   static const String userPhone = 'userPhone';
+  static const String examId = 'examId';
 }

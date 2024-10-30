@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/utils/cash_data.dart';
 import '../view_molde/subjects_view_model/subjects_cubit.dart';
 import '../../../../di/di.dart';
 import '../widgets/custom_container.dart';
@@ -82,6 +83,11 @@ class _ExploreViewState extends State<ExploreView> {
                               RoutesManager.subjectsDetailRoute,
                               arguments: subjects,
                             );
+
+                            setState(() {
+                              SharedData.setData(
+                                  key: StringCache.examId, value: subjects!.id);
+                            });
                           },
                           child: CustomContainerForSubject(
                             iconUrl: subjects!.icon,

@@ -10,7 +10,7 @@ part 'subjects_state.dart';
 
 @injectable
 class SubjectsCubit extends Cubit<SubjectsState> {
-  SubjectsUseCase _subjectsUseCase;
+  final SubjectsUseCase _subjectsUseCase;
   SubjectsCubit(this._subjectsUseCase) : super(SubjectsInitial());
 
   Future<void> getAllSubjects() async {
@@ -22,6 +22,7 @@ class SubjectsCubit extends Cubit<SubjectsState> {
     switch (result) {
       case Success<List<SubjectEntity>>():
         {
+          log(result.data.first.id);
           log(result.data.toString());
           emit(SubjectsSuccess(result.data));
         }

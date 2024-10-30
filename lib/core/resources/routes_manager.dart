@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Features/explore/presentation/pages/exam_preview.dart';
-import '../../Features/explore/presentation/pages/subject_details.dart';
+import '../../Features/explore/presentation/pages/exam_details.dart';
 import '../../Features/profile/presentation/pages/change_password_view.dart';
 import '../../Features/Home/presentation/views/home_view.dart';
 

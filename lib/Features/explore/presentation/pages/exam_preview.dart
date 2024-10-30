@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../domain/entities/exams_entity.dart';
+import '../../../../core/resources/app_constants.dart';
 import '../../domain/entities/subjects_entity.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/font_manager.dart';
@@ -11,8 +13,10 @@ class ExamPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SubjectEntity subject =
-        ModalRoute.of(context)!.settings.arguments as SubjectEntity;
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final SubjectEntity subject = arguments['subject'] as SubjectEntity;
+    final ExamsEntity exam = arguments['exam'] as ExamsEntity;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -48,7 +52,7 @@ class ExamPreview extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    '30 Minutes',
+                    "${exam.duration} Minutes",
                     style: TextStyle(
                       fontSize: FontSize.s16,
                       color: ColorManager.blue,
@@ -62,7 +66,7 @@ class ExamPreview extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "High Level",
+                    exam.title,
                     style: TextStyle(
                       fontSize: FontSize.s18,
                       color: ColorManager.black,
@@ -78,7 +82,7 @@ class ExamPreview extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "20 Question",
+                    "${exam.numberOfQuestions} Question",
                     style: TextStyle(
                       fontSize: FontSize.s16,
                       color: ColorManager.grey,
@@ -100,7 +104,7 @@ class ExamPreview extends StatelessWidget {
               ),
               const SizedBox(height: AppSize.s16),
               ListView.builder(
-                itemCount: 4,
+                itemCount: AppConstants.examRules.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
@@ -117,7 +121,7 @@ class ExamPreview extends StatelessWidget {
                       ),
                     ),
                     title: Text(
-                      "Lorem ipsum dolor sit amet consectetur.",
+                      AppConstants.examRules[index],
                       style: TextStyle(
                         fontSize: FontSize.s16,
                         color: ColorManager.grey,
