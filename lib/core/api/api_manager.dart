@@ -1,9 +1,8 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:online_exam_app/Features/questions/data/models/question_model.dart';
 import '../../Features/explore/data/models/exams_model.dart';
-
 import '../../Features/Auth/data/model/forgot_password_model.dart';
 import '../../Features/Auth/data/model/reset_password_model.dart';
 import '../../Features/Auth/data/model/response/auth_response.dart';
@@ -151,6 +150,23 @@ class ApiManager {
           .toList();
       log('Exams: $examsList'); // for testing
       return examsList;
+    } on DioException catch (e) {
+      throw handleDioError(e);
+    }
+  }
+
+//! LOOK HERE MOHAMMED
+  Future<List<QuestionModel>> getQuestionById(String id, String token) async {
+    try {
+      var tokenHeader = {"token": token};
+      var method = 'GET';
+      var response = await _dio.get(ApiConstants.getQuestionById + id,
+          options: Options(method: method, headers: tokenHeader));
+      var questionsList = (response.data['questions'] as List).map((question) {
+        return QuestionModel.fromJson(question);
+      }).toList();
+      log('Questions: $questionsList'); // for testing
+      return questionsList;
     } on DioException catch (e) {
       throw handleDioError(e);
     }

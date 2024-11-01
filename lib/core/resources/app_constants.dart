@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/core/utils/cash_data.dart';
 import '../../Features/explore/presentation/pages/explore_view.dart';
 import '../../Features/profile/presentation/pages/profile_view.dart';
 import '../../Features/result/presentation/pages/result_view.dart';
@@ -19,4 +20,6 @@ class AppConstants {
     "Do not use any external resources.",
     "Review your answers before submitting."
   ];
+  static bool isActive =
+      SharedData.getData(key: StringCache.isActiveRemember) ?? false;
 }

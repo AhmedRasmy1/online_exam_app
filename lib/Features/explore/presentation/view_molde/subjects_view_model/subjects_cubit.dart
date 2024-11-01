@@ -22,7 +22,6 @@ class SubjectsCubit extends Cubit<SubjectsState> {
     switch (result) {
       case Success<List<SubjectEntity>>():
         {
-          log(result.data.first.id);
           log(result.data.toString());
           emit(SubjectsSuccess(result.data));
         }

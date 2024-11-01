@@ -10,7 +10,7 @@ import 'core/utils/my_block_observer.dart';
 import 'di/di.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized(); //! what is this?
+  WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   SharedData.cacheInitialization();
   Bloc.observer = MyBlocObserver();

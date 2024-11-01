@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_exam_app/core/utils/cash_data.dart';
 import '../view_molde/exams_view_model.dart/exams_cubit.dart';
 import '../../../../di/di.dart';
 import '../../domain/entities/subjects_entity.dart';
@@ -95,6 +96,12 @@ class _SubjectDetailsState extends State<SubjectDetails> {
                                     'subject': subject,
                                     'exam': exams,
                                   });
+                              setState(() {
+                                SharedData.setData(
+                                  key: StringCache.questionId,
+                                  value: exams.id,
+                                );
+                              });
                             },
                             child: Container(
                               margin: const EdgeInsets.only(top: AppMargin.m16),

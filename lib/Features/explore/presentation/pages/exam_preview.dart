@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
 import '../../domain/entities/exams_entity.dart';
 import '../../../../core/resources/app_constants.dart';
 import '../../domain/entities/subjects_entity.dart';
@@ -137,7 +138,9 @@ class ExamPreview extends StatelessWidget {
               CustomElevatedButton(
                 buttonColor: ColorManager.blue,
                 title: 'Start Exam',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, RoutesManager.questionsRoute);
+                },
               )
             ],
           ),

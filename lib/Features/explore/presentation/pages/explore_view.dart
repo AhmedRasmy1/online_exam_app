@@ -83,7 +83,6 @@ class _ExploreViewState extends State<ExploreView> {
                               RoutesManager.subjectsDetailRoute,
                               arguments: subjects,
                             );
-
                             setState(() {
                               SharedData.setData(
                                   key: StringCache.examId, value: subjects!.id);
