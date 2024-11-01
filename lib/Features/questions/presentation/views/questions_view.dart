@@ -182,12 +182,38 @@ class _QuestionsViewState extends State<QuestionsView> {
                                   ? (viewModel.singleChoiceAnswers[
                                               viewModel.currentIndex] ==
                                           index
-                                      ? const Color(0xffCCD7EB)
-                                      : const Color(0xffEDEFF3))
-                                  : (viewModel.multiChoiceAnswers[
-                                          viewModel.currentIndex][index]
-                                      ? const Color(0xffCCD7EB)
-                                      : const Color(0xffEDEFF3)),
+                                      ? (questionss.answers[index].key ==
+                                              questionss.correctAnswer
+                                          ? const Color(
+                                              0xffcaf9cc) // Correct answer selected
+                                          : const Color(
+                                              0xfff8d2d2)) // Incorrect answer selected
+                                      : (viewModel.singleChoiceAnswers[
+                                                      viewModel.currentIndex] !=
+                                                  null &&
+                                              questionss.answers[index].key ==
+                                                  questionss.correctAnswer
+                                          ? const Color(
+                                              0xffcaf9cc) // Show correct answer if an incorrect one was selected
+                                          : const Color(
+                                              0xffEDEFF3))) // Default background color
+                                  : (viewModel.multiChoiceAnswers[viewModel.currentIndex]
+                                          [index]
+                                      ? (questionss.answers[index].key ==
+                                              questionss.correctAnswer
+                                          ? Colors
+                                              .green // Correct answer selected in multiple choice
+                                          : Colors
+                                              .red) // Incorrect answer selected in multiple choice
+                                      : (viewModel.multiChoiceAnswers[
+                                                      viewModel.currentIndex]
+                                                  .contains(true) &&
+                                              questionss.answers[index].key ==
+                                                  questionss.correctAnswer
+                                          ? Colors.green // Show correct answer if incorrect answers are selected
+                                          : const Color(0xffEDEFF3))), // Default background color for unselected
+                              // Default background color for unselected
+
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: questionss.type == 'single_choice'
