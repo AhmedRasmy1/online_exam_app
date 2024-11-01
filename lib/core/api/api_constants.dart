@@ -8,4 +8,6 @@ class ApiConstants {
   static const String changePassword = "v1/auth/changePassword";
   static const String editProfile = "v1/auth/editProfile";
   static const String getAllSubjects = 'v1/subjects';
+  static const String getExamById = 'v1/exams?subject=';
+  static const String getQuestionById = 'v1/questions?exam=';
 }

@@ -1,8 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/common/coustom_execption.dart';
+import 'package:online_exam_app/core/resources/app_constants.dart';
 
+import '../../../../core/common/coustom_execption.dart';
 import '../../../../core/functions/form_helpers.dart';
 import '../../../../core/resources/color_manager.dart';
 import '../../../../core/resources/routes_manager.dart';
@@ -60,7 +61,7 @@ class BlocConsumerForLoginPage extends StatelessWidget {
           );
         }
         if (state is SuccessState) {
-          if (SharedData.getData(key: StringCache.isActiveRemember)) {
+          if (AppConstants.isActive) {
             SharedData.setData(
                 key: StringCache.userEmail, value: emailController.text);
             SharedData.setData(
