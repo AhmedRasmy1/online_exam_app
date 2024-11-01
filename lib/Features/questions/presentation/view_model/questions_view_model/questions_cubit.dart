@@ -1,10 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:online_exam_app/Features/questions/domian/entities/question_entity.dart';
 import 'package:online_exam_app/Features/questions/domian/use_cases/question_use_case.dart';
 import 'package:online_exam_app/core/common/api_result.dart';
 import 'package:online_exam_app/core/utils/cash_data.dart';
+import 'package:flutter/material.dart';
+
 part 'questions_state.dart';
 
 @injectable
@@ -13,8 +14,8 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   List<QuestionEntity> questionsList = [];
   int currentIndex = 0;
   List<int?> singleChoiceAnswers = []; // For single-choice answers
-
   List<List<bool>> multiChoiceAnswers = []; // For multiple-choice answers
+  List<Color> answerColors = []; // List to store answer colors
 
   QuestionsCubit(this._questionUseCase) : super(QuestionsInitial());
 
@@ -28,6 +29,8 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       singleChoiceAnswers = List.filled(questionsList.length, null);
       multiChoiceAnswers =
           List.generate(questionsList.length, (_) => List.filled(4, false));
+      answerColors = List.generate(questionsList.length,
+          (_) => Colors.grey); // Initialize with grey color
       emit(QuestionsSuccess(questionsList));
     } else if (result is Fail<List<QuestionEntity>>) {
       emit(QuestionsFail(result.exception));
@@ -35,6 +38,21 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void selectSingleChoiceAnswer(int questionIndex, int answerIndex) {
+    final selectedAnswerKey =
+        questionsList[questionIndex].answers[answerIndex].key;
+    final correctAnswerKey = questionsList[questionIndex].correctAnswer;
+
+    if (selectedAnswerKey == correctAnswerKey) {
+      answerColors[answerIndex] = Colors.green; // Correct answer
+    } else {
+      answerColors[answerIndex] = Colors.red; // Wrong answer
+      final correctAnswerIndex = questionsList[questionIndex]
+          .answers
+          .indexWhere((answer) => answer.key == correctAnswerKey);
+      if (correctAnswerIndex != -1) {
+        answerColors[correctAnswerIndex] = Colors.green;
+      }
+    }
     singleChoiceAnswers[questionIndex] = answerIndex;
     emit(QuestionsSuccess(questionsList));
   }
