@@ -18,13 +18,13 @@ class QuestionsView extends StatefulWidget {
 
 class _QuestionsViewState extends State<QuestionsView> {
   Timer? _timer;
-  int _remainingTime = 25 * 60; // 30 minutes in seconds //todo
+  int _remainingTime = 25 * 60; // 30 minutes in seconds
   int? selectedAnswerIndex; // for single choice
   List<bool> selectedAnswers = [
     false,
     false,
     false,
-    false,
+    false
   ]; // for multiple choice
   late QuestionsCubit viewModel;
 
@@ -179,10 +179,13 @@ class _QuestionsViewState extends State<QuestionsView> {
                             margin: const EdgeInsets.symmetric(vertical: 8),
                             decoration: BoxDecoration(
                               color: questionss.type == 'single_choice'
-                                  ? (selectedAnswerIndex == index
+                                  ? (viewModel.singleChoiceAnswers[
+                                              viewModel.currentIndex] ==
+                                          index
                                       ? const Color(0xffCCD7EB)
                                       : const Color(0xffEDEFF3))
-                                  : (selectedAnswers[index]
+                                  : (viewModel.multiChoiceAnswers[
+                                          viewModel.currentIndex][index]
                                       ? const Color(0xffCCD7EB)
                                       : const Color(0xffEDEFF3)),
                               borderRadius: BorderRadius.circular(10),
@@ -190,11 +193,12 @@ class _QuestionsViewState extends State<QuestionsView> {
                             child: questionss.type == 'single_choice'
                                 ? RadioListTile<int>(
                                     value: index,
-                                    groupValue:
-                                        selectedAnswerIndex, //!user will select it
+                                    groupValue: viewModel.singleChoiceAnswers[
+                                        viewModel.currentIndex],
                                     onChanged: (value) {
                                       setState(() {
-                                        selectedAnswerIndex = value;
+                                        viewModel.selectSingleChoiceAnswer(
+                                            viewModel.currentIndex, value!);
                                       });
                                     },
                                     title:
@@ -202,10 +206,14 @@ class _QuestionsViewState extends State<QuestionsView> {
                                     activeColor: const Color(0xff02369C),
                                   )
                                 : CheckboxListTile(
-                                    value: selectedAnswers[index],
+                                    value: viewModel.multiChoiceAnswers[
+                                        viewModel.currentIndex][index],
                                     onChanged: (bool? value) {
                                       setState(() {
-                                        selectedAnswers[index] = value!;
+                                        viewModel.selectMultiChoiceAnswer(
+                                            viewModel.currentIndex,
+                                            index,
+                                            value!);
                                       });
                                     },
                                     title:
