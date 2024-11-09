@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:online_exam_app/Features/questions/presentation/views/exam_score_view.dart';
 import 'package:online_exam_app/Features/questions/presentation/views/questions_view.dart';
 import '../../Features/explore/presentation/pages/exam_preview.dart';
 import '../../Features/explore/presentation/pages/exam_details.dart';
 import '../../Features/profile/presentation/pages/change_password_view.dart';
 import '../../Features/Home/presentation/views/home_view.dart';
-
 import '../../Features/Auth/presentation/views/email_verification_view.dart';
 import '../../Features/Auth/presentation/views/forget_password.dart';
 import '../../Features/Auth/presentation/views/login_view.dart';
@@ -24,6 +24,7 @@ class RoutesManager {
   static const String subjectsDetailRoute = '/subjectsDetail';
   static const String examPreviewRoute = '/examPreview';
   static const String questionsRoute = '/questions';
+  static const String examScoresRoute = '/examScores';
 }
 
 class RouteGenerator {
@@ -53,6 +54,9 @@ class RouteGenerator {
             builder: (_) => const ExamPreview(), settings: settings);
       case RoutesManager.questionsRoute:
         return MaterialPageRoute(builder: (_) => const QuestionsView());
+      case RoutesManager.examScoresRoute:
+        return MaterialPageRoute(
+            builder: (_) => const ExamScoreView(), settings: settings);
       default:
         return unDefinedRoute();
     }

@@ -16,3 +16,9 @@ final class QuestionsFail extends QuestionsState {
   final Exception exception;
   QuestionsFail(this.exception);
 }
+
+final class QuestionResult extends QuestionsState {
+  final List<QuestionEntity> questions;
+  final Map<String, dynamic> results;
+  QuestionResult(this.questions, this.results);
+}

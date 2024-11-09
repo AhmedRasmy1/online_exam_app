@@ -13,6 +13,7 @@ class LoginViewModel extends Cubit<LoginScreenState> {
   final LoginUseCase loginUseCase;
 
   void login(String email, String password) async {
+    emit(LoadingState());
     var result = await loginUseCase.invoke(email, password);
     switch (result) {
       case Success<User?>():

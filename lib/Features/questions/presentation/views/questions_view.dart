@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:online_exam_app/Features/questions/presentation/view_model/questions_view_model/questions_cubit.dart';
 import 'package:online_exam_app/core/functions/extenstions.dart';
 import 'package:online_exam_app/core/resources/color_manager.dart';
+import 'package:online_exam_app/core/resources/routes_manager.dart';
 import 'package:online_exam_app/core/widgets/custom_app_bar.dart';
 import 'package:online_exam_app/core/widgets/custom_elevated_button.dart';
 import 'package:online_exam_app/di/di.dart';
@@ -18,20 +19,9 @@ class QuestionsView extends StatefulWidget {
 
 class _QuestionsViewState extends State<QuestionsView> {
   Timer? _timer;
-  int _remainingTime = 25 * 60; // 30 minutes in seconds
-  int? selectedAnswerIndex; // for single choice
-  List<bool> selectedAnswers = [
-    false,
-    false,
-    false,
-    false
-  ]; // for multiple choice
   late QuestionsCubit viewModel;
-
-  void resetSelection() {
-    selectedAnswerIndex = null;
-    selectedAnswers = [false, false, false, false];
-  }
+  int _remainingTime = 25 * 60; // 30 minutes in seconds
+  bool _isResultShown = false; // Flag to track if the result is shown
 
   @override
   void initState() {
@@ -56,42 +46,62 @@ class _QuestionsViewState extends State<QuestionsView> {
 
   Future<void> onTimerComplete() {
     return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Row(
-              children: [
-                SvgPicture.asset(
-                  'assets/images/hourglass.svg',
-                  height: 100,
-                  width: 100,
-                ),
-                const Text(
-                  "Time Out!!",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: ColorManager.error),
-                )
-              ],
-            ),
-            actions: [
-              CustomElevatedButton(
-                buttonColor: ColorManager.blue,
-                title: 'View Score.',
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Row(
+            children: [
+              SvgPicture.asset(
+                'assets/images/hourglass.svg',
+                height: 100,
+                width: 100,
+              ),
+              const Text(
+                "Time Out!!",
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: ColorManager.error),
               )
             ],
-          );
-        });
+          ),
+          actions: [
+            CustomElevatedButton(
+              buttonColor: ColorManager.blue,
+              title: 'View Score.',
+              onPressed: () {
+                setState(() {
+                  _isResultShown = true;
+                });
+                final result = viewModel.calculateResult();
+                Navigator.pushNamed(context, RoutesManager.examScoresRoute,
+                    arguments: result);
+              },
+            )
+          ],
+        );
+      },
+    );
   }
 
   @override
   void dispose() {
     _timer?.cancel();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!mounted) {
+      _timer?.cancel();
+    }
+  }
+
+  @override
+  void deactivate() {
+    _timer?.cancel();
+    super.deactivate();
   }
 
   @override
@@ -114,8 +124,41 @@ class _QuestionsViewState extends State<QuestionsView> {
                   return Center(
                     child: Text(state.exception.toString()),
                   );
-                } else if (state is QuestionsSuccess) {
-                  final questionss = state.questions[viewModel.currentIndex];
+                } else if (state is QuestionsSuccess ||
+                    state is QuestionResult) {
+                  if (viewModel.questionsList.isEmpty) {
+                    return Scaffold(
+                      body: Padding(
+                        padding: const EdgeInsets.only(
+                          top: 8,
+                          left: 16,
+                          right: 16,
+                        ),
+                        child: Column(
+                          children: [
+                            CustomAppBar(
+                              title: 'Exam',
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            Expanded(
+                              child: Center(
+                                child: Image.asset(
+                                    'assets/images/3d-isometric-robot-assistant-helping-developer-to-write-code.gif'),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  }
+                  final questionss = state is QuestionsSuccess
+                      ? state.questions[viewModel.currentIndex]
+                      : state is QuestionResult
+                          ? viewModel.questionsList[viewModel.currentIndex]
+                          : null;
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -168,7 +211,7 @@ class _QuestionsViewState extends State<QuestionsView> {
                         height: 28,
                       ),
                       Text(
-                        questionss.question,
+                        questionss!.question,
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -178,42 +221,43 @@ class _QuestionsViewState extends State<QuestionsView> {
                           return Container(
                             margin: const EdgeInsets.symmetric(vertical: 8),
                             decoration: BoxDecoration(
-                              color: questionss.type == 'single_choice'
-                                  ? (viewModel.singleChoiceAnswers[
-                                              viewModel.currentIndex] ==
-                                          index
-                                      ? (questionss.answers[index].key ==
-                                              questionss.correctAnswer
-                                          ? const Color(
-                                              0xffcaf9cc) // Correct answer selected
-                                          : const Color(
-                                              0xfff8d2d2)) // Incorrect answer selected
+                              color: _isResultShown
+                                  ? questionss.type == 'single_choice'
+                                      ? (viewModel.singleChoiceAnswers[
+                                                  viewModel.currentIndex] ==
+                                              index
+                                          ? (questionss.answers[index].key ==
+                                                  questionss.correctAnswer
+                                              ? const Color(
+                                                  0xffcaf9cc) // Correct answer selected
+                                              : const Color(
+                                                  0xfff8d2d2)) // Incorrect answer selected
+                                          : (viewModel.singleChoiceAnswers[
+                                                          viewModel
+                                                              .currentIndex] !=
+                                                      null &&
+                                                  questionss
+                                                          .answers[index].key ==
+                                                      questionss.correctAnswer
+                                              ? const Color(
+                                                  0xffcaf9cc) // Show correct answer if an incorrect one was selected
+                                              : const Color(
+                                                  0xffEDEFF3))) // Default background color
                                       : (viewModel.singleChoiceAnswers[
-                                                      viewModel.currentIndex] !=
-                                                  null &&
-                                              questionss.answers[index].key ==
+                                                  viewModel.currentIndex] ==
+                                              null // Check if no answer was selected
+                                          ? (questionss.answers[index].key ==
                                                   questionss.correctAnswer
-                                          ? const Color(
-                                              0xffcaf9cc) // Show correct answer if an incorrect one was selected
-                                          : const Color(
-                                              0xffEDEFF3))) // Default background color
-                                  : (viewModel.multiChoiceAnswers[viewModel.currentIndex]
-                                          [index]
-                                      ? (questionss.answers[index].key ==
-                                              questionss.correctAnswer
-                                          ? Colors
-                                              .green // Correct answer selected in multiple choice
-                                          : Colors
-                                              .red) // Incorrect answer selected in multiple choice
-                                      : (viewModel.multiChoiceAnswers[
-                                                      viewModel.currentIndex]
-                                                  .contains(true) &&
-                                              questionss.answers[index].key ==
+                                              ? const Color(
+                                                  0xffcaf9cc) // Show correct answer if no answer was selected
+                                              : const Color(
+                                                  0xffEDEFF3)) // Default background color
+                                          : (questionss.answers[index].key ==
                                                   questionss.correctAnswer
-                                          ? Colors.green // Show correct answer if incorrect answers are selected
-                                          : const Color(0xffEDEFF3))), // Default background color for unselected
-                              // Default background color for unselected
-
+                                              ? const Color(
+                                                  0xffcaf9cc) // Show correct answer if an answer was selected
+                                              : const Color(0xffEDEFF3)))
+                                  : const Color(0xffEDEFF3),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: questionss.type == 'single_choice'
@@ -221,12 +265,16 @@ class _QuestionsViewState extends State<QuestionsView> {
                                     value: index,
                                     groupValue: viewModel.singleChoiceAnswers[
                                         viewModel.currentIndex],
-                                    onChanged: (value) {
-                                      setState(() {
-                                        viewModel.selectSingleChoiceAnswer(
-                                            viewModel.currentIndex, value!);
-                                      });
-                                    },
+                                    onChanged: _isResultShown
+                                        ? null
+                                        : (value) {
+                                            setState(() {
+                                              viewModel
+                                                  .selectSingleChoiceAnswer(
+                                                      viewModel.currentIndex,
+                                                      value!);
+                                            });
+                                          },
                                     title:
                                         Text(questionss.answers[index].answer),
                                     activeColor: const Color(0xff02369C),
@@ -234,14 +282,16 @@ class _QuestionsViewState extends State<QuestionsView> {
                                 : CheckboxListTile(
                                     value: viewModel.multiChoiceAnswers[
                                         viewModel.currentIndex][index],
-                                    onChanged: (bool? value) {
-                                      setState(() {
-                                        viewModel.selectMultiChoiceAnswer(
-                                            viewModel.currentIndex,
-                                            index,
-                                            value!);
-                                      });
-                                    },
+                                    onChanged: _isResultShown
+                                        ? null
+                                        : (bool? value) {
+                                            setState(() {
+                                              viewModel.selectMultiChoiceAnswer(
+                                                  viewModel.currentIndex,
+                                                  index,
+                                                  value!);
+                                            });
+                                          },
                                     title:
                                         Text(questionss.answers[index].answer),
                                     activeColor: const Color(0xff02369C),
@@ -287,20 +337,37 @@ class _QuestionsViewState extends State<QuestionsView> {
                             width: context.screenWidth / 2.3,
                             child: ElevatedButton(
                               onPressed: () {
-                                viewModel.nextQuestion();
+                                if (viewModel.currentIndex ==
+                                    viewModel.questionsList.length - 1) {
+                                  final result = viewModel.calculateResult();
+                                  setState(() {
+                                    _isResultShown = true;
+                                  });
+                                  Navigator.pushNamed(
+                                      context, RoutesManager.examScoresRoute,
+                                      arguments: result);
+                                } else {
+                                  viewModel.nextQuestion();
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 17),
-                                backgroundColor: ColorManager.blue,
+                                backgroundColor: viewModel.currentIndex ==
+                                        viewModel.questionsList.length - 1
+                                    ? ColorManager.green
+                                    : ColorManager.blue,
                                 shape: const RoundedRectangleBorder(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(10)),
                                 ),
                               ),
-                              child: const Text(
-                                'Next',
-                                style: TextStyle(
+                              child: Text(
+                                viewModel.currentIndex ==
+                                        viewModel.questionsList.length - 1
+                                    ? 'Result'
+                                    : 'Next',
+                                style: const TextStyle(
                                     color: ColorManager.white,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
