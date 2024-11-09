@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:online_exam_app/Features/questions/domian/entities/question_entity.dart';
@@ -38,21 +40,6 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void selectSingleChoiceAnswer(int questionIndex, int answerIndex) {
-    final selectedAnswerKey =
-        questionsList[questionIndex].answers[answerIndex].key;
-    final correctAnswerKey = questionsList[questionIndex].correctAnswer;
-
-    if (selectedAnswerKey == correctAnswerKey) {
-      answerColors[answerIndex] = Colors.green; // Correct answer
-    } else {
-      answerColors[answerIndex] = Colors.red; // Wrong answer
-      final correctAnswerIndex = questionsList[questionIndex]
-          .answers
-          .indexWhere((answer) => answer.key == correctAnswerKey);
-      if (correctAnswerIndex != -1) {
-        answerColors[correctAnswerIndex] = Colors.green;
-      }
-    }
     singleChoiceAnswers[questionIndex] = answerIndex;
     emit(QuestionsSuccess(questionsList));
   }
@@ -75,5 +62,25 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       currentIndex--;
       emit(QuestionsSuccess(questionsList));
     }
+  }
+
+  Map<String, dynamic> calculateResult() {
+    int correctAnswer = 0;
+    int totalQuestions = questionsList.length;
+
+    for (int i = 0; i < totalQuestions; i++) {
+      if (singleChoiceAnswers[i] != null &&
+          questionsList[i].answers[singleChoiceAnswers[i]!].key ==
+              questionsList[i].correctAnswer) {
+        correctAnswer++;
+      }
+      log('Correct Answer: $correctAnswer');
+    }
+    return {
+      'correct': correctAnswer,
+      'wrong': totalQuestions - correctAnswer,
+      'total': totalQuestions,
+      'percentage': ((correctAnswer / totalQuestions) * 100).toStringAsFixed(2)
+    };
   }
 }

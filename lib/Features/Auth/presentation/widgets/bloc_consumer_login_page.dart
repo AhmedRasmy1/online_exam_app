@@ -43,8 +43,7 @@ class BlocConsumerForLoginPage extends StatelessWidget {
             onOkPressed: () {},
             btnOkColor: ColorManager.blue,
           );
-        }
-        if (state is ErrorState) {
+        } else if (state is ErrorState) {
           String message;
           if (state.exception is ServerError) {
             message = (state.exception as ServerError).serverMessage ??
@@ -59,8 +58,7 @@ class BlocConsumerForLoginPage extends StatelessWidget {
             onOkPressed: () {},
             btnOkColor: ColorManager.error,
           );
-        }
-        if (state is SuccessState) {
+        } else if (state is SuccessState) {
           if (AppConstants.isActive) {
             SharedData.setData(
                 key: StringCache.userEmail, value: emailController.text);

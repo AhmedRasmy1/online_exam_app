@@ -73,9 +73,11 @@ class _SubjectDetailsState extends State<SubjectDetails> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image.asset(
-                                  "assets/images/mega-creator.png",
-                                  width: context.screenWidth / 1,
+                                Center(
+                                  child: Image.asset(
+                                    "assets/images/3d-isometric-robot-assistant-helping-developer-to-write-code.gif",
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ],
                             ),

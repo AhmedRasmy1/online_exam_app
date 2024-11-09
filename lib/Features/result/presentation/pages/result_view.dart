@@ -5,9 +5,12 @@ class ResultView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('Result Page'),
+        child: Image.asset(
+          'assets/images/bendy-man-developer-writing-programming-code.gif',
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }
