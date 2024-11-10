@@ -30,13 +30,14 @@ environment:
 dependencies:
   awesome_dialog: ^3.2.1
   bloc: ^8.1.4
+  cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.8
   dio: ^5.7.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_circle_chart: ^1.0.0
-  flutter_svg: ^2.0.10+1
+  flutter_svg: ^2.0.14
   get_it: null
   image: ^4.3.0
   injectable: null
